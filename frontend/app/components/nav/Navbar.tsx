@@ -14,7 +14,7 @@ import {
 import { IoMail } from "react-icons/io5";
 import { Link } from "react-router";
 import Logo from "~/components/nav/Logo";
-import NavLoginOnly from "./NavLoginOnly";
+import AuthMenu from "./AuthMenu";
 
 const Navbar = () => {
   const [showMenu, setShowMenu] = useState(false);
@@ -30,7 +30,7 @@ const Navbar = () => {
           </div>
 
           <div className="mr-[6vw]">
-            <NavLoginOnly />
+            <AuthMenu />
           </div>
         </div>
       </div>
