@@ -277,7 +277,7 @@ export const searchLevelID = async (req: Request, res: Response) => {
     const limit = req.body.limit || 25;
     const skip = ((page as number) - 1) * (limit as number);
     const levelID = +req.body.term;
-    if (isNaN(levelID)) return res.status(204).json({ message: "Invalid ID" });
+    if (Number.isNaN(levelID)) return res.status(204).json({ message: "Invalid ID" });
     //Regex for a case-insensitive match
     const total = (await Level.find({ levelID })).length;
     const results = await Level.find({ levelID })

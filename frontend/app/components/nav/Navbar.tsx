@@ -2,23 +2,19 @@
  * Navbar.tsx - a component for the site's navbar
  */
 
-import { Link } from "react-router";
-import { useEffect } from "react";
-import { useAuthStore } from "~/stores/useAuthStore";
 import {
+  FaInfoCircle,
+  FaMoneyBillWave,
   FaPlay,
   FaSearch,
   FaWrench,
-  FaInfoCircle,
-  FaMoneyBillWave,
 } from "react-icons/fa";
 import { IoMail } from "react-icons/io5";
-import NavLoginOnly from "./NavLoginOnly";
+import { Link } from "react-router";
 import Logo from "~/components/nav/Logo";
+import NavLoginOnly from "./NavLoginOnly";
 
 const Navbar = () => {
-  const { user, role } = useAuthStore();
-
   return (
     <div className="bg-[var(--color-bg)]">
       <div className="bg-[var(--color-bg-alt)] border-b-1 border-b-[var(--color-border)] p-1 mb-3">

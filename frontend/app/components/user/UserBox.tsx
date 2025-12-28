@@ -43,7 +43,7 @@ const UserBox = ({
   return (
     <div className="flex flex-col justify-start items-start gap-5 border-1 border-[var(--color-border)] p-5 rounded-lg h-fit w-60">
       <div className="flex justify-center items-center w-50 h-50 rounded-lg border-1 border-[var(--color-border)]">
-        <img src="/logo_small.png" width={128} height={128} />
+        <img src="/logo_small.png" alt="PachinGO Logo, small" width={128} height={128} />
       </div>
 
       <h1 className="text-2xl break-words whitespace-normal w-full">{username}</h1>

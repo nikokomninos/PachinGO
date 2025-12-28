@@ -2,19 +2,18 @@
  * home.tsx - the root route
  */
 
-import type { Route } from "./+types/home";
-import { Link } from "react-router";
 import {
+  FaInfoCircle,
+  FaMoneyBillWave,
   FaPlay,
   FaSearch,
   FaWrench,
-  FaInfoCircle,
-  FaMoneyBillWave,
 } from "react-icons/fa";
-
-import NavLoginOnly from "~/components/nav/NavLoginOnly";
 import { IoMail } from "react-icons/io5";
+import { Link } from "react-router";
 import Logo from "~/components/nav/Logo";
+import NavLoginOnly from "~/components/nav/NavLoginOnly";
+import type { Route } from "./+types/home";
 
 export function meta({}: Route.MetaArgs) {
   return [

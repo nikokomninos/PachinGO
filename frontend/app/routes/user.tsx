@@ -1,4 +1,3 @@
-import type { Route } from "./+types/home";
 import Footer from "~/components/nav/Footer";
 import Navbar from "~/components/nav/Navbar";
 import LevelCard from "~/components/level/LevelCard";

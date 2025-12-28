@@ -1,9 +1,8 @@
-import type { Route } from "./+types/home";
-import Navbar from "~/components/nav/Navbar";
 import { useEffect, useRef, useState } from "react";
 import { useNavigate, useParams } from "react-router";
 import ResizeButton from "~/components/game/ResizeButton";
-import GuidelinesButton from "~/components/game/GuidelinesButton";
+import Navbar from "~/components/nav/Navbar";
+import type { Route } from "./+types/home";
 
 export function meta({}: Route.MetaArgs) {
   return [
@@ -80,7 +79,7 @@ const play = () => {
 
   const addPlayToLevel = async () => {
     const res = await fetch(
-      import.meta.env.VITE_BACKEND_URL + `/api/v1/level/addPlayToLevel`,
+      `${import.meta.env.VITE_BACKEND_URL}/api/v1/level/addPlayToLevel`,
       {
         method: "POST",
         mode: "cors",
@@ -105,6 +104,7 @@ const play = () => {
           <div className="flex min-h-screen justify-center items-center">
             <iframe
               id="game"
+              title="game"
               ref={iframeRef}
               src="/game/index.html"
               width={gameSize[0]}

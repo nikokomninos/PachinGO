@@ -2,8 +2,8 @@
  * register.tsx - the registration page route
  */
 
-import type { Route } from "../+types/root";
 import RegisterBox from "~/components/auth/RegisterBox";
+import type { Route } from "../+types/root";
 
 export function meta({}: Route.MetaArgs) {
   return [

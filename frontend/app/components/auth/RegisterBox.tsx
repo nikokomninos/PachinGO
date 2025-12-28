@@ -3,12 +3,10 @@
  * contains frontend logic for user registration
  */
 
-import { useState, useEffect } from "react";
-import { useNavigate } from "react-router";
-import { Link } from "react-router";
+import { useEffect, useState } from "react";
 import { IoMdContact } from "react-icons/io";
-import { MdPassword } from "react-icons/md";
-import { MdEmail } from "react-icons/md";
+import { MdEmail, MdPassword } from "react-icons/md";
+import { Link, useNavigate } from "react-router";
 import { useAuthStore } from "~/stores/useAuthStore";
 import Logo from "../nav/Logo";
 
@@ -25,14 +23,14 @@ const RegisterBox = () => {
   useEffect(() => {
     if (user) navigate("/");
     setIsLoading(false);
-  }, [user]);
+  }, [user, navigate]);
 
   // Handles submitting a registration
   // attempt. Redirects to login page
   // if successful
   const submitRegister = async () => {
     const res = await fetch(
-      import.meta.env.VITE_BACKEND_URL + "/api/v1/auth/register",
+      `${import.meta.env.VITE_BACKEND_URL}/api/v1/auth/register`,
       {
         method: "POST",
         mode: "cors",

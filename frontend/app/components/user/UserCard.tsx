@@ -1,5 +1,5 @@
+import { useEffect, useState } from "react";
 import { Link } from "react-router";
-import { useState, useEffect } from "react";
 
 const UserCard = ({ username, role }: { username: string; role: string }) => {
   const [roleStyle, setRoleStyle] = useState("");
@@ -21,7 +21,7 @@ const UserCard = ({ username, role }: { username: string; role: string }) => {
       className="flex flex-row items-center w-fit h-15 p-2 border-1 border-[var(--color-border)] rounded-lg tracking-tight bg-[var(--color-bg)] cursor-pointer hover:bg-[var(--color-bg-alt)] ease-linear duration-75"
     >
       <div className="flex justify-center items-center w-10 h-10 rounded-lg border-1 border-[var(--color-border)] mr-3">
-        <img src="/logo_small.png" />
+        <img src="/logo_small.png" alt="PachinGO Logo, small" />
       </div>
 
       <div className="flex justify-center items-center w-fit">

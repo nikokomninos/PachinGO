@@ -4,14 +4,17 @@
  * A modal that appears when a LevelCard is clicked
  */
 
-import { useState, useEffect } from "react";
-import { FaFileImage, FaTrash } from "react-icons/fa";
+import { useEffect, useState } from "react";
+import {
+  FaCalendarAlt,
+  FaFileImage,
+  FaPlayCircle,
+  FaTrash,
+} from "react-icons/fa";
 import { FaThumbsUp } from "react-icons/fa6";
-import { FaPlayCircle, FaCalendarAlt } from "react-icons/fa";
-import { Link } from "react-router";
-import { useAuthStore } from "~/stores/useAuthStore";
-import { useNavigate } from "react-router";
 import { IoMdMusicalNote } from "react-icons/io";
+import { Link, useNavigate } from "react-router";
+import { useAuthStore } from "~/stores/useAuthStore";
 
 const LevelModal = ({
   setShowModal,
@@ -98,6 +101,7 @@ const LevelModal = ({
         <div className="col-span-2 w-7/8 h-7/8 m-auto flex justify-center items-center">
           <img
             src={thumbnail}
+            alt="Level thumbnail"
             className="min-w-full min-h-full object-contain rounded-sm"
           />
         </div>
@@ -105,13 +109,16 @@ const LevelModal = ({
         <div className="col-span-1 pr-10 py-10 flex flex-col">
           <div className="flex justify-end items-center">
             <button
+              type="button"
               onClick={() => setShowModal(false)}
               className="text-sm hover:text-[var(--color-text-alt)] cursor-pointer ease-linear duration-75"
             >
               Back
             </button>
           </div>
-          <h1 className="text-4xl font-semibold mb-3 whitespace-normal break-words">{name}</h1>
+          <h1 className="text-4xl font-semibold mb-3 whitespace-normal break-words">
+            {name}
+          </h1>
 
           <LevelInfo
             plays={plays}
@@ -129,7 +136,7 @@ const LevelModal = ({
             className="flex flex-row items-center w-fit h-15 p-2 mb-5 border-1 border-[var(--color-border)] rounded-lg tracking-tight bg-[var(--color-bg)] cursor-pointer hover:bg-[var(--color-bg-alt)] ease-linear duration-75"
           >
             <div className="flex justify-center items-center w-10 h-10 rounded-lg border-1 border-[var(--color-border)] mr-3">
-              <img src="/logo_small.png" />
+              <img src="/logo_small.png" alt="PachinGO Logo, small" />
             </div>
 
             <div className="flex justify-center items-center w-fit">
@@ -143,6 +150,7 @@ const LevelModal = ({
             <div className="flex flex-row w-full gap-3">
               <div className="flex w-full">
                 <button
+                  type="button"
                   onClick={() => handlePlay()}
                   className="flex w-full justify-center items-center hover:bg-[var(--color-bg-alt)] hover:text-neutral-400 border-1 border-[var(--color-border)] rounded-lg cursor-pointer ease-linear duration-75"
                 >
@@ -203,17 +211,17 @@ const LevelInfo = ({
       </div>
 
       <div className="flex flex-row justify-start items-center gap-1 text-xs text-[var(--color-text-alt)]">
-        <img src="/peg_blue.png" className="w-3 h-3" />
+        <img src="/peg_blue.png" alt="Blue peg" className="w-3 h-3" />
         {numPegs}
       </div>
 
       <div className="flex flex-row justify-start items-center gap-1 text-xs text-[var(--color-text-alt)]">
-        <img src="/peg_orange.png" className="w-3 h-3" />
+        <img src="/peg_orange.png" alt="Orange peg" className="w-3 h-3" />
         {numOrange}
       </div>
 
       <div className="flex flex-row justify-start items-center gap-1 text-xs text-[var(--color-text-alt)]">
-        <img src="/ball.png" className="w-2.5 h-2.5" />
+        <img src="/ball.png" alt="Ball" className="w-2.5 h-2.5" />
         {numBalls}
       </div>
 
@@ -283,7 +291,7 @@ const LikeButton = ({
       return;
     }
     const res = await fetch(
-      import.meta.env.VITE_BACKEND_URL + `/api/v1/level/addLikeToLevel`,
+      `${import.meta.env.VITE_BACKEND_URL}/api/v1/level/addLikeToLevel`,
       {
         method: "POST",
         mode: "cors",
@@ -304,7 +312,7 @@ const LikeButton = ({
 
   const handleUnlike = async () => {
     const res = await fetch(
-      import.meta.env.VITE_BACKEND_URL + `/api/v1/level/removeLikeFromLevel`,
+      `${import.meta.env.VITE_BACKEND_URL}/api/v1/level/removeLikeFromLevel`,
       {
         method: "POST",
         mode: "cors",
@@ -328,6 +336,7 @@ const LikeButton = ({
   return (
     <div className="relative inline-block">
       <button
+        type="submit"
         onClick={liked === false ? handleLike : handleUnlike}
         className={
           liked === false
@@ -358,7 +367,7 @@ const DeleteButton = ({
 
   const handleDeletion = async () => {
     const res = await fetch(
-      import.meta.env.VITE_BACKEND_URL + `/api/v1/level/deleteLevel`,
+      `${import.meta.env.VITE_BACKEND_URL}/api/v1/level/deleteLevel`,
       {
         method: "POST",
         mode: "cors",
@@ -378,6 +387,7 @@ const DeleteButton = ({
   return (
     <div className="relative inline-block">
       <button
+        type="button"
         onClick={() => setShowConfirm((prev) => !prev)} // toggle popup
         className={
           user?.username === author ||
@@ -395,6 +405,7 @@ const DeleteButton = ({
           <p className="mb-2 text-center">Are you sure?</p>
           <div className="flex justify-between">
             <button
+              type="button"
               onClick={() => {
                 handleDeletion();
                 setShowConfirm(false);
@@ -404,6 +415,7 @@ const DeleteButton = ({
               Yes
             </button>
             <button
+              type="button"
               onClick={() => setShowConfirm(false)}
               className="p-1 rounded-md border-1 border-[var(--color-border)] hover:bg-[var(--color-bg-alt)] ease-linear duration-75 cursor-pointer"
             >

@@ -26,6 +26,7 @@ const AccountBox = () => {
     <div className="flex flex-col rounded-lg w-full min-h-[80vh]">
       <div className="flex flex-row justify-center p-2 gap-5 mb-5 w-full border-1 border-[#e1e1e1] rounded-xl text-[#4b5563]">
         <button
+          type="button"
           onClick={() => setActiveTab("login")}
           className={
             activeTab === "login"
@@ -37,6 +38,7 @@ const AccountBox = () => {
         </button>
 
         <button
+          type="button"
           onClick={() => setActiveTab("gameplay")}
           className={
             activeTab === "gameplay"

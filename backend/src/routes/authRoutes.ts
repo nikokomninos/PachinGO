@@ -7,7 +7,7 @@
  */
 
 import express from "express";
-import { registerUser, loginUser, logoutUser, checkAuth } from "../controllers/authController.ts";
+import { checkAuth, loginUser, logoutUser, registerUser } from "../controllers/authController.ts";
 import { verifyJWT } from "../middleware/verifyJWT.ts";
 
 const router = express.Router();

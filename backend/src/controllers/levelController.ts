@@ -5,18 +5,18 @@
  * Handles anything related to database level updates
  */
 
+import { spawn } from "node:child_process";
+import fs from "node:fs";
+import os from "node:os";
+import path from "node:path";
+import { fileURLToPath } from "node:url";
 import type { Request, Response } from "express";
-import Level from "../models/Level.ts";
-import Counter from "../models/Counter.ts";
-import UserInfo from "../models/UserInfo.ts";
-import { removeFromR2, uploadThumbnailToR2, uploadToR2 } from "../config/r2.ts";
 import multer from "multer";
-import { spawn } from "child_process";
-import path from "path";
-import { fileURLToPath } from "url";
-import fs from "fs";
-import os from "os";
 import { PYTHON_PATH, SCRIPT_PATH } from "../config/env.ts";
+import { removeFromR2, uploadThumbnailToR2, uploadToR2 } from "../config/r2.ts";
+import Counter from "../models/Counter.ts";
+import Level from "../models/Level.ts";
+import UserInfo from "../models/UserInfo.ts";
 
 const upload = multer();
 
@@ -111,7 +111,7 @@ export const uploadLevel = [
 
       // If a background image is included
       if (req.files && "background" in req.files) {
-        const bgFile = (req.files as any)["background"][0];
+        const bgFile = (req.files as any).background[0];
         backgroundUrl = await uploadToR2(
           bgFile,
           "bg-image",
