@@ -1,5 +1,5 @@
 /**
- * NavLoginOnly
+ * AuthMenu
  *
  * A component that provides a sub-navbar,
  * containing links only for login.
@@ -12,7 +12,7 @@ import { IoIosExit, IoMdContact } from "react-icons/io";
 import { Link, useNavigate } from "react-router";
 import { useAuthStore } from "~/stores/useAuthStore";
 
-const NavLoginOnly = () => {
+const AuthMenu = () => {
   const [isLoading, setIsLoading] = useState(true);
   const { user, logout } = useAuthStore();
 
@@ -34,7 +34,7 @@ const NavLoginOnly = () => {
   if (isLoading) return null;
 
   return (
-    <div className="w-full flex justify-end mr-[3vw] tracking-tight">
+    <div className="w-full flex justify-end md:mr-[3vw] tracking-tight">
       {user ? (
         <div className="flex flex-row items-center gap-2">
           <ThemeMenu />
@@ -170,4 +170,4 @@ const UserMenu = ({
   );
 };
 
-export default NavLoginOnly;
+export default AuthMenu;
