@@ -6,8 +6,8 @@
  */
 
 import type { Request, Response } from "express";
-import UserInfo from "../models/UserInfo.ts";
 import Level from "../models/Level.ts";
+import UserInfo from "../models/UserInfo.ts";
 
 /**
  * getUser

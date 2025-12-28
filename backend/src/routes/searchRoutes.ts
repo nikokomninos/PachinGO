@@ -8,12 +8,12 @@
 
 import express from "express";
 import {
-  searchLevelName,
-  searchLevelID,
-  searchUsers,
-  getRecentLevels,
-  getMostPlayedLevels,
   getMostLikedLevels,
+  getMostPlayedLevels,
+  getRecentLevels,
+  searchLevelID,
+  searchLevelName,
+  searchUsers,
 } from "../controllers/searchController.ts";
 
 const router = express.Router();

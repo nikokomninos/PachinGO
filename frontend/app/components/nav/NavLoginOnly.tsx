@@ -6,13 +6,11 @@
  * Goes on top of the Navbar.
  */
 
-import { Link, useNavigate } from "react-router";
-import { useState, useEffect } from "react";
-import { useAuthStore } from "~/stores/useAuthStore";
-import { FaCaretDown, FaMoon } from "react-icons/fa";
+import { useEffect, useState } from "react";
+import { FaCaretDown, FaMoon, FaSun } from "react-icons/fa";
 import { IoIosExit, IoMdContact } from "react-icons/io";
-import { FaSun } from "react-icons/fa";
-import { MdMonitor } from "react-icons/md";
+import { Link, useNavigate } from "react-router";
+import { useAuthStore } from "~/stores/useAuthStore";
 
 const NavLoginOnly = () => {
   const [isLoading, setIsLoading] = useState(true);
@@ -77,6 +75,7 @@ const ThemeMenu = () => {
   return (
     <div className="relative inline-block">
       <button
+        type="button"
         onClick={() => setShowMenu((prev) => !prev)}
         className="p-1 border-1 border-[var(--color-border)] bg-[var(--color-bg)] hover:bg-[var(--color-bg-alt)] hover:text-[var(--color-text-alt)] rounded-sm ease-linear duration-75 cursor-pointer"
       >
@@ -89,7 +88,11 @@ const ThemeMenu = () => {
       {showMenu && (
         <div className="absolute -translate-x-1/2 left-1/2 mt-1 border-1 border-[var(--color-border)] w-20 rounded-sm p-2 z-10 bg-[var(--color-bg)]">
           <button
-            onClick={() => {handleThemeChange("light"); setShowMenu(false);}}
+            type="button"
+            onClick={() => {
+              handleThemeChange("light");
+              setShowMenu(false);
+            }}
             className="flex flex-row justify-between items-center mb-2 hover:text-[var(--color-text-alt)] ease-linear duration-75 cursor-pointer w-full"
           >
             <p className="text-xs">Light</p>
@@ -97,7 +100,11 @@ const ThemeMenu = () => {
           </button>
 
           <button
-            onClick={() => {handleThemeChange("dark"); setShowMenu(false);}}
+            type="button"
+            onClick={() => {
+              handleThemeChange("dark");
+              setShowMenu(false);
+            }}
             className="flex flex-row justify-between items-center hover:text-[var(--color-text-alt)] ease-linear duration-75 cursor-pointer w-full"
           >
             <p className="text-xs">Dark</p>
@@ -126,6 +133,7 @@ const UserMenu = ({
   return (
     <div className="relative inline-block">
       <button
+        type="button"
         onClick={() => setShowMenu((prev) => !prev)}
         className="flex flex-row items-center gap-1 font-semibold text-xs cursor-pointer hover:text-[var(--color-text-alt)] ease-linear duration-75"
       >

@@ -6,18 +6,18 @@
  * in the URL to create a reproducible search
  */
 
-import type { Route } from "./+types/home";
-import Navbar from "~/components/nav/Navbar";
-import Footer from "~/components/nav/Footer";
+
+import { useEffect, useMemo, useState } from "react";
+import { useSearchParams } from "react-router";
 import LevelCard from "~/components/level/LevelCard";
-import UserCard from "~/components/user/UserCard";
-import Pagination from "~/components/search/Pagination";
+import Footer from "~/components/nav/Footer";
+import Navbar from "~/components/nav/Navbar";
 import FilterBox from "~/components/search/FilterBox";
+import Pagination from "~/components/search/Pagination";
 import PremadeSearchButtons from "~/components/search/PremadeSearchButtons";
 import SearchBar from "~/components/search/SearchBar";
-
-import { useEffect, useState, useMemo } from "react";
-import { useSearchParams } from "react-router";
+import UserCard from "~/components/user/UserCard";
+import type { Route } from "./+types/home";
 
 export function meta({}: Route.MetaArgs) {
   return [
@@ -77,12 +77,19 @@ const Search = () => {
       setSortOrderType("desc");
       setTerm("$recent$");
       setSearchParams(
-        { term: "$recent$", page: "1", limit, searchType, sortType, sortOrderType },
+        {
+          term: "$recent$",
+          page: "1",
+          limit,
+          searchType,
+          sortType,
+          sortOrderType,
+        },
         { replace: true },
       );
       //handleSearch("$recent$", 1);
     }
-    if(searchType === "levelID") {
+    if (searchType === "levelID") {
       setTerm("");
       setSearchParams(
         { term: "", page: "1", limit, searchType, sortType, sortOrderType },
@@ -94,7 +101,14 @@ const Search = () => {
       setSortType("name");
       setTerm("$recent$");
       setSearchParams(
-        { term: "$recent$", page: "1", limit, searchType, sortType, sortOrderType },
+        {
+          term: "$recent$",
+          page: "1",
+          limit,
+          searchType,
+          sortType,
+          sortOrderType,
+        },
         { replace: true },
       );
       //handleSearch("$recent$", 1);
@@ -130,13 +144,13 @@ const Search = () => {
    * accordingly
    */
   const handleSearch = async (searchTerm: string, searchPage: number) => {
-    let endpoint;
+    let endpoint = ""
     if (searchType === "levelName") endpoint = "searchLevelName";
     if (searchType === "levelID") endpoint = "searchLevelID";
     if (searchType === "users") endpoint = "searchUsers";
 
     const res = await fetch(
-      import.meta.env.VITE_BACKEND_URL + `/api/v1/search/${endpoint}`,
+      `${import.meta.env.VITE_BACKEND_URL}/api/v1/search/${endpoint}`,
       {
         method: "POST",
         mode: "cors",

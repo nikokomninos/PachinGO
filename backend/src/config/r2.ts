@@ -9,17 +9,17 @@
  * how to work with the AWS SDK.
  */
 
-import fs from "fs/promises";
+import fs from "node:fs/promises";
 import {
-  S3Client,
-  PutObjectCommand,
   DeleteObjectCommand,
+  PutObjectCommand,
+  S3Client,
 } from "@aws-sdk/client-s3";
 import {
-  R2_ACCOUNT_ID,
   R2_ACCESS_KEY_ID,
-  R2_SECRET_ACCESS_KEY,
+  R2_ACCOUNT_ID,
   R2_BUCKET_NAME,
+  R2_SECRET_ACCESS_KEY,
 } from "./env.ts";
 
 const r2 = new S3Client({

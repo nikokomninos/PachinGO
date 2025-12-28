@@ -2,8 +2,8 @@
  * login.tsx - the login page route
  */
 
-import type { Route } from "../+types/root";
 import LoginBox from "~/components/auth/LoginBox";
+import type { Route } from "../+types/root";
 
 export function meta({}: Route.MetaArgs) {
   return [

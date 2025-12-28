@@ -1,7 +1,7 @@
-import type { Route } from "./+types/home";
-import Navbar from "~/components/nav/Navbar";
 import Footer from "~/components/nav/Footer";
 import Logo from "~/components/nav/Logo";
+import Navbar from "~/components/nav/Navbar";
+import type { Route } from "./+types/home";
 
 export function meta({}: Route.MetaArgs) {
   return [

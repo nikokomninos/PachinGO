@@ -1,12 +1,11 @@
-import type { Route } from "./+types/home";
+import { useEffect, useState } from "react";
+import { useNavigate } from "react-router";
 import Footer from "~/components/nav/Footer";
 import Navbar from "~/components/nav/Navbar";
-import UserBox from "~/components/user/UserBox";
 import AccountBox from "~/components/user/AccountBox";
-
-import { useNavigate } from "react-router";
-import { useEffect, useState } from "react";
+import UserBox from "~/components/user/UserBox";
 import { useAuthStore } from "~/stores/useAuthStore";
+import type { Route } from "./+types/home";
 
 export function meta({}: Route.MetaArgs) {
   return [

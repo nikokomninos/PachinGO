@@ -8,12 +8,12 @@
 
 import express from "express";
 import {
+  addLikeToLevel,
+  addPlayToLevel,
   deleteLevel,
   loadLevel,
-  uploadLevel,
-  addPlayToLevel,
-  addLikeToLevel,
   removeLikeFromLevel,
+  uploadLevel,
 } from "../controllers/levelController.ts";
 
 const router = express.Router();

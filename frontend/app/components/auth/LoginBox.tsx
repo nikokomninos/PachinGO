@@ -4,9 +4,9 @@
  */
 
 import { useEffect, useState } from "react";
-import { Link, useNavigate } from "react-router";
 import { IoMdContact } from "react-icons/io";
 import { MdPassword } from "react-icons/md";
+import { Link, useNavigate } from "react-router";
 import { useAuthStore } from "~/stores/useAuthStore";
 import Logo from "../nav/Logo";
 
@@ -22,13 +22,13 @@ const LoginBox = () => {
   useEffect(() => {
     if (user) navigate("/");
     setIsLoading(false);
-  }, [user]);
+  }, [user, navigate]);
 
   // Handles submitting a login attempt
   // Redirects the user to the home page if successful
   const submitLogin = async () => {
     const res = await fetch(
-      import.meta.env.VITE_BACKEND_URL + "/api/v1/auth/login",
+      `${import.meta.env.VITE_BACKEND_URL}/api/v1/auth/login`,
       {
         method: "POST",
         mode: "cors",
@@ -60,8 +60,11 @@ const LoginBox = () => {
   return (
     <div className="w-[90vw] h-[90vh] bg-[var(--color-bg)] rounded-2xl border-1 border-[var(--color-border-alt)] grid grid-cols-3">
       <div className="col-span-1 flex flex-col p-10">
-        <Link to="/" className="mb-20 hover:drop-shadow-lg dark:hover:drop-shadow-neutral-700 ease-linear duration-150">
-          <Logo width={75}/>
+        <Link
+          to="/"
+          className="mb-20 hover:drop-shadow-lg dark:hover:drop-shadow-neutral-700 ease-linear duration-150"
+        >
+          <Logo width={75} />
         </Link>
         <div className="flex flex-col">
           <div className="flex flex-row gap-1 items-center mb-2">
@@ -110,12 +113,12 @@ const LoginBox = () => {
           </div>
           Don't have an account?
           <span>
-          <Link
-            to="/register"
-            className="underline hover:text-[var(--color-text-alt)] ease-linear duration-75"
-          >
-            Register Here
-          </Link>
+            <Link
+              to="/register"
+              className="underline hover:text-[var(--color-text-alt)] ease-linear duration-75"
+            >
+              Register Here
+            </Link>
           </span>
         </div>
       </div>

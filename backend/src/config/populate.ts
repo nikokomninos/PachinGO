@@ -5,9 +5,9 @@ import UserInfo from "../models/UserInfo.ts";
 export const populateLevels = async () => {
   for (let i = 1; i <= 9; i++) {
     const newLevel = new Level({
-      name: "My Level " + i,
+      name: `My Level ${i}`,
       author: "testUser",
-      description: "Desc " + i,
+      description: `Desc ${i}`,
       pegLayout: {"Peg1":"Test"},
       backgroundImage: "image",
       backgroundAudio: "audio",

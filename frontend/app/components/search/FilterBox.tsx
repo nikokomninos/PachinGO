@@ -202,7 +202,7 @@ const FilterBox = ({
         </div>
       </div>
 
-      <div className={searchType == "levelID" ? "hidden" : ""}>
+      <div className={searchType === "levelID" ? "hidden" : ""}>
         <h1 className="font-bold mb-2">Results Per Page</h1>
         <form className="flex justify-center border-1 border-[var(--color-border)] w-12 p-1 rounded-lg cursor-pointer">
           <select

@@ -1,10 +1,10 @@
-import type { Route } from "./+types/home";
-import Navbar from "~/components/nav/Navbar";
-import { useState, useEffect, useRef } from "react";
-import { useAuthStore } from "~/stores/useAuthStore";
+import { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router";
-import ResizeButton from "~/components/game/ResizeButton";
 import GuidelinesButton from "~/components/game/GuidelinesButton";
+import ResizeButton from "~/components/game/ResizeButton";
+import Navbar from "~/components/nav/Navbar";
+import { useAuthStore } from "~/stores/useAuthStore";
+import type { Route } from "./+types/home";
 
 export function meta({}: Route.MetaArgs) {
   return [
@@ -95,6 +95,7 @@ const editor = () => {
           <div className="flex flex-col min-h-screen justify-center items-center">
             <iframe
               id="game"
+              title="game"
               ref={iframeRef}
               src="/game/index.html"
               width={gameSize[0]}

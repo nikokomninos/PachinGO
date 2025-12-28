@@ -3,6 +3,7 @@ ts-defs
 .DS_Store
 **/node_modules/
 **/.env
+**/.env.local
 todo.md
 **/dist/
 frontend/build/

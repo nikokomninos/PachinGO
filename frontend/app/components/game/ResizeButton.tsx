@@ -20,6 +20,7 @@ const ResizeButton = ({
   return (
     <div className="relative inline-block">
       <button
+        type="button"
         onClick={() => setShowMenu((prev) => !prev)}
         className={
           showMenu
@@ -34,6 +35,7 @@ const ResizeButton = ({
         <div className="absolute bottom-full -translate-x-1/2 mb-2 bg-[var(--color-bg)] border-1 border-[var(--color-border)] rounded-lg p-2 text-sm z-10">
           <div className="flex flex-col items-end gap-3">
             <button
+              type="button"
               onClick={() => {
                 handleGameResize(400, 300);
                 setShowMenu(false);
@@ -47,6 +49,7 @@ const ResizeButton = ({
               400x300 (0.5x)
             </button>
             <button
+              type="button"
               onClick={() => {
                 handleGameResize(800, 600);
                 setShowMenu(false);
@@ -60,6 +63,7 @@ const ResizeButton = ({
               800x600 (1x)
             </button>
             <button
+              type="button"
               onClick={() => {
                 handleGameResize(1200, 900);
                 setShowMenu(false);
@@ -73,6 +77,7 @@ const ResizeButton = ({
               1200x900 (1.5x)
             </button>
             <button
+              type="button"
               onClick={() => {
                 handleGameResize(1600, 1200);
                 setShowMenu(false);

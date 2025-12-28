@@ -8,22 +8,22 @@
  */
 
 import dotenv from "dotenv";
+
 dotenv.config();
 
-import express from "express";
-import cors from "cors";
 import cookieParser from "cookie-parser";
+import cors from "cors";
+import express from "express";
 
 import connectDB from "./config/db.ts";
-
-import testRoutes from "./routes/testRoutes.ts";
-import authRoutes from "./routes/authRoutes.ts";
-import searchRoutes from "./routes/searchRoutes.ts";
-import userRoutes from "./routes/userRoutes.ts";
-import levelRoutes from "./routes/levelRoutes.ts";
 //import { populateUserInfo } from "./config/populate.ts";
 //import { populateLevels } from "./config/populate.ts";
 import Level from "./models/Level.ts";
+import authRoutes from "./routes/authRoutes.ts";
+import levelRoutes from "./routes/levelRoutes.ts";
+import searchRoutes from "./routes/searchRoutes.ts";
+import testRoutes from "./routes/testRoutes.ts";
+import userRoutes from "./routes/userRoutes.ts";
 
 connectDB();
 //populateLevels();

@@ -1,6 +1,5 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { FaQuestion } from "react-icons/fa";
-import { useEffect } from "react";
 import Logo from "../nav/Logo";
 
 const GuidelinesButton = () => {
@@ -15,6 +14,7 @@ const GuidelinesButton = () => {
   return (
     <div className="relative inline-block">
       <button
+        type="button"
         onClick={() => setShowGuidelines((prev) => !prev)}
         className="w-10 h-10 flex justify-center items-center bg-[var(--color-bg)] hover:bg-[var(--color-bg-alt)] hover:text-[var(--color-text-alt)] border-1 border-[var(--color-border)] rounded-lg cursor-pointer ease-linear duration-75"
       >
@@ -63,6 +63,7 @@ const GuidelinesModal = ({
       >
         <div className="flex justify-end items-center">
           <button
+            type="button"
             onClick={() => setShowGuidelines(false)}
             className="text-sm hover:text-[var(--color-text-alt)] cursor-pointer ease-linear duration-75"
           >
@@ -70,9 +71,9 @@ const GuidelinesModal = ({
           </button>
         </div>
         <div className="flex flex-col h-full justify-center items-center">
-        <div className="mb-2">
-          <Logo width={100}/>
-        </div>
+          <div className="mb-2">
+            <Logo width={100} />
+          </div>
           <h1 className="text-xl mb-20">Content Guidelines</h1>
           <h2 className="text-lg mb-10">
             Before uploading your level, please ensure that it adheres to our

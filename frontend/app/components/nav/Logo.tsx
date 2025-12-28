@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-const Logo = ({width}: {width: number}) => {
+const Logo = ({ width }: { width: number }) => {
   const [theme, setTheme] = useState(localStorage.getItem("theme") || "light");
 
   useEffect(() => {
@@ -23,6 +23,6 @@ const Logo = ({width}: {width: number}) => {
       className={`w-${width}`}
     />
   );
-}
+};
 
 export default Logo;

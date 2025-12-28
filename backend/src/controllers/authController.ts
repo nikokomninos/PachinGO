@@ -6,9 +6,8 @@
  */
 
 import bcrypt from "bcrypt";
-import jwt from "jsonwebtoken";
-
 import type { Request, Response } from "express";
+import jwt from "jsonwebtoken";
 
 import User from "../models/User.ts";
 import UserInfo from "../models/UserInfo.ts";

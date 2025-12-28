@@ -24,7 +24,7 @@ export const useAuthStore = create<AuthState>((set) => ({
   checkAuth: async () => {
     try {
       const res = await fetch(
-        import.meta.env.VITE_BACKEND_URL + "/api/v1/auth/check",
+        `${import.meta.env.VITE_BACKEND_URL}/api/v1/auth/check`,
         {
           method: "GET",
           credentials: "include",
@@ -78,7 +78,7 @@ export const useAuthStore = create<AuthState>((set) => ({
 
   logout: async () => {
     try {
-      await fetch(import.meta.env.VITE_BACKEND_URL + "/api/v1/auth/logout", {
+      await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/v1/auth/logout`, {
         method: "POST",
         credentials: "include",
       });
