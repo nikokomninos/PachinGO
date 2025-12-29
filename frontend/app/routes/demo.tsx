@@ -16,7 +16,7 @@ const demo = () => {
       <div className="bg-[url('/pattern2.svg')] dark:bg-[url('/pattern2_dark.svg')] bg-repeat animate-[scroll-pattern_100s_linear_infinite]">
         <div className="bg-[var(--color-bg)] flex-1 p-15 ml-[6vw] mr-[6vw] border-l-1 border-l-[var(--color-border)] border-r-1 border-r-[var(--color-border)] tracking-tighter min-h-screen">
           <div className="flex justify-center items-center">
-            <h1 className="text-3xl font-bold">Coming Soon!</h1>
+            <h1 className="text-lg md:text-3xl font-bold">Coming Soon!</h1>
           </div>
         </div>
       </div>

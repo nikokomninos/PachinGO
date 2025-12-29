@@ -56,17 +56,22 @@ const RegisterBox = () => {
   if (isLoading) return null;
 
   return (
-    <div className="w-[90vw] h-[90vh] bg-[var(--color-bg)] rounded-2xl border-1 border-[var(--color-border-alt)] grid grid-cols-3">
-      <div className="col-span-1 flex flex-col p-10">
+    <div className="w-[90vw] h-fit md:h-[90vh] bg-[var(--color-bg)] rounded-2xl border-1 border-[var(--color-border-alt)] flex flex-row">
+      <div className="flex flex-col p-10 w-fit">
         <Link
           to="/"
           className="mb-5 hover:drop-shadow-lg dark:hover:drop-shadow-neutral-700 ease-linear duration-150"
         >
           <Logo width={75} />
         </Link>
-        <h1 className="mb-10 text-sm font-normal">
+        <h1 className="mb-10 text-sm font-normal text-center md:text-left">
           Ready to become a PachinGOD?
         </h1>
+        <div className="flex md:hidden w-full flex-col justify-center items-center">
+          <div className="bg-[var(--color-bg-alt)] flex flex-col justify-center items-center w-full aspect-4/3 mb-10 border-1 border-[var(--color-border-alt)] rounded-xl">
+            <h1>GIF Coming Soon!</h1>
+          </div>
+        </div>
         <div className="flex flex-col">
           <div className="flex flex-row gap-1 items-center mb-2">
             <MdEmail />
@@ -78,7 +83,7 @@ const RegisterBox = () => {
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             onKeyDown={(e) => handleKeyDown(e)}
-            className="w-75 p-2 mb-5 border-1 border-[var(--color-border)] rounded-md"
+            className="w-75 lg:w-100 p-2 mb-5 border-1 border-[var(--color-border)] rounded-md"
           />
         </div>
         <div className="flex flex-col">
@@ -92,7 +97,7 @@ const RegisterBox = () => {
             value={username}
             onChange={(e) => setUsername(e.target.value)}
             onKeyDown={(e) => handleKeyDown(e)}
-            className="w-75 p-2 mb-5 border-1 border-[var(--color-border)] rounded-md"
+            className="w-75 lg:w-100 p-2 mb-5 border-1 border-[var(--color-border)] rounded-md"
           />
         </div>
         <div className="flex flex-col">
@@ -106,10 +111,10 @@ const RegisterBox = () => {
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             onKeyDown={(e) => handleKeyDown(e)}
-            className="w-75 p-2 mb-10 border-1 border-[var(--color-border)] rounded-md"
+            className="w-75 lg:w-100 p-2 mb-10 border-1 border-[var(--color-border)] rounded-md"
           />
         </div>
-        <div className="flex flex-col">
+        <div className="flex flex-col items-center md:items-start">
           <button
             type="submit"
             onClick={() => submitRegister()}
@@ -120,7 +125,7 @@ const RegisterBox = () => {
           <div
             className={
               status
-                ? "mb-10 border-1 border-red-200 animate-pulse rounded-md p-4 w-75 text-center"
+                ? "mb-10 border-1 border-red-200 animate-pulse rounded-md p-4 w-75 lg:w-100 text-center"
                 : "hidden"
             }
           >
@@ -128,7 +133,7 @@ const RegisterBox = () => {
           </div>
         </div>
       </div>
-      <div className="col-span-2">
+      <div className="w-full hidden md:block bg-[var(--color-bg-alt)]">
         <div className="w-full h-full flex flex-col justify-center items-center border-l-1 border-l-[var(--color-border-alt)] rounded-2xl">
           <h1>GIF Coming Soon!</h1>
         </div>

@@ -12,7 +12,7 @@ import {
 import { IoMail } from "react-icons/io5";
 import { Link } from "react-router";
 import Logo from "~/components/nav/Logo";
-import NavLoginOnly from "~/components/nav/NavLoginOnly";
+import AuthMenu from "~/components/nav/AuthMenu";
 import type { Route } from "./+types/home";
 
 export function meta({}: Route.MetaArgs) {
@@ -26,7 +26,7 @@ const Home = () => {
   return (
     <div className="bg-[url('/pattern2.svg')] dark:bg-[url('/pattern2_dark.svg')] bg-repeat animate-[scroll-pattern_100s_linear_infinite] min-h-screen flex flex-col justify-center items-center">
       <div className="flex w-full justify-end mr-[5vw] lg:mt-0 md:mt-2 mt-2">
-        <NavLoginOnly />
+        <AuthMenu />
       </div>
       <div className="m-2 p-8 md:p-16 sm:p-20 grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-10 w-[95vw] sm:w-[90vw] lg:h-[90vh] md:h-fit rounded-2xl bg-[var(--color-bg)] border-1 border-[var(--color-border-alt)] overflow-hidden">
         <div className="col-span-1 flex flex-col justify-center text-center sm:items-center md:items-center lg:items-center">
