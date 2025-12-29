@@ -118,7 +118,7 @@ const RegisterBox = () => {
           <button
             type="submit"
             onClick={() => submitRegister()}
-            className="text-md rounded-md w-75 mb-10 pt-2 pb-2 border-1 border-[var(--color-border)] hover:bg-[var(--color-bg-alt)] hover:text-[var(--color-text-alt)] ease-linear duration-75"
+            className="text-md rounded-md w-75 lg:w-100 mb-10 pt-2 pb-2 border-1 border-[var(--color-border)] hover:bg-[var(--color-bg-alt)] hover:text-[var(--color-text-alt)] ease-linear duration-75"
           >
             Register
           </button>
