@@ -111,7 +111,7 @@ const NavDesktop = () => {
           <Link
             to="https://ko-fi.com/nikokomninos"
             target="_blank"
-            className="flex items-center gap-2 ml-2 hover:text-green-400 ease-linear duration-75"
+            className="flex lg:hidden items-center gap-2 ml-2 hover:text-green-400 ease-linear duration-75"
           >
             <FaMoneyBillWave size={14} />
             <h1 className="text-sm">Donate</h1>
