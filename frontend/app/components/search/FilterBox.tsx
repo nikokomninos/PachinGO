@@ -45,7 +45,7 @@ const FilterBox = ({
   };
 
   return (
-    <div className="flex flex-col p-4 border-1 border-[var(--color-border)] w-[15vw] h-fit rounded-lg">
+    <div className="flex flex-col md:flex-row lg:flex-col md:justify-center lg:justify-start md:gap-10 lg:gap-0 mb-4 lg:mb-0 p-4 border-1 border-[var(--color-border)] w-full lg:w-[10vw] h-fit rounded-lg">
       <div className="mb-5">
         <h1 className="font-bold mb-2">Search Type</h1>
         <div>
@@ -208,7 +208,7 @@ const FilterBox = ({
           <select
             name="limits"
             id="limits"
-            className="cursor-pointer"
+            className="cursor-pointer text-sm lg:text-md"
             value={limit}
             onChange={(e) => handleLimitChange(e)}
           >

@@ -5,6 +5,7 @@
 import { useState } from "react";
 import {
   FaCaretDown,
+  FaCaretUp,
   FaInfoCircle,
   FaMoneyBillWave,
   FaPlay,
@@ -47,7 +48,7 @@ const Navbar = () => {
           onClick={() => setShowMenu((prev) => !prev)}
           className="md:hidden flex justify-center w-1/8 p-1 mb-3 border border-[var(--color-border)] rounded-md"
         >
-          <FaCaretDown />
+        {showMenu ? (<FaCaretUp />) : (<FaCaretDown />)}
         </button>
         {showMenu && <NavMobile />}
       </div>
@@ -66,7 +67,7 @@ const NavDesktop = () => {
         >
           <Logo width={40} />
         </Link>
-        <div className="flex flex-row gap-3 mt-1 mb-3 border-1 border-[var(--color-border)] text-[var(--color-text)] font-semibold tracking-tight rounded-3xl p-3">
+        <div className="flex flex-row gap-3 mt-1 mb-3 border-1 border-[var(--color-border)] bg-[var(--color-bg-alt)] text-[var(--color-text)] font-semibold tracking-tight rounded-3xl p-3">
           <Link
             to="/demo"
             className="flex items-center gap-2 ml-2 hover:text-blue-500 ease-linear duration-75 border-r-1 border-r-[var(--color-border)] pr-5"
@@ -117,7 +118,7 @@ const NavDesktop = () => {
             <h1 className="text-sm">Donate</h1>
           </Link>
         </div>
-        <div className="hidden lg:flex flex-row justify-center items-center gap-2 mt-1 mb-3 border-1 border-[var(--color-border)] text-[var(--color-text)] font-semibold tracking-tight rounded-3xl p-3 text-sm">
+        <div className="hidden lg:flex flex-row justify-center items-center gap-2 mt-1 mb-3 border-1 border-[var(--color-border)] bg-[var(--color-bg-alt)] text-[var(--color-text)] font-semibold tracking-tight rounded-3xl p-3 text-sm">
           <Link
             to="/about"
             className="flex items-center gap-2 ml-2 hover:text-gray-400 ease-linear duration-75 border-r-1 border-r-[var(--color-border)] pr-5"

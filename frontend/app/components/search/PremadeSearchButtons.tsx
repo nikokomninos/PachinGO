@@ -17,31 +17,31 @@ const PremadeSearchButtons = ({
   handleMostLikedLevels: Function;
 }) => {
   return (
-    <div>
+    <div className="flex flex-row gap-2 lg:flex-col justify-center">
       <button
         type="button"
         onClick={() => handleRecentLevels()}
-        className="flex flex-row justify-between items-center w-full p-2 mb-2 border-1 border-[var(--color-border)] rounded-lg hover:bg-[var(--color-bg-alt)] ease-linear duration-75 cursor-pointer hover:text-indigo-500"
+        className="text-md flex flex-col gap-2 md:flex-row justify-between items-center w-fit h-fit md:w-full md:h-full p-2 border-1 border-[var(--color-border)] rounded-lg hover:bg-[var(--color-bg-alt)] ease-linear duration-75 cursor-pointer hover:text-indigo-500"
       >
-        Recently Uploaded
+        <h1 className="hidden md:block">Recently Uploaded</h1>
         <FaClock size={14} />
       </button>
 
       <button
         type="button"
         onClick={() => handleMostPlayedLevels()}
-        className="flex flex-row justify-between items-center w-full p-2 mb-2 border-1 border-[var(--color-border)] rounded-lg hover:bg-[var(--color-bg-alt)] ease-linear duration-75 cursor-pointer hover:text-green-500"
+        className="text-md flex flex-col gap-2 md:flex-row justify-between items-center w-fit h-fit md:w-full md:h-full p-2 border-1 border-[var(--color-border)] rounded-lg hover:bg-[var(--color-bg-alt)] ease-linear duration-75 cursor-pointer hover:text-green-500"
       >
-        Most Played
+        <h1 className="hidden md:block">Most Played</h1>
         <FaPlayCircle />
       </button>
 
       <button
         type="button"
         onClick={() => handleMostLikedLevels()}
-        className="flex flex-row justify-between items-center w-full p-2 mb-2 border-1 border-[var(--color-border)] rounded-lg hover:bg-[var(--color-bg-alt)] ease-linear duration-75 cursor-pointer hover:text-red-500"
+        className="text-md flex flex-col gap-2 md:flex-row justify-between items-center w-fit h-fit md:w-full md:h-full p-2 mb-2 border-1 border-[var(--color-border)] rounded-lg hover:bg-[var(--color-bg-alt)] ease-linear duration-75 cursor-pointer hover:text-red-500"
       >
-        Most Liked
+        <h1 className="hidden md:block">Most Liked</h1>
         <FaHeart />
       </button>
     </div>

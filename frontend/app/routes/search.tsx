@@ -6,8 +6,8 @@
  * in the URL to create a reproducible search
  */
 
-
 import { useEffect, useMemo, useState } from "react";
+import { FaCaretDown, FaCaretUp } from "react-icons/fa";
 import { useSearchParams } from "react-router";
 import LevelCard from "~/components/level/LevelCard";
 import Footer from "~/components/nav/Footer";
@@ -144,7 +144,7 @@ const Search = () => {
    * accordingly
    */
   const handleSearch = async (searchTerm: string, searchPage: number) => {
-    let endpoint = ""
+    let endpoint = "";
     if (searchType === "levelName") endpoint = "searchLevelName";
     if (searchType === "levelID") endpoint = "searchLevelID";
     if (searchType === "users") endpoint = "searchUsers";
@@ -319,32 +319,54 @@ const Search = () => {
     }
   }, [results]);
 
+  const [showFilters, setShowFilters] = useState(true);
+
   return (
     <div className="flex flex-col min-h-screen">
       <Navbar />
       <div className="bg-[url('/pattern2.svg')] dark:bg-[url('/pattern2_dark.svg')] bg-repeat animate-[scroll-pattern_100s_linear_infinite]">
         <div className="bg-[var(--color-bg)] flex-1 p-15 ml-[6vw] mr-[6vw] border-l-1 border-l-[var(--color-border)] border-r-1 border-r-[var(--color-border)] tracking-tighter min-h-screen">
           <div className="flex flex-col justify-center items-center">
-            <div className="flex flex-row flex-1 justify-center items-start grow w-[72vw]">
-              <div className="flex flex-col">
+            <div className="flex flex-col lg:flex-row flex-1 justify-center items-start grow w-[72vw]">
+              <div className="flex flex-col w-full lg:w-fit">
                 <PremadeSearchButtons
                   handleRecentLevels={handleRecentLevels}
                   handleMostPlayedLevels={handleMostPlayedLevels}
                   handleMostLikedLevels={handleMostLikedLevels}
                 />
-                <FilterBox
-                  searchType={searchType}
-                  setSearchType={setSearchType}
-                  sortType={sortType}
-                  setSortType={setSortType}
-                  sortOrderType={sortOrderType}
-                  setSortOrderType={setSortOrderType}
-                  limit={limit}
-                  setLimit={setLimit}
-                />
+
+                <button
+                  type="button"
+                  onClick={() => setShowFilters((prev) => !prev)}
+                  className="md:hidden p-1 mb-2 border border-[var(--color-border)] rounded-md"
+                >
+                  {showFilters ? (
+                    <div className="flex flex-row justify-center items-center gap-2 w-full">
+                      <h1>Filters </h1>
+                      <FaCaretUp />
+                    </div>
+                  ) : (
+                    <div className="flex flex-row justify-center items-center gap-2 w-full">
+                      <h1>Filters </h1>
+                      <FaCaretDown />
+                    </div>
+                  )}
+                </button>
+                  {showFilters && (
+                    <FilterBox
+                      searchType={searchType}
+                      setSearchType={setSearchType}
+                      sortType={sortType}
+                      setSortType={setSortType}
+                      sortOrderType={sortOrderType}
+                      setSortOrderType={setSortOrderType}
+                      limit={limit}
+                      setLimit={setLimit}
+                    />
+                  )}
               </div>
 
-              <div className="flex flex-col flex-1 grow justify-center gap-5 ml-5 w-350 rounded-lg">
+              <div className="flex flex-col flex-1 grow justify-center gap-5 lg:ml-5 w-full rounded-lg">
                 <SearchBar
                   term={term}
                   setTerm={setTerm}
@@ -354,7 +376,7 @@ const Search = () => {
                   page={page}
                   totalResults={totalResults}
                 />
-                <div className="flex flex-wrap flex-1 grow justify-start gap-5">
+                <div className="flex flex-wrap flex-1 grow justify-center lg:justify-start gap-5">
                   {renderResults}
                 </div>
                 <div
