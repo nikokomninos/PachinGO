@@ -45,7 +45,7 @@ const Pagination = ({
   };
 
   return (
-    <div className="flex flex-row justify-evenly gap-3 p-3 border-1 border-[var(--color-border)] text-[var(--color-text)] font-semibold tracking-tight rounded-3xl">
+    <div className="flex flex-row justify-evenly p-3 gap-3 text-[var(--color-text)] font-semibold tracking-tight rounded-3xl">
       <button
         type="button"
         onClick={() => {
