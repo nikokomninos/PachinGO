@@ -31,7 +31,7 @@ const Home = () => {
       <div className="m-2 p-8 md:p-16 sm:p-20 grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-10 w-[95vw] sm:w-[90vw] lg:h-[90vh] md:h-fit rounded-2xl bg-[var(--color-bg)] border-1 border-[var(--color-border-alt)] overflow-hidden">
         <div className="col-span-1 flex flex-col justify-center text-center sm:items-center md:items-center lg:items-center">
           <div className="mb-10">
-            <Logo width={50} />
+            <Logo width={75} />
           </div>
           <h2 className="text-lg md:text-2xl sm:text-3xl mb-5 sm:mb-15 text-[var(--color-text-alt)]">
             A spiritual successor to <i>Peggle</i>, now featuring a level
