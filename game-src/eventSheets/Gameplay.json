@@ -616,7 +616,9 @@
 									"objectClass": "Audio",
 									"sid": 803683349897198,
 									"parameters": {
-										"audio-file": "Level_editor",
+										"audio-file": {
+											"path": "Level_editor"
+										},
 										"loop": "looping",
 										"volume": "-5",
 										"stereo-pan": "0",
@@ -656,7 +658,9 @@
 									"objectClass": "Audio",
 									"sid": 939050316910461,
 									"parameters": {
-										"audio-file": "Lets_Go_Cruisin",
+										"audio-file": {
+											"path": "Lets_Go_Cruisin"
+										},
 										"loop": "looping",
 										"volume": "-5",
 										"stereo-pan": "0",
@@ -696,7 +700,9 @@
 									"objectClass": "Audio",
 									"sid": 756856205228365,
 									"parameters": {
-										"audio-file": "PegTastic",
+										"audio-file": {
+											"path": "PegTastic"
+										},
 										"loop": "looping",
 										"volume": "-5",
 										"stereo-pan": "0",
@@ -736,7 +742,9 @@
 									"objectClass": "Audio",
 									"sid": 204894563345446,
 									"parameters": {
-										"audio-file": "Saturday_Evening",
+										"audio-file": {
+											"path": "Saturday_Evening"
+										},
 										"loop": "looping",
 										"volume": "-5",
 										"stereo-pan": "0",
@@ -776,7 +784,9 @@
 									"objectClass": "Audio",
 									"sid": 681953203572066,
 									"parameters": {
-										"audio-file": "PachiNgo",
+										"audio-file": {
+											"path": "PachiNgo"
+										},
 										"loop": "looping",
 										"volume": "-5",
 										"stereo-pan": "0",
@@ -816,7 +826,9 @@
 									"objectClass": "Audio",
 									"sid": 790023518678823,
 									"parameters": {
-										"audio-file": "PachinGeetar",
+										"audio-file": {
+											"path": "PachinGeetar"
+										},
 										"loop": "looping",
 										"volume": "-5",
 										"stereo-pan": "0",
@@ -1115,7 +1127,9 @@
 									"objectClass": "Audio",
 									"sid": 409518081931070,
 									"parameters": {
-										"audio-file": "Sonic3 ping",
+										"audio-file": {
+											"path": "Sonic3 ping"
+										},
 										"loop": "not-looping",
 										"volume": "-18",
 										"stereo-pan": "0",
@@ -1199,7 +1213,9 @@
 											"objectClass": "Audio",
 											"sid": 318921922405643,
 											"parameters": {
-												"audio-file": "Sonic3 bumper",
+												"audio-file": {
+													"path": "Sonic3 bumper"
+												},
 												"loop": "not-looping",
 												"volume": "-6",
 												"stereo-pan": "0",
@@ -1253,7 +1269,9 @@
 											"objectClass": "Audio",
 											"sid": 723688363486074,
 											"parameters": {
-												"audio-file": "Sonic3 checkpoint",
+												"audio-file": {
+													"path": "Sonic3 checkpoint"
+												},
 												"loop": "not-looping",
 												"volume": "-6",
 												"stereo-pan": "0",
@@ -1298,7 +1316,9 @@
 											"objectClass": "Audio",
 											"sid": 846384803453713,
 											"parameters": {
-												"audio-file": "Sonic3 spiked",
+												"audio-file": {
+													"path": "Sonic3 spiked"
+												},
 												"loop": "not-looping",
 												"volume": "-6",
 												"stereo-pan": "0",
@@ -1415,7 +1435,9 @@
 											"objectClass": "Audio",
 											"sid": 207414071674036,
 											"parameters": {
-												"audio-file": "Sonic3 ping",
+												"audio-file": {
+													"path": "Sonic3 ping"
+												},
 												"loop": "not-looping",
 												"volume": "-18",
 												"stereo-pan": "0",
@@ -1454,7 +1476,9 @@
 									"objectClass": "Audio",
 									"sid": 626377506691776,
 									"parameters": {
-										"audio-file": "pop",
+										"audio-file": {
+											"path": "pop"
+										},
 										"loop": "not-looping",
 										"volume": "-5",
 										"stereo-pan": "0",
@@ -1603,7 +1627,9 @@
 													"objectClass": "Audio",
 													"sid": 173773155271444,
 													"parameters": {
-														"audio-file": "pop",
+														"audio-file": {
+															"path": "pop"
+														},
 														"loop": "not-looping",
 														"volume": "-5",
 														"stereo-pan": "0",
@@ -1818,7 +1844,9 @@
 													"objectClass": "Audio",
 													"sid": 855565059485290,
 													"parameters": {
-														"audio-file": "pop",
+														"audio-file": {
+															"path": "pop"
+														},
 														"loop": "not-looping",
 														"volume": "-5",
 														"stereo-pan": "0",
@@ -1926,7 +1954,9 @@
 											"objectClass": "Audio",
 											"sid": 593667937471181,
 											"parameters": {
-												"audio-file": "Level_editor",
+												"audio-file": {
+													"path": "Level_editor"
+												},
 												"loop": "looping",
 												"volume": "0",
 												"stereo-pan": "0",
@@ -1962,7 +1992,9 @@
 											"objectClass": "Audio",
 											"sid": 641754180895261,
 											"parameters": {
-												"audio-file": "Lets_Go_Cruisin",
+												"audio-file": {
+													"path": "Lets_Go_Cruisin"
+												},
 												"loop": "looping",
 												"volume": "0",
 												"stereo-pan": "0",
@@ -1998,7 +2030,9 @@
 											"objectClass": "Audio",
 											"sid": 593987831552914,
 											"parameters": {
-												"audio-file": "PegTastic",
+												"audio-file": {
+													"path": "PegTastic"
+												},
 												"loop": "looping",
 												"volume": "0",
 												"stereo-pan": "0",
@@ -2034,7 +2068,9 @@
 											"objectClass": "Audio",
 											"sid": 627046858843709,
 											"parameters": {
-												"audio-file": "Saturday_Evening",
+												"audio-file": {
+													"path": "Saturday_Evening"
+												},
 												"loop": "looping",
 												"volume": "0",
 												"stereo-pan": "0",
@@ -2070,7 +2106,9 @@
 											"objectClass": "Audio",
 											"sid": 418577634414283,
 											"parameters": {
-												"audio-file": "PachiNgo",
+												"audio-file": {
+													"path": "PachiNgo"
+												},
 												"loop": "looping",
 												"volume": "0",
 												"stereo-pan": "0",
@@ -2106,7 +2144,9 @@
 											"objectClass": "Audio",
 											"sid": 589337874631323,
 											"parameters": {
-												"audio-file": "PachinGeetar",
+												"audio-file": {
+													"path": "PachinGeetar"
+												},
 												"loop": "looping",
 												"volume": "0",
 												"stereo-pan": "0",
@@ -4207,13 +4247,9 @@
 							"eventType": "block",
 							"conditions": [
 								{
-									"id": "on-click",
-									"objectClass": "Mouse",
-									"sid": 750559255688358,
-									"parameters": {
-										"mouse-button": "left",
-										"click-type": "clicked"
-									}
+									"id": "on-tap",
+									"objectClass": "Touch",
+									"sid": 380481538889083
 								},
 								{
 									"id": "compare-two-values",
@@ -4292,7 +4328,9 @@
 									"objectClass": "Audio",
 									"sid": 967570037760098,
 									"parameters": {
-										"audio-file": "Peggle Shooter_Fire",
+										"audio-file": {
+											"path": "Peggle Shooter_Fire"
+										},
 										"loop": "not-looping",
 										"volume": "-5",
 										"stereo-pan": "0",
@@ -4622,7 +4660,9 @@
 											"objectClass": "Audio",
 											"sid": 352379603301588,
 											"parameters": {
-												"audio-file": "Peggle extraball",
+												"audio-file": {
+													"path": "Peggle extraball"
+												},
 												"loop": "not-looping",
 												"volume": "-5",
 												"stereo-pan": "0",
@@ -4704,7 +4744,9 @@
 											"objectClass": "Audio",
 											"sid": 295095100484127,
 											"parameters": {
-												"audio-file": "Peggle extraball",
+												"audio-file": {
+													"path": "Peggle extraball"
+												},
 												"loop": "not-looping",
 												"volume": "-5",
 												"stereo-pan": "0",
@@ -4786,7 +4828,9 @@
 											"objectClass": "Audio",
 											"sid": 444961576589392,
 											"parameters": {
-												"audio-file": "Peggle extraball",
+												"audio-file": {
+													"path": "Peggle extraball"
+												},
 												"loop": "not-looping",
 												"volume": "-5",
 												"stereo-pan": "0",
@@ -4868,7 +4912,9 @@
 											"objectClass": "Audio",
 											"sid": 836497429187374,
 											"parameters": {
-												"audio-file": "Peggle extraball",
+												"audio-file": {
+													"path": "Peggle extraball"
+												},
 												"loop": "not-looping",
 												"volume": "-5",
 												"stereo-pan": "0",
@@ -4950,7 +4996,9 @@
 											"objectClass": "Audio",
 											"sid": 111159840519277,
 											"parameters": {
-												"audio-file": "Peggle extraball",
+												"audio-file": {
+													"path": "Peggle extraball"
+												},
 												"loop": "not-looping",
 												"volume": "-5",
 												"stereo-pan": "0",
@@ -8171,7 +8219,9 @@
 													"objectClass": "Audio",
 													"sid": 607414888672538,
 													"parameters": {
-														"audio-file": "Peggle extraball",
+														"audio-file": {
+															"path": "Peggle extraball"
+														},
 														"loop": "not-looping",
 														"volume": "-5",
 														"stereo-pan": "0",
@@ -8235,7 +8285,9 @@
 													"objectClass": "Audio",
 													"sid": 364131209050585,
 													"parameters": {
-														"audio-file": "Peggle coin_freeball_denied",
+														"audio-file": {
+															"path": "Peggle coin_freeball_denied"
+														},
 														"loop": "not-looping",
 														"volume": "-5",
 														"stereo-pan": "0",
@@ -8897,7 +8949,9 @@
 															"objectClass": "Audio",
 															"sid": 765097465594727,
 															"parameters": {
-																"audio-file": "TallyNoise",
+																"audio-file": {
+																	"path": "TallyNoise"
+																},
 																"loop": "looping",
 																"volume": "10",
 																"stereo-pan": "0",
@@ -9174,7 +9228,9 @@
 													"objectClass": "Audio",
 													"sid": 704187562210505,
 													"parameters": {
-														"audio-file": "Sonic3tally",
+														"audio-file": {
+															"path": "Sonic3tally"
+														},
 														"loop": "not-looping",
 														"volume": "-9",
 														"stereo-pan": "0",
@@ -9831,7 +9887,9 @@
 													"objectClass": "Audio",
 													"sid": 508942617665035,
 													"parameters": {
-														"audio-file": "Peggle coin_freeball_denied",
+														"audio-file": {
+															"path": "Peggle coin_freeball_denied"
+														},
 														"loop": "not-looping",
 														"volume": "-5",
 														"stereo-pan": "0",
@@ -9907,7 +9965,9 @@
 									"objectClass": "Audio",
 									"sid": 513135235130813,
 									"parameters": {
-										"audio-file": "Peggle extraball",
+										"audio-file": {
+											"path": "Peggle extraball"
+										},
 										"loop": "not-looping",
 										"volume": "-5",
 										"stereo-pan": "0",
@@ -10224,7 +10284,9 @@
 											"objectClass": "Audio",
 											"sid": 444051137797649,
 											"parameters": {
-												"audio-file": "Victory!",
+												"audio-file": {
+													"path": "Victory!"
+												},
 												"loop": "not-looping",
 												"volume": "-7",
 												"stereo-pan": "0",
@@ -10560,7 +10622,9 @@
 													"objectClass": "Audio",
 													"sid": 493529736148891,
 													"parameters": {
-														"audio-file": "Peggle extraball",
+														"audio-file": {
+															"path": "Peggle extraball"
+														},
 														"loop": "not-looping",
 														"volume": "-5",
 														"stereo-pan": "0",
@@ -10572,7 +10636,9 @@
 													"objectClass": "Audio",
 													"sid": 410214016086129,
 													"parameters": {
-														"audio-file": "Yakuza 0 Complete",
+														"audio-file": {
+															"path": "Yakuza 0 Complete"
+														},
 														"loop": "not-looping",
 														"volume": "-5",
 														"stereo-pan": "0",
@@ -10584,7 +10650,9 @@
 													"objectClass": "Audio",
 													"sid": 521648619528188,
 													"parameters": {
-														"audio-file": "FNAF Kids Cheering",
+														"audio-file": {
+															"path": "FNAF Kids Cheering"
+														},
 														"loop": "not-looping",
 														"volume": "-5",
 														"stereo-pan": "0",
@@ -10670,7 +10738,9 @@
 													"objectClass": "Audio",
 													"sid": 348487708469038,
 													"parameters": {
-														"audio-file": "TallyNoise",
+														"audio-file": {
+															"path": "TallyNoise"
+														},
 														"loop": "looping",
 														"volume": "10",
 														"stereo-pan": "0",
@@ -10799,7 +10869,9 @@
 													"objectClass": "Audio",
 													"sid": 158856232840624,
 													"parameters": {
-														"audio-file": "Sonic3tally",
+														"audio-file": {
+															"path": "Sonic3tally"
+														},
 														"loop": "not-looping",
 														"volume": "-4",
 														"stereo-pan": "0",
@@ -10946,7 +11018,9 @@
 																	"objectClass": "Audio",
 																	"sid": 769430737815286,
 																	"parameters": {
-																		"audio-file": "Sonic3tally",
+																		"audio-file": {
+																			"path": "Sonic3tally"
+																		},
 																		"loop": "not-looping",
 																		"volume": "-4",
 																		"stereo-pan": "0",
@@ -17363,17 +17437,34 @@
 													}
 												}
 											],
-											"actions": [
+											"actions": [],
+											"sid": 886246399694048,
+											"children": [
 												{
-													"id": "set-opacity",
-													"objectClass": "LevelEditorButtons",
-													"sid": 710840458651676,
-													"parameters": {
-														"opacity": "25"
-													}
+													"eventType": "block",
+													"conditions": [
+														{
+															"id": "has-tags",
+															"objectClass": "LevelEditorButtons",
+															"sid": 850584808485652,
+															"parameters": {
+																"tags": "\"Main\""
+															}
+														}
+													],
+													"actions": [
+														{
+															"id": "set-opacity",
+															"objectClass": "LevelEditorButtons",
+															"sid": 309597623018029,
+															"parameters": {
+																"opacity": "25"
+															}
+														}
+													],
+													"sid": 541941119887048
 												}
 											],
-											"sid": 886246399694048,
 											"isOrBlock": true
 										}
 									]
@@ -17477,17 +17568,34 @@
 															}
 														}
 													],
-													"actions": [
+													"actions": [],
+													"sid": 206853543367752,
+													"children": [
 														{
-															"id": "set-opacity",
-															"objectClass": "LevelEditorButtons",
-															"sid": 166191845856774,
-															"parameters": {
-																"opacity": "100"
-															}
+															"eventType": "block",
+															"conditions": [
+																{
+																	"id": "has-tags",
+																	"objectClass": "LevelEditorButtons",
+																	"sid": 432718764291699,
+																	"parameters": {
+																		"tags": "\"Main\""
+																	}
+																}
+															],
+															"actions": [
+																{
+																	"id": "set-opacity",
+																	"objectClass": "LevelEditorButtons",
+																	"sid": 475062475036942,
+																	"parameters": {
+																		"opacity": "100"
+																	}
+																}
+															],
+															"sid": 344487458688461
 														}
 													],
-													"sid": 206853543367752,
 													"isOrBlock": true
 												},
 												{
@@ -19922,332 +20030,342 @@
 							"isActiveOnStart": true,
 							"children": [
 								{
-									"eventType": "block",
-									"conditions": [
+									"eventType": "group",
+									"disabled": false,
+									"title": "BG Menu Icon Button Stuff",
+									"description": "",
+									"isActiveOnStart": true,
+									"children": [
 										{
-											"id": "on-object-clicked",
-											"objectClass": "Mouse",
-											"sid": 413971534449517,
-											"parameters": {
-												"mouse-button": "left",
-												"click-type": "clicked",
-												"object-clicked": "LevelEditorButtons"
-											}
+											"eventType": "block",
+											"conditions": [
+												{
+													"id": "on-object-clicked",
+													"objectClass": "Mouse",
+													"sid": 356764814603622,
+													"parameters": {
+														"mouse-button": "left",
+														"click-type": "clicked",
+														"object-clicked": "LevelEditorButtons"
+													}
+												},
+												{
+													"id": "is-animation-playing",
+													"objectClass": "LevelEditorButtons",
+													"sid": 510629623856071,
+													"parameters": {
+														"animation": "\"Background\""
+													}
+												},
+												{
+													"id": "layer-is-visible",
+													"objectClass": "System",
+													"sid": 422204523853178,
+													"parameters": {
+														"layer": "\"Black Screen\""
+													},
+													"isInverted": true
+												},
+												{
+													"id": "layer-is-visible",
+													"objectClass": "System",
+													"sid": 575124196713275,
+													"parameters": {
+														"layer": "\"BGHandler\""
+													},
+													"isInverted": true
+												}
+											],
+											"actions": [
+												{
+													"id": "set-layer-visible",
+													"objectClass": "System",
+													"sid": 757504975897353,
+													"parameters": {
+														"layer": "\"Black Screen\"",
+														"visibility": "visible"
+													}
+												},
+												{
+													"id": "set-layer-visible",
+													"objectClass": "System",
+													"sid": 837888870063363,
+													"parameters": {
+														"layer": "\"BGHandler\"",
+														"visibility": "visible"
+													}
+												}
+											],
+											"sid": 162730195980241
 										},
 										{
-											"id": "is-animation-playing",
-											"objectClass": "LevelEditorButtons",
-											"sid": 643701971765173,
-											"parameters": {
-												"animation": "\"Background\""
-											}
+											"eventType": "block",
+											"conditions": [
+												{
+													"id": "on-object-clicked",
+													"objectClass": "Mouse",
+													"sid": 363150650828323,
+													"parameters": {
+														"mouse-button": "left",
+														"click-type": "clicked",
+														"object-clicked": "LevelEditorButtons"
+													}
+												},
+												{
+													"id": "is-animation-playing",
+													"objectClass": "LevelEditorButtons",
+													"sid": 851056593673099,
+													"parameters": {
+														"animation": "\"Exit2\""
+													}
+												},
+												{
+													"id": "layer-is-visible",
+													"objectClass": "System",
+													"sid": 220266936358027,
+													"parameters": {
+														"layer": "\"Black Screen\""
+													}
+												},
+												{
+													"id": "layer-is-visible",
+													"objectClass": "System",
+													"sid": 254621380873346,
+													"parameters": {
+														"layer": "\"BGHandler\""
+													}
+												}
+											],
+											"actions": [
+												{
+													"id": "set-layer-visible",
+													"objectClass": "System",
+													"sid": 592123214135863,
+													"parameters": {
+														"layer": "\"Black Screen\"",
+														"visibility": "invisible"
+													}
+												},
+												{
+													"id": "set-layer-visible",
+													"objectClass": "System",
+													"sid": 315077535609153,
+													"parameters": {
+														"layer": "\"BGHandler\"",
+														"visibility": "invisible"
+													}
+												}
+											],
+											"sid": 738708702647391
 										},
 										{
-											"id": "layer-is-visible",
-											"objectClass": "System",
-											"sid": 845386628188255,
-											"parameters": {
-												"layer": "\"Black Screen\""
-											},
-											"isInverted": true
+											"eventType": "block",
+											"conditions": [
+												{
+													"id": "on-key-pressed",
+													"objectClass": "Keyboard",
+													"sid": 666873372200292,
+													"parameters": {
+														"key": 13
+													}
+												},
+												{
+													"id": "is-animation-playing",
+													"objectClass": "LevelEditorButtons",
+													"sid": 109851921898300,
+													"parameters": {
+														"animation": "\"Exit2\""
+													}
+												},
+												{
+													"id": "layer-is-visible",
+													"objectClass": "System",
+													"sid": 764097282896548,
+													"parameters": {
+														"layer": "\"Black Screen\""
+													}
+												},
+												{
+													"id": "layer-is-visible",
+													"objectClass": "System",
+													"sid": 383797112867922,
+													"parameters": {
+														"layer": "\"BGHandler\""
+													}
+												}
+											],
+											"actions": [
+												{
+													"id": "set-layer-visible",
+													"objectClass": "System",
+													"sid": 236563012307938,
+													"parameters": {
+														"layer": "\"Black Screen\"",
+														"visibility": "invisible"
+													}
+												},
+												{
+													"id": "set-layer-visible",
+													"objectClass": "System",
+													"sid": 653193823153749,
+													"parameters": {
+														"layer": "\"BGHandler\"",
+														"visibility": "invisible"
+													}
+												}
+											],
+											"sid": 348750601592815
 										},
 										{
-											"id": "layer-is-visible",
-											"objectClass": "System",
-											"sid": 645699137502864,
-											"parameters": {
-												"layer": "\"BGHandler\""
-											},
-											"isInverted": true
+											"eventType": "block",
+											"conditions": [
+												{
+													"id": "on-key-pressed",
+													"objectClass": "Keyboard",
+													"sid": 214333915842928,
+													"parameters": {
+														"key": 27
+													}
+												},
+												{
+													"id": "is-animation-playing",
+													"objectClass": "LevelEditorButtons",
+													"sid": 541939625782468,
+													"parameters": {
+														"animation": "\"Exit2\""
+													}
+												},
+												{
+													"id": "layer-is-visible",
+													"objectClass": "System",
+													"sid": 503340391293415,
+													"parameters": {
+														"layer": "\"Black Screen\""
+													}
+												},
+												{
+													"id": "layer-is-visible",
+													"objectClass": "System",
+													"sid": 224634657074502,
+													"parameters": {
+														"layer": "\"BGHandler\""
+													}
+												}
+											],
+											"actions": [
+												{
+													"id": "set-layer-visible",
+													"objectClass": "System",
+													"sid": 712355869519989,
+													"parameters": {
+														"layer": "\"Black Screen\"",
+														"visibility": "invisible"
+													}
+												},
+												{
+													"id": "set-layer-visible",
+													"objectClass": "System",
+													"sid": 938149393636643,
+													"parameters": {
+														"layer": "\"BGHandler\"",
+														"visibility": "invisible"
+													}
+												}
+											],
+											"sid": 575679794756654
+										},
+										{
+											"eventType": "block",
+											"conditions": [
+												{
+													"id": "cursor-is-over-object",
+													"objectClass": "Mouse",
+													"sid": 125680075728848,
+													"parameters": {
+														"object": "LevelEditorButtons"
+													}
+												},
+												{
+													"id": "is-animation-playing",
+													"objectClass": "LevelEditorButtons",
+													"sid": 458322051584730,
+													"parameters": {
+														"animation": "\"Background\""
+													}
+												},
+												{
+													"id": "layer-is-visible",
+													"objectClass": "System",
+													"sid": 522555614320221,
+													"parameters": {
+														"layer": "\"Black Screen\""
+													},
+													"isInverted": true
+												},
+												{
+													"id": "has-tags",
+													"objectClass": "LevelEditorTextObject",
+													"sid": 283308826517264,
+													"parameters": {
+														"tags": "\"BackgroundUI\""
+													}
+												}
+											],
+											"actions": [
+												{
+													"id": "set-visible",
+													"objectClass": "LevelEditorTextObject",
+													"sid": 209233940900412,
+													"parameters": {
+														"visibility": "visible"
+													}
+												}
+											],
+											"sid": 675706482264203
+										},
+										{
+											"eventType": "block",
+											"conditions": [
+												{
+													"id": "cursor-is-over-object",
+													"objectClass": "Mouse",
+													"sid": 449060107318961,
+													"parameters": {
+														"object": "LevelEditorButtons"
+													},
+													"isInverted": true
+												},
+												{
+													"id": "is-animation-playing",
+													"objectClass": "LevelEditorButtons",
+													"sid": 350169044977805,
+													"parameters": {
+														"animation": "\"Background\""
+													}
+												},
+												{
+													"id": "has-tags",
+													"objectClass": "LevelEditorTextObject",
+													"sid": 849922972423151,
+													"parameters": {
+														"tags": "\"BackgroundUI\""
+													}
+												}
+											],
+											"actions": [
+												{
+													"id": "set-visible",
+													"objectClass": "LevelEditorTextObject",
+													"sid": 979624705567808,
+													"parameters": {
+														"visibility": "invisible"
+													}
+												}
+											],
+											"sid": 272125929515973
 										}
 									],
-									"actions": [
-										{
-											"id": "set-layer-visible",
-											"objectClass": "System",
-											"sid": 659503938114097,
-											"parameters": {
-												"layer": "\"Black Screen\"",
-												"visibility": "visible"
-											}
-										},
-										{
-											"id": "set-layer-visible",
-											"objectClass": "System",
-											"sid": 958651787702558,
-											"parameters": {
-												"layer": "\"BGHandler\"",
-												"visibility": "visible"
-											}
-										}
-									],
-									"sid": 327211384590916
-								},
-								{
-									"eventType": "block",
-									"conditions": [
-										{
-											"id": "on-object-clicked",
-											"objectClass": "Mouse",
-											"sid": 341305552494687,
-											"parameters": {
-												"mouse-button": "left",
-												"click-type": "clicked",
-												"object-clicked": "LevelEditorButtons"
-											}
-										},
-										{
-											"id": "is-animation-playing",
-											"objectClass": "LevelEditorButtons",
-											"sid": 655651521950081,
-											"parameters": {
-												"animation": "\"Exit2\""
-											}
-										},
-										{
-											"id": "layer-is-visible",
-											"objectClass": "System",
-											"sid": 459750265461874,
-											"parameters": {
-												"layer": "\"Black Screen\""
-											}
-										},
-										{
-											"id": "layer-is-visible",
-											"objectClass": "System",
-											"sid": 921623549954104,
-											"parameters": {
-												"layer": "\"BGHandler\""
-											}
-										}
-									],
-									"actions": [
-										{
-											"id": "set-layer-visible",
-											"objectClass": "System",
-											"sid": 278644635904533,
-											"parameters": {
-												"layer": "\"Black Screen\"",
-												"visibility": "invisible"
-											}
-										},
-										{
-											"id": "set-layer-visible",
-											"objectClass": "System",
-											"sid": 906447476203153,
-											"parameters": {
-												"layer": "\"BGHandler\"",
-												"visibility": "invisible"
-											}
-										}
-									],
-									"sid": 308819249207143
-								},
-								{
-									"eventType": "block",
-									"conditions": [
-										{
-											"id": "on-key-pressed",
-											"objectClass": "Keyboard",
-											"sid": 412704599893866,
-											"parameters": {
-												"key": 13
-											}
-										},
-										{
-											"id": "is-animation-playing",
-											"objectClass": "LevelEditorButtons",
-											"sid": 912927681860032,
-											"parameters": {
-												"animation": "\"Exit2\""
-											}
-										},
-										{
-											"id": "layer-is-visible",
-											"objectClass": "System",
-											"sid": 564448910065861,
-											"parameters": {
-												"layer": "\"Black Screen\""
-											}
-										},
-										{
-											"id": "layer-is-visible",
-											"objectClass": "System",
-											"sid": 619244690927261,
-											"parameters": {
-												"layer": "\"BGHandler\""
-											}
-										}
-									],
-									"actions": [
-										{
-											"id": "set-layer-visible",
-											"objectClass": "System",
-											"sid": 470131350685881,
-											"parameters": {
-												"layer": "\"Black Screen\"",
-												"visibility": "invisible"
-											}
-										},
-										{
-											"id": "set-layer-visible",
-											"objectClass": "System",
-											"sid": 898245183281733,
-											"parameters": {
-												"layer": "\"BGHandler\"",
-												"visibility": "invisible"
-											}
-										}
-									],
-									"sid": 297190062878161
-								},
-								{
-									"eventType": "block",
-									"conditions": [
-										{
-											"id": "on-key-pressed",
-											"objectClass": "Keyboard",
-											"sid": 151531006221084,
-											"parameters": {
-												"key": 27
-											}
-										},
-										{
-											"id": "is-animation-playing",
-											"objectClass": "LevelEditorButtons",
-											"sid": 552232535099301,
-											"parameters": {
-												"animation": "\"Exit2\""
-											}
-										},
-										{
-											"id": "layer-is-visible",
-											"objectClass": "System",
-											"sid": 194084963687807,
-											"parameters": {
-												"layer": "\"Black Screen\""
-											}
-										},
-										{
-											"id": "layer-is-visible",
-											"objectClass": "System",
-											"sid": 626981791290716,
-											"parameters": {
-												"layer": "\"BGHandler\""
-											}
-										}
-									],
-									"actions": [
-										{
-											"id": "set-layer-visible",
-											"objectClass": "System",
-											"sid": 956514743022493,
-											"parameters": {
-												"layer": "\"Black Screen\"",
-												"visibility": "invisible"
-											}
-										},
-										{
-											"id": "set-layer-visible",
-											"objectClass": "System",
-											"sid": 182577361878756,
-											"parameters": {
-												"layer": "\"BGHandler\"",
-												"visibility": "invisible"
-											}
-										}
-									],
-									"sid": 309978362430907
-								},
-								{
-									"eventType": "block",
-									"conditions": [
-										{
-											"id": "cursor-is-over-object",
-											"objectClass": "Mouse",
-											"sid": 982063554561019,
-											"parameters": {
-												"object": "LevelEditorButtons"
-											}
-										},
-										{
-											"id": "is-animation-playing",
-											"objectClass": "LevelEditorButtons",
-											"sid": 562862894514590,
-											"parameters": {
-												"animation": "\"Background\""
-											}
-										},
-										{
-											"id": "layer-is-visible",
-											"objectClass": "System",
-											"sid": 330401714243680,
-											"parameters": {
-												"layer": "\"Black Screen\""
-											},
-											"isInverted": true
-										},
-										{
-											"id": "has-tags",
-											"objectClass": "LevelEditorTextObject",
-											"sid": 591406052883463,
-											"parameters": {
-												"tags": "\"BackgroundUI\""
-											}
-										}
-									],
-									"actions": [
-										{
-											"id": "set-visible",
-											"objectClass": "LevelEditorTextObject",
-											"sid": 992928341899491,
-											"parameters": {
-												"visibility": "visible"
-											}
-										}
-									],
-									"sid": 822519898500699
-								},
-								{
-									"eventType": "block",
-									"conditions": [
-										{
-											"id": "cursor-is-over-object",
-											"objectClass": "Mouse",
-											"sid": 174331501912523,
-											"parameters": {
-												"object": "LevelEditorButtons"
-											},
-											"isInverted": true
-										},
-										{
-											"id": "is-animation-playing",
-											"objectClass": "LevelEditorButtons",
-											"sid": 663074032431557,
-											"parameters": {
-												"animation": "\"Background\""
-											}
-										},
-										{
-											"id": "has-tags",
-											"objectClass": "LevelEditorTextObject",
-											"sid": 782941667390344,
-											"parameters": {
-												"tags": "\"BackgroundUI\""
-											}
-										}
-									],
-									"actions": [
-										{
-											"id": "set-visible",
-											"objectClass": "LevelEditorTextObject",
-											"sid": 214489741750405,
-											"parameters": {
-												"visibility": "invisible"
-											}
-										}
-									],
-									"sid": 886384755183020
+									"sid": 724388682655468
 								},
 								{
 									"eventType": "group",
@@ -20531,6 +20649,1048 @@
 										}
 									],
 									"sid": 970854424968396
+								},
+								{
+									"eventType": "group",
+									"disabled": false,
+									"title": "BG Size Editor",
+									"description": "",
+									"isActiveOnStart": true,
+									"children": [
+										{
+											"eventType": "block",
+											"conditions": [
+												{
+													"id": "mouse-button-is-down",
+													"objectClass": "Mouse",
+													"sid": 581446546386856,
+													"parameters": {
+														"mouse-button": "left"
+													}
+												},
+												{
+													"id": "cursor-is-over-object",
+													"objectClass": "Mouse",
+													"sid": 763066050921863,
+													"parameters": {
+														"object": "LevelEditorButtons"
+													}
+												},
+												{
+													"id": "is-animation-playing",
+													"objectClass": "LevelEditorButtons",
+													"sid": 302824911589326,
+													"parameters": {
+														"animation": "\"Shrink\""
+													}
+												},
+												{
+													"id": "has-tags",
+													"objectClass": "LevelEditorButtons",
+													"sid": 734516418048902,
+													"parameters": {
+														"tags": "\"Width\""
+													}
+												},
+												{
+													"id": "layer-is-visible",
+													"objectClass": "System",
+													"sid": 135854570187965,
+													"parameters": {
+														"layer": "\"Black Screen\""
+													}
+												},
+												{
+													"id": "layer-is-visible",
+													"objectClass": "System",
+													"sid": 977187715201047,
+													"parameters": {
+														"layer": "\"BGHandler\""
+													}
+												}
+											],
+											"actions": [
+												{
+													"id": "set-width",
+													"objectClass": "CustomBG",
+													"sid": 683335340846636,
+													"parameters": {
+														"width": "CustomBG.Width-2.5"
+													}
+												}
+											],
+											"sid": 965385416446955
+										},
+										{
+											"eventType": "block",
+											"conditions": [
+												{
+													"id": "mouse-button-is-down",
+													"objectClass": "Mouse",
+													"sid": 152990862925948,
+													"parameters": {
+														"mouse-button": "left"
+													}
+												},
+												{
+													"id": "cursor-is-over-object",
+													"objectClass": "Mouse",
+													"sid": 673309668463929,
+													"parameters": {
+														"object": "LevelEditorButtons"
+													}
+												},
+												{
+													"id": "is-animation-playing",
+													"objectClass": "LevelEditorButtons",
+													"sid": 953053808394932,
+													"parameters": {
+														"animation": "\"Stretch\""
+													}
+												},
+												{
+													"id": "has-tags",
+													"objectClass": "LevelEditorButtons",
+													"sid": 210935789641149,
+													"parameters": {
+														"tags": "\"Width\""
+													}
+												},
+												{
+													"id": "layer-is-visible",
+													"objectClass": "System",
+													"sid": 648128604251741,
+													"parameters": {
+														"layer": "\"Black Screen\""
+													}
+												},
+												{
+													"id": "layer-is-visible",
+													"objectClass": "System",
+													"sid": 759760068442245,
+													"parameters": {
+														"layer": "\"BGHandler\""
+													}
+												}
+											],
+											"actions": [
+												{
+													"id": "set-width",
+													"objectClass": "CustomBG",
+													"sid": 390816162204997,
+													"parameters": {
+														"width": "CustomBG.Width+2.5"
+													}
+												}
+											],
+											"sid": 682405215523328
+										},
+										{
+											"eventType": "block",
+											"conditions": [
+												{
+													"id": "mouse-button-is-down",
+													"objectClass": "Mouse",
+													"sid": 464775883273078,
+													"parameters": {
+														"mouse-button": "left"
+													}
+												},
+												{
+													"id": "cursor-is-over-object",
+													"objectClass": "Mouse",
+													"sid": 391935601160318,
+													"parameters": {
+														"object": "LevelEditorButtons"
+													}
+												},
+												{
+													"id": "is-animation-playing",
+													"objectClass": "LevelEditorButtons",
+													"sid": 887033271166093,
+													"parameters": {
+														"animation": "\"Shrink\""
+													}
+												},
+												{
+													"id": "has-tags",
+													"objectClass": "LevelEditorButtons",
+													"sid": 702878914252817,
+													"parameters": {
+														"tags": "\"Height\""
+													}
+												},
+												{
+													"id": "layer-is-visible",
+													"objectClass": "System",
+													"sid": 655452666877775,
+													"parameters": {
+														"layer": "\"Black Screen\""
+													}
+												},
+												{
+													"id": "layer-is-visible",
+													"objectClass": "System",
+													"sid": 700753613376099,
+													"parameters": {
+														"layer": "\"BGHandler\""
+													}
+												}
+											],
+											"actions": [
+												{
+													"id": "set-height",
+													"objectClass": "CustomBG",
+													"sid": 761886876198964,
+													"parameters": {
+														"height": "CustomBG.Height-2.5"
+													}
+												}
+											],
+											"sid": 281491347540728
+										},
+										{
+											"eventType": "block",
+											"conditions": [
+												{
+													"id": "mouse-button-is-down",
+													"objectClass": "Mouse",
+													"sid": 867207226607190,
+													"parameters": {
+														"mouse-button": "left"
+													}
+												},
+												{
+													"id": "cursor-is-over-object",
+													"objectClass": "Mouse",
+													"sid": 759293612447823,
+													"parameters": {
+														"object": "LevelEditorButtons"
+													}
+												},
+												{
+													"id": "is-animation-playing",
+													"objectClass": "LevelEditorButtons",
+													"sid": 751576230564846,
+													"parameters": {
+														"animation": "\"Stretch\""
+													}
+												},
+												{
+													"id": "has-tags",
+													"objectClass": "LevelEditorButtons",
+													"sid": 885980642610122,
+													"parameters": {
+														"tags": "\"Height\""
+													}
+												},
+												{
+													"id": "layer-is-visible",
+													"objectClass": "System",
+													"sid": 780222069986766,
+													"parameters": {
+														"layer": "\"Black Screen\""
+													}
+												},
+												{
+													"id": "layer-is-visible",
+													"objectClass": "System",
+													"sid": 634987779349127,
+													"parameters": {
+														"layer": "\"BGHandler\""
+													}
+												}
+											],
+											"actions": [
+												{
+													"id": "set-height",
+													"objectClass": "CustomBG",
+													"sid": 865982495049589,
+													"parameters": {
+														"height": "CustomBG.Height+2.5"
+													}
+												}
+											],
+											"sid": 887368969457199
+										},
+										{
+											"eventType": "block",
+											"conditions": [
+												{
+													"id": "on-clicked",
+													"objectClass": "ResetButton",
+													"sid": 379361411137114
+												},
+												{
+													"id": "has-tags",
+													"objectClass": "ResetButton",
+													"sid": 722580733945880,
+													"parameters": {
+														"tags": "\"Width\""
+													}
+												},
+												{
+													"id": "layer-is-visible",
+													"objectClass": "System",
+													"sid": 229910706266483,
+													"parameters": {
+														"layer": "\"Black Screen\""
+													}
+												},
+												{
+													"id": "layer-is-visible",
+													"objectClass": "System",
+													"sid": 798084457377553,
+													"parameters": {
+														"layer": "\"BGHandler\""
+													}
+												}
+											],
+											"actions": [
+												{
+													"id": "set-width",
+													"objectClass": "CustomBG",
+													"sid": 810919484706620,
+													"parameters": {
+														"width": "646"
+													}
+												}
+											],
+											"sid": 156925453221463
+										},
+										{
+											"eventType": "block",
+											"conditions": [
+												{
+													"id": "on-clicked",
+													"objectClass": "ResetButton",
+													"sid": 883137266189760
+												},
+												{
+													"id": "has-tags",
+													"objectClass": "ResetButton",
+													"sid": 520690616696173,
+													"parameters": {
+														"tags": "\"Height\""
+													}
+												},
+												{
+													"id": "layer-is-visible",
+													"objectClass": "System",
+													"sid": 973207383509987,
+													"parameters": {
+														"layer": "\"Black Screen\""
+													}
+												},
+												{
+													"id": "layer-is-visible",
+													"objectClass": "System",
+													"sid": 792754035341343,
+													"parameters": {
+														"layer": "\"BGHandler\""
+													}
+												}
+											],
+											"actions": [
+												{
+													"id": "set-height",
+													"objectClass": "CustomBG",
+													"sid": 414174000944285,
+													"parameters": {
+														"height": "538"
+													}
+												}
+											],
+											"sid": 462664651227850
+										}
+									],
+									"sid": 733445590089702
+								},
+								{
+									"eventType": "group",
+									"disabled": false,
+									"title": "BG Position Editor",
+									"description": "",
+									"isActiveOnStart": true,
+									"children": [
+										{
+											"eventType": "block",
+											"conditions": [
+												{
+													"id": "mouse-button-is-down",
+													"objectClass": "Mouse",
+													"sid": 427091790414176,
+													"parameters": {
+														"mouse-button": "left"
+													}
+												},
+												{
+													"id": "cursor-is-over-object",
+													"objectClass": "Mouse",
+													"sid": 463478953880699,
+													"parameters": {
+														"object": "LevelEditorButtons"
+													}
+												},
+												{
+													"id": "is-animation-playing",
+													"objectClass": "LevelEditorButtons",
+													"sid": 350441016436530,
+													"parameters": {
+														"animation": "\"LeftButton\""
+													}
+												},
+												{
+													"id": "has-tags",
+													"objectClass": "LevelEditorButtons",
+													"sid": 240276895589389,
+													"parameters": {
+														"tags": "\"BGHandler\""
+													}
+												},
+												{
+													"id": "has-tags",
+													"objectClass": "LevelEditorButtons",
+													"sid": 369990688713593,
+													"parameters": {
+														"tags": "\"Main\""
+													},
+													"isInverted": true
+												},
+												{
+													"id": "layer-is-visible",
+													"objectClass": "System",
+													"sid": 667039799093238,
+													"parameters": {
+														"layer": "\"Black Screen\""
+													}
+												},
+												{
+													"id": "layer-is-visible",
+													"objectClass": "System",
+													"sid": 781946311935991,
+													"parameters": {
+														"layer": "\"BGHandler\""
+													}
+												}
+											],
+											"actions": [
+												{
+													"id": "set-x",
+													"objectClass": "CustomBG",
+													"sid": 975566429736016,
+													"parameters": {
+														"x": "CustomBG.X-1"
+													}
+												}
+											],
+											"sid": 842067195130208
+										},
+										{
+											"eventType": "block",
+											"conditions": [
+												{
+													"id": "mouse-button-is-down",
+													"objectClass": "Mouse",
+													"sid": 808416174597978,
+													"parameters": {
+														"mouse-button": "left"
+													}
+												},
+												{
+													"id": "cursor-is-over-object",
+													"objectClass": "Mouse",
+													"sid": 215367883902215,
+													"parameters": {
+														"object": "LevelEditorButtons"
+													}
+												},
+												{
+													"id": "is-animation-playing",
+													"objectClass": "LevelEditorButtons",
+													"sid": 662325160053727,
+													"parameters": {
+														"animation": "\"RightButton\""
+													}
+												},
+												{
+													"id": "has-tags",
+													"objectClass": "LevelEditorButtons",
+													"sid": 621422196526344,
+													"parameters": {
+														"tags": "\"BGHandler\""
+													}
+												},
+												{
+													"id": "has-tags",
+													"objectClass": "LevelEditorButtons",
+													"sid": 978263681773286,
+													"parameters": {
+														"tags": "\"Main\""
+													},
+													"isInverted": true
+												},
+												{
+													"id": "layer-is-visible",
+													"objectClass": "System",
+													"sid": 201904681199462,
+													"parameters": {
+														"layer": "\"Black Screen\""
+													}
+												},
+												{
+													"id": "layer-is-visible",
+													"objectClass": "System",
+													"sid": 141130662201246,
+													"parameters": {
+														"layer": "\"BGHandler\""
+													}
+												}
+											],
+											"actions": [
+												{
+													"id": "set-x",
+													"objectClass": "CustomBG",
+													"sid": 667760036208750,
+													"parameters": {
+														"x": "CustomBG.X+1"
+													}
+												}
+											],
+											"sid": 802376180105829
+										},
+										{
+											"eventType": "block",
+											"conditions": [
+												{
+													"id": "mouse-button-is-down",
+													"objectClass": "Mouse",
+													"sid": 516678996312682,
+													"parameters": {
+														"mouse-button": "left"
+													}
+												},
+												{
+													"id": "cursor-is-over-object",
+													"objectClass": "Mouse",
+													"sid": 843035875745706,
+													"parameters": {
+														"object": "LevelEditorButtons"
+													}
+												},
+												{
+													"id": "is-animation-playing",
+													"objectClass": "LevelEditorButtons",
+													"sid": 641861801157105,
+													"parameters": {
+														"animation": "\"UpButton\""
+													}
+												},
+												{
+													"id": "has-tags",
+													"objectClass": "LevelEditorButtons",
+													"sid": 980644578899034,
+													"parameters": {
+														"tags": "\"BGHandler\""
+													}
+												},
+												{
+													"id": "has-tags",
+													"objectClass": "LevelEditorButtons",
+													"sid": 133849270330243,
+													"parameters": {
+														"tags": "\"Main\""
+													},
+													"isInverted": true
+												},
+												{
+													"id": "layer-is-visible",
+													"objectClass": "System",
+													"sid": 243562411524442,
+													"parameters": {
+														"layer": "\"Black Screen\""
+													}
+												},
+												{
+													"id": "layer-is-visible",
+													"objectClass": "System",
+													"sid": 807635456992116,
+													"parameters": {
+														"layer": "\"BGHandler\""
+													}
+												}
+											],
+											"actions": [
+												{
+													"id": "set-y",
+													"objectClass": "CustomBG",
+													"sid": 628375072266312,
+													"parameters": {
+														"y": "CustomBG.Y-1"
+													}
+												}
+											],
+											"sid": 341814415681925
+										},
+										{
+											"eventType": "block",
+											"conditions": [
+												{
+													"id": "mouse-button-is-down",
+													"objectClass": "Mouse",
+													"sid": 918905811592692,
+													"parameters": {
+														"mouse-button": "left"
+													}
+												},
+												{
+													"id": "cursor-is-over-object",
+													"objectClass": "Mouse",
+													"sid": 740560208197186,
+													"parameters": {
+														"object": "LevelEditorButtons"
+													}
+												},
+												{
+													"id": "is-animation-playing",
+													"objectClass": "LevelEditorButtons",
+													"sid": 910525281275761,
+													"parameters": {
+														"animation": "\"DownButton\""
+													}
+												},
+												{
+													"id": "has-tags",
+													"objectClass": "LevelEditorButtons",
+													"sid": 545410143249071,
+													"parameters": {
+														"tags": "\"BGHandler\""
+													}
+												},
+												{
+													"id": "has-tags",
+													"objectClass": "LevelEditorButtons",
+													"sid": 574266544679413,
+													"parameters": {
+														"tags": "\"Main\""
+													},
+													"isInverted": true
+												},
+												{
+													"id": "layer-is-visible",
+													"objectClass": "System",
+													"sid": 614342651558704,
+													"parameters": {
+														"layer": "\"Black Screen\""
+													}
+												},
+												{
+													"id": "layer-is-visible",
+													"objectClass": "System",
+													"sid": 831384077097046,
+													"parameters": {
+														"layer": "\"BGHandler\""
+													}
+												}
+											],
+											"actions": [
+												{
+													"id": "set-y",
+													"objectClass": "CustomBG",
+													"sid": 129649427886001,
+													"parameters": {
+														"y": "CustomBG.Y+1"
+													}
+												}
+											],
+											"sid": 355464276722562
+										},
+										{
+											"eventType": "block",
+											"conditions": [
+												{
+													"id": "on-clicked",
+													"objectClass": "ResetButton",
+													"sid": 885552731501489
+												},
+												{
+													"id": "has-tags",
+													"objectClass": "ResetButton",
+													"sid": 509841296385759,
+													"parameters": {
+														"tags": "\"Position\""
+													}
+												},
+												{
+													"id": "layer-is-visible",
+													"objectClass": "System",
+													"sid": 203913885803613,
+													"parameters": {
+														"layer": "\"Black Screen\""
+													}
+												},
+												{
+													"id": "layer-is-visible",
+													"objectClass": "System",
+													"sid": 628294738976888,
+													"parameters": {
+														"layer": "\"BGHandler\""
+													}
+												}
+											],
+											"actions": [
+												{
+													"id": "set-position",
+													"objectClass": "CustomBG",
+													"sid": 693453049105444,
+													"parameters": {
+														"x": "400",
+														"y": "321"
+													}
+												}
+											],
+											"sid": 865847350692911
+										}
+									],
+									"sid": 911223539173403
+								},
+								{
+									"eventType": "group",
+									"disabled": false,
+									"title": "BG Image Other",
+									"description": "",
+									"isActiveOnStart": true,
+									"children": [
+										{
+											"eventType": "block",
+											"conditions": [
+												{
+													"id": "mouse-button-is-down",
+													"objectClass": "Mouse",
+													"sid": 183127099478184,
+													"parameters": {
+														"mouse-button": "left"
+													}
+												},
+												{
+													"id": "cursor-is-over-object",
+													"objectClass": "Mouse",
+													"sid": 296799066123445,
+													"parameters": {
+														"object": "LevelEditorButtons"
+													}
+												},
+												{
+													"id": "is-animation-playing",
+													"objectClass": "LevelEditorButtons",
+													"sid": 699289782108972,
+													"parameters": {
+														"animation": "\"RotateLeft\""
+													}
+												},
+												{
+													"id": "has-tags",
+													"objectClass": "LevelEditorButtons",
+													"sid": 580001229087887,
+													"parameters": {
+														"tags": "\"BGHandler\""
+													}
+												},
+												{
+													"id": "has-tags",
+													"objectClass": "LevelEditorButtons",
+													"sid": 522089947462806,
+													"parameters": {
+														"tags": "\"Main\""
+													},
+													"isInverted": true
+												},
+												{
+													"id": "layer-is-visible",
+													"objectClass": "System",
+													"sid": 653059286240363,
+													"parameters": {
+														"layer": "\"Black Screen\""
+													}
+												},
+												{
+													"id": "layer-is-visible",
+													"objectClass": "System",
+													"sid": 651065083241685,
+													"parameters": {
+														"layer": "\"BGHandler\""
+													}
+												}
+											],
+											"actions": [
+												{
+													"id": "set-angle",
+													"objectClass": "CustomBG",
+													"sid": 540797010082099,
+													"parameters": {
+														"angle": "CustomBG.Angle -1"
+													}
+												}
+											],
+											"sid": 474033626614798
+										},
+										{
+											"eventType": "block",
+											"conditions": [
+												{
+													"id": "mouse-button-is-down",
+													"objectClass": "Mouse",
+													"sid": 842942270126056,
+													"parameters": {
+														"mouse-button": "left"
+													}
+												},
+												{
+													"id": "cursor-is-over-object",
+													"objectClass": "Mouse",
+													"sid": 819122706539540,
+													"parameters": {
+														"object": "LevelEditorButtons"
+													}
+												},
+												{
+													"id": "is-animation-playing",
+													"objectClass": "LevelEditorButtons",
+													"sid": 415075541455034,
+													"parameters": {
+														"animation": "\"RotateRight\""
+													}
+												},
+												{
+													"id": "has-tags",
+													"objectClass": "LevelEditorButtons",
+													"sid": 209966238442359,
+													"parameters": {
+														"tags": "\"BGHandler\""
+													}
+												},
+												{
+													"id": "has-tags",
+													"objectClass": "LevelEditorButtons",
+													"sid": 227180694922435,
+													"parameters": {
+														"tags": "\"Main\""
+													},
+													"isInverted": true
+												},
+												{
+													"id": "layer-is-visible",
+													"objectClass": "System",
+													"sid": 378480889291529,
+													"parameters": {
+														"layer": "\"Black Screen\""
+													}
+												},
+												{
+													"id": "layer-is-visible",
+													"objectClass": "System",
+													"sid": 158594565737338,
+													"parameters": {
+														"layer": "\"BGHandler\""
+													}
+												}
+											],
+											"actions": [
+												{
+													"id": "set-angle",
+													"objectClass": "CustomBG",
+													"sid": 291715327402161,
+													"parameters": {
+														"angle": "CustomBG.Angle +1"
+													}
+												}
+											],
+											"sid": 940294954972600
+										},
+										{
+											"eventType": "block",
+											"conditions": [
+												{
+													"id": "on-object-clicked",
+													"objectClass": "Mouse",
+													"sid": 464457935324520,
+													"parameters": {
+														"mouse-button": "left",
+														"click-type": "clicked",
+														"object-clicked": "LevelEditorButtons"
+													}
+												},
+												{
+													"id": "is-animation-playing",
+													"objectClass": "LevelEditorButtons",
+													"sid": 325785987400207,
+													"parameters": {
+														"animation": "\"Flip\""
+													}
+												},
+												{
+													"id": "is-mirrored",
+													"objectClass": "CustomBG",
+													"sid": 420983950713560,
+													"isInverted": true
+												},
+												{
+													"id": "layer-is-visible",
+													"objectClass": "System",
+													"sid": 669169131142516,
+													"parameters": {
+														"layer": "\"Black Screen\""
+													}
+												},
+												{
+													"id": "layer-is-visible",
+													"objectClass": "System",
+													"sid": 253144222013691,
+													"parameters": {
+														"layer": "\"BGHandler\""
+													}
+												}
+											],
+											"actions": [
+												{
+													"id": "wait",
+													"objectClass": "System",
+													"sid": 504322223322943,
+													"parameters": {
+														"seconds": "0.02",
+														"use-timescale": true
+													}
+												},
+												{
+													"id": "set-mirrored",
+													"objectClass": "CustomBG",
+													"sid": 982300513419425,
+													"parameters": {
+														"state": "mirrored"
+													}
+												}
+											],
+											"sid": 696281208029971
+										},
+										{
+											"eventType": "block",
+											"conditions": [
+												{
+													"id": "on-object-clicked",
+													"objectClass": "Mouse",
+													"sid": 554662083437647,
+													"parameters": {
+														"mouse-button": "left",
+														"click-type": "clicked",
+														"object-clicked": "LevelEditorButtons"
+													}
+												},
+												{
+													"id": "is-animation-playing",
+													"objectClass": "LevelEditorButtons",
+													"sid": 717858584738535,
+													"parameters": {
+														"animation": "\"Flip\""
+													}
+												},
+												{
+													"id": "is-mirrored",
+													"objectClass": "CustomBG",
+													"sid": 499859606498364
+												},
+												{
+													"id": "layer-is-visible",
+													"objectClass": "System",
+													"sid": 181430106225256,
+													"parameters": {
+														"layer": "\"Black Screen\""
+													}
+												},
+												{
+													"id": "layer-is-visible",
+													"objectClass": "System",
+													"sid": 348531556269657,
+													"parameters": {
+														"layer": "\"BGHandler\""
+													}
+												}
+											],
+											"actions": [
+												{
+													"id": "wait",
+													"objectClass": "System",
+													"sid": 375420680038087,
+													"parameters": {
+														"seconds": "0.02",
+														"use-timescale": true
+													}
+												},
+												{
+													"id": "set-mirrored",
+													"objectClass": "CustomBG",
+													"sid": 855909926585042,
+													"parameters": {
+														"state": "not-mirrored"
+													}
+												}
+											],
+											"sid": 844828097332542
+										},
+										{
+											"eventType": "block",
+											"conditions": [
+												{
+													"id": "on-clicked",
+													"objectClass": "ResetButton",
+													"sid": 421259375296358
+												},
+												{
+													"id": "has-tags",
+													"objectClass": "ResetButton",
+													"sid": 359915014620893,
+													"parameters": {
+														"tags": "\"Other\""
+													}
+												},
+												{
+													"id": "layer-is-visible",
+													"objectClass": "System",
+													"sid": 408311603602736,
+													"parameters": {
+														"layer": "\"Black Screen\""
+													}
+												},
+												{
+													"id": "layer-is-visible",
+													"objectClass": "System",
+													"sid": 839447552417779,
+													"parameters": {
+														"layer": "\"BGHandler\""
+													}
+												}
+											],
+											"actions": [
+												{
+													"id": "set-angle",
+													"objectClass": "CustomBG",
+													"sid": 629943857341369,
+													"parameters": {
+														"angle": "0"
+													}
+												},
+												{
+													"id": "set-flipped",
+													"objectClass": "CustomBG",
+													"sid": 800702783243158,
+													"parameters": {
+														"state": "not-flipped"
+													}
+												}
+											],
+											"sid": 676229671041851
+										}
+									],
+									"sid": 741645892708954
 								}
 							],
 							"sid": 499595455639560
@@ -21592,7 +22752,9 @@
 													"objectClass": "Audio",
 													"sid": 393122602055799,
 													"parameters": {
-														"audio-file": "Level_editor",
+														"audio-file": {
+															"path": "Level_editor"
+														},
 														"loop": "looping",
 														"volume": "-5",
 														"stereo-pan": "0",
@@ -21639,7 +22801,9 @@
 													"objectClass": "Audio",
 													"sid": 610608720191604,
 													"parameters": {
-														"audio-file": "Lets_Go_Cruisin",
+														"audio-file": {
+															"path": "Lets_Go_Cruisin"
+														},
 														"loop": "looping",
 														"volume": "-5",
 														"stereo-pan": "0",
@@ -21686,7 +22850,9 @@
 													"objectClass": "Audio",
 													"sid": 367425937718346,
 													"parameters": {
-														"audio-file": "PegTastic",
+														"audio-file": {
+															"path": "PegTastic"
+														},
 														"loop": "looping",
 														"volume": "-5",
 														"stereo-pan": "0",
@@ -21733,7 +22899,9 @@
 													"objectClass": "Audio",
 													"sid": 873548207899874,
 													"parameters": {
-														"audio-file": "Saturday_Evening",
+														"audio-file": {
+															"path": "Saturday_Evening"
+														},
 														"loop": "looping",
 														"volume": "-5",
 														"stereo-pan": "0",
@@ -21780,7 +22948,9 @@
 													"objectClass": "Audio",
 													"sid": 815400629234068,
 													"parameters": {
-														"audio-file": "PachiNgo",
+														"audio-file": {
+															"path": "PachiNgo"
+														},
 														"loop": "looping",
 														"volume": "-5",
 														"stereo-pan": "0",
@@ -21827,7 +22997,9 @@
 													"objectClass": "Audio",
 													"sid": 318875292976035,
 													"parameters": {
-														"audio-file": "PachinGeetar",
+														"audio-file": {
+															"path": "PachinGeetar"
+														},
 														"loop": "looping",
 														"volume": "-5",
 														"stereo-pan": "0",

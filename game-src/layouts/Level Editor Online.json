@@ -263,6 +263,8 @@
 							"properties": {
 								"immovable": true,
 								"collision-mask": "use-collision-polygon",
+								"collision-filter-tags": "",
+								"collision-filter-mode": "exclusive",
 								"prevent-rotation": false,
 								"density": 1,
 								"friction": 0.5,
@@ -276,6 +278,7 @@
 						"Solid": {
 							"properties": {
 								"enabled": true,
+								"use-instance-tags": false,
 								"tags": ""
 							}
 						}
@@ -331,6 +334,8 @@
 							"properties": {
 								"immovable": true,
 								"collision-mask": "use-collision-polygon",
+								"collision-filter-tags": "",
+								"collision-filter-mode": "exclusive",
 								"prevent-rotation": false,
 								"density": 1,
 								"friction": 0.5,
@@ -344,6 +349,7 @@
 						"Solid": {
 							"properties": {
 								"enabled": true,
+								"use-instance-tags": false,
 								"tags": ""
 							}
 						}
