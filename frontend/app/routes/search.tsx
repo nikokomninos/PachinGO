@@ -342,7 +342,7 @@ const Search = () => {
                 >
                   {showFilters ? (
                     <div className="flex flex-row justify-center items-center gap-2 w-full">
-                      <h1>Filters </h1>
+                      <h1>Filters{" "}</h1>
                       <FaCaretUp />
                     </div>
                   ) : (
@@ -352,18 +352,18 @@ const Search = () => {
                     </div>
                   )}
                 </button>
-                  {showFilters && (
-                    <FilterBox
-                      searchType={searchType}
-                      setSearchType={setSearchType}
-                      sortType={sortType}
-                      setSortType={setSortType}
-                      sortOrderType={sortOrderType}
-                      setSortOrderType={setSortOrderType}
-                      limit={limit}
-                      setLimit={setLimit}
-                    />
-                  )}
+                {showFilters && (
+                  <FilterBox
+                    searchType={searchType}
+                    setSearchType={setSearchType}
+                    sortType={sortType}
+                    setSortType={setSortType}
+                    sortOrderType={sortOrderType}
+                    setSortOrderType={setSortOrderType}
+                    limit={limit}
+                    setLimit={setLimit}
+                  />
+                )}
               </div>
 
               <div className="flex flex-col flex-1 grow justify-center gap-5 lg:ml-5 w-full rounded-lg">
