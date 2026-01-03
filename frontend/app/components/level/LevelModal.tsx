@@ -96,27 +96,18 @@ const LevelModal = ({
     >
       <div
         onClick={(e) => e.stopPropagation()}
-        className="fixed grid grid-cols-3 top-1/8 left-1/8 w-3/4 h-3/4 bg-[var(--color-bg)] rounded-lg drop-shadow-2xl"
+        className="fixed flex flex-col lg:flex-row top-1/8 left-1/8 w-3/4 h-3/4 bg-[var(--color-bg)] rounded-lg drop-shadow-2xl overflow-y-scroll overflow-x-hidden"
       >
-        <div className="col-span-2 w-7/8 h-7/8 m-auto flex justify-center items-center">
+        <div className="w-full lg:w-3/4 p-10 flex justify-center items-center">
           <img
             src={thumbnail}
             alt="Level thumbnail"
-            className="min-w-full min-h-full object-contain rounded-sm"
+            className="w-full h-full object-contain rounded-sm"
           />
         </div>
 
-        <div className="col-span-1 pr-10 py-10 flex flex-col">
-          <div className="flex justify-end items-center">
-            <button
-              type="button"
-              onClick={() => setShowModal(false)}
-              className="text-sm hover:text-[var(--color-text-alt)] cursor-pointer ease-linear duration-75"
-            >
-              Back
-            </button>
-          </div>
-          <h1 className="text-4xl font-semibold mb-3 whitespace-normal break-words">
+        <div className="w-full lg:w-1/4 lg:pr-10 px-10 lg:px-0 lg:py-10 flex flex-col items-center lg:items-start">
+          <h1 className="text-xl lg:text-4xl font-semibold mb-3 whitespace-normal break-words">
             {name}
           </h1>
 
@@ -146,7 +137,7 @@ const LevelModal = ({
 
           <p className="text-md mb-10 whitespace-normal break-words">{desc}</p>
 
-          <div className="flex flex-col gap-3 justify-end items-end h-full">
+          <div className="flex flex-col gap-3 justify-end items-center lg:items-end w-full h-full">
             <div className="flex flex-row w-full gap-3">
               <div className="flex w-full">
                 <button
@@ -190,7 +181,7 @@ const LevelInfo = ({
   hasMusic: string;
 }) => {
   return (
-    <div className="flex flex-row gap-2 mb-5">
+    <div className="flex flex-row flex-wrap justify-center lg:justify-start gap-2 mb-5">
       <div className="flex flex-row justify-start items-center gap-1 text-xs text-[var(--color-text-alt)]">
         <FaPlayCircle />
         {plays || 0}
