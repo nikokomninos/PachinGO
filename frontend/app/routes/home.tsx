@@ -33,7 +33,7 @@ const Home = () => {
           <div className="mb-10">
             <Logo width={80} />
           </div>
-          <h2 className="text-lg md:text-2xl sm:text-3xl mb-5 sm:mb-15 text-[var(--color-text-alt)]">
+          <h2 className="text-lg md:text-xl mb-5 sm:mb-15 text-[var(--color-text-alt)]">
             A spiritual successor to <i>Peggle</i>, now featuring a level
             editor.
           </h2>
