@@ -153,7 +153,7 @@ const LevelModal = ({
                 <DeleteButton user={user} role={role} author={author} id={id} />
               </div>
             </div>
-            <h3 className="text-xs">Level ID: {id}</h3>
+            <h3 className="text-xs mb-5 lg:mb-0">Level ID: {id}</h3>
           </div>
         </div>
       </div>
