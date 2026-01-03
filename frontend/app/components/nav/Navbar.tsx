@@ -46,7 +46,7 @@ const Navbar = () => {
         <button
           type="button"
           onClick={() => setShowMenu((prev) => !prev)}
-          className="md:hidden flex justify-center w-1/8 p-1 mb-3 border border-[var(--color-border)] rounded-md"
+          className="md:hidden flex justify-center w-1/8 p-1 mb-3 bg-[var(--color-bg-alt)] border border-[var(--color-border)] rounded-md"
         >
         {showMenu ? (<FaCaretUp />) : (<FaCaretDown />)}
         </button>
@@ -152,7 +152,7 @@ const NavDesktop = () => {
 
 const NavMobile = () => {
   return (
-    <div className="flex flex-col items-center gap-5 p-2 mb-2 w-3/4 border border-[var(--color-border)] rounded-md bg-[var(--color-background)]">
+    <div className="flex flex-col items-center gap-5 p-2 mb-2 w-3/4 border border-[var(--color-border)] rounded-md bg-[var(--color-bg-alt)]">
       <Link
         to="/demo"
         className="flex items-center gap-2 ml-2 hover:text-blue-500 ease-linear duration-75"

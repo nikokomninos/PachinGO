@@ -77,18 +77,18 @@ const user = () => {
       <Navbar />
       <div className="bg-[url('/pattern2.svg')] dark:bg-[url('/pattern2_dark.svg')] bg-repeat animate-[scroll-pattern_100s_linear_infinite]">
         <div className="bg-[var(--color-bg)] flex-1 p-15 ml-[6vw] mr-[6vw] border-l-1 border-l-[var(--color-border)] border-r-1 border-r-[var(--color-border)] tracking-tighter min-h-screen">
-          <div className="flex flex-row justify-start items-start gap-10">
+          <div className="flex flex-col lg:flex-row justify-start items-start gap-10">
             <UserBox
               username={username}
               role={userInfo.role}
               dateJoined={userInfo.dateJoined}
               numLevels={results.length}
             />
-            <div className="border-1 border-[var(--color-border)] rounded-lg p-5 flex flex-col items-center w-full min-h-fit">
+            <div className="flex flex-col items-center lg:items-start w-full min-h-fit">
               <h1 className="text-2xl font-semibold mb-5">
                 {username}'s Levels
               </h1>
-              <div className="flex flex-wrap justify-center gap-5">
+              <div className="flex flex-wrap justify-center lg:justify-start gap-5">
                 {results.length > 0 ? (
                   results.map((r: any, i: any) => (
                     <LevelCard
