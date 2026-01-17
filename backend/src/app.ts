@@ -44,6 +44,7 @@ app.use(
       "https://pachingo.onrender.com",
       "https://playpachingo.vercel.app",
       "https://playpachingo.com",
+      "https://www.playpachingo.com",
     ],
     credentials: true,
   }),
