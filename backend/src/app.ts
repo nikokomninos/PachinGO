@@ -43,6 +43,7 @@ app.use(
       "https://preview.construct.net",
       "https://pachingo.onrender.com",
       "https://playpachingo.vercel.app",
+      "https://playpachingo.com",
     ],
     credentials: true,
   }),
