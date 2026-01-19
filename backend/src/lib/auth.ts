@@ -109,6 +109,8 @@ export const auth = betterAuth({
       secure: true,
       sameSite: "none",
       partitioned: true,
+      path: "/",
+      domain: ".playpachingo.com"
     },
   },
 });
