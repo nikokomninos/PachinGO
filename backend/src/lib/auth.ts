@@ -103,22 +103,9 @@ export const auth = betterAuth({
     }
     return ctx;
   },
-});
-
-/*export const auth = betterAuth({
-    database: mongodbAdapter(db),
-    emailAndPassword: {
-        enabled: true,
-        autoSignIn: true,
-        password: {
-            verify: async ({ password, hash }) => {
-                return await bcrypt.compare(password, hash);
-            }
-        }
-    },
-    user: {
-        additionalFields: {
-            username: { type: "string", required: true },
-        }
+  advanced: {
+    defaultCookieAttributes: {
+      sameSite: "None"
     }
-});*/
+  }
+});
