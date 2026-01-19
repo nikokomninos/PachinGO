@@ -23,8 +23,7 @@ export default function PachinGO({ id }: { id: string }) {
 
     iframe?.addEventListener("click", () => iframe.contentWindow?.focus());
     iframe?.addEventListener("mouseover", () => iframe.contentWindow?.focus());
-
-  })
+  });
 
   useEffect(() => {
     if (id) localStorage.setItem("levelID", id);
@@ -39,8 +38,10 @@ export default function PachinGO({ id }: { id: string }) {
     if (!saved) setGameSize([800, 600]);
 
     try {
-      const { width, height } = JSON.parse(saved);
-      setGameSize([width || 800, height || 600]);
+      if (saved) {
+        const { width, height } = JSON.parse(saved);
+        setGameSize([width || 800, height || 600]);
+      }
     } catch {
       setGameSize([800, 600]);
     }

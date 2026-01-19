@@ -81,8 +81,6 @@ app.use("/api/v1/search", searchRoutes);
 app.use("/api/v1/user", userRoutes);
 app.use("/api/v1/level", levelRoutes);
 
-//await migrateUsersToBetterAuth();
-
 app.listen(PORT, () =>
   logger.log({ level: "info", message: `SERVER: Server running on Port ${PORT}` }),
 );

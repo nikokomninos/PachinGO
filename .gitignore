@@ -8,3 +8,4 @@ todo.md
 **/dist/
 frontend/build/
 backend/coverage/
+**/*.log
