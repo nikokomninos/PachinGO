@@ -20,7 +20,7 @@ const scriptsInEvents = {
 		    runtime.globalVars.R2URL = "https://pub-562122f32271414bacf25950b437b9c9.r2.dev";
 		}
 		else if (env === "prod") {
-		    runtime.globalVars.BackendURL = "https://pachingo.onrender.com";
+		    runtime.globalVars.BackendURL = "https://api.playpachingo.com";
 		    runtime.globalVars.R2URL = "https://pub-420dc4c17ebf40e890bf857df37cacbb.r2.dev";
 		}
 		
