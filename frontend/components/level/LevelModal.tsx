@@ -94,7 +94,7 @@ export default function LevelModal({
           role="none"
           onKeyDown={(e) => handleKeyDown(e.nativeEvent)}
           onClick={(e) => e.stopPropagation()}
-          className="fixed flex flex-col lg:flex-row top-1/8 left-1/8 w-3/4 h-3/4 bg-(--background) border border-(--border-alt) rounded-lg drop-shadow-2xl overflow-y-scroll overflow-x-hidden"
+          className="fixed flex flex-col lg:flex-row top-1/8 left-1/8 w-3/4 h-3/4 bg-(--background) border border-(--border-alt) rounded-lg drop-shadow-2xl overflow-x-hidden"
         >
           <div className="w-full lg:w-3/4 p-10 flex justify-center items-center">
             <Image
@@ -106,7 +106,7 @@ export default function LevelModal({
             />
           </div>
 
-          <div className="w-full lg:w-1/4 lg:pr-10 px-10 lg:px-0 lg:py-10 flex flex-col items-center lg:items-start">
+          <div className="w-full lg:w-1/4 lg:pr-10 px-10 lg:px-0 lg:py-10 flex flex-col items-center lg:items-start overflow-y-scroll">
             <h1 className="text-xl lg:text-2xl text-left font-semibold mb-3 whitespace-normal break-all">
               {name}
             </h1>

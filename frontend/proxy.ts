@@ -4,6 +4,7 @@ import { NextResponse } from "next/server";
 
 export function proxy(request: NextRequest) {
   const sessionCookie = getSessionCookie(request);
+  if(sessionCookie) console.log("cookie is here");
   const { pathname } = request.nextUrl;
 
   const protectedRoutes = ["/editor"];

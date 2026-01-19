@@ -37,7 +37,10 @@ export default function Home() {
               muted
               className="rounded-md mb-10"
             >
-              <source src="/Pachingo.mp4" type="video/mp4" />
+              <source
+                src={`${process.env.NEXT_PUBLIC_R2_URL}/Pachingo.mp4`}
+                type="video/mp4"
+              />
               Your browser does not support the video tag.
             </video>
             {/*<div className="bg-(--background-alt) flex flex-col justify-center items-center w-full aspect-4/3 mb-10 border border-(--border-alt) rounded-xl">
@@ -122,7 +125,10 @@ export default function Home() {
             muted
             className="rounded-md"
           >
-            <source src={`${process.env.NEXT_PUBLIC_R2_URL}/Pachingo.mp4`} type="video/mp4" />
+            <source
+              src={`${process.env.NEXT_PUBLIC_R2_URL}/Pachingo.mp4`}
+              type="video/mp4"
+            />
             Your browser does not support the video tag.
           </video>
           {/*<div className="bg-(--background-alt) flex flex-col justify-center items-center w-full aspect-4/3 border border-(--border-alt) rounded-xl">
