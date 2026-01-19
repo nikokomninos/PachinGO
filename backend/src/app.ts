@@ -15,7 +15,6 @@ import { toNodeHandler } from "better-auth/node";
 import cookieParser from "cookie-parser";
 import cors from "cors";
 import express from "express";
-import { createLogger, format, transports } from "winston";
 import connectDB from "./lib/db.ts";
 import { auth } from "./lib/auth.ts";
 //import { populateUserInfo } from "./config/populate.ts";
@@ -23,23 +22,8 @@ import { auth } from "./lib/auth.ts";
 import levelRoutes from "./routes/levelRoutes.ts";
 import searchRoutes from "./routes/searchRoutes.ts";
 import userRoutes from "./routes/userRoutes.ts";
-
-export const logger = createLogger({
-  level: "info",
-  format: format.combine(
-    format.timestamp({
-      format: "YYYY-MM-DD HH:mm:ss",
-    }),
-    format.errors({ stack: true }),
-    format.splat(),
-    format.json(),
-  ),
-  defaultMeta: { service: "pachingo" },
-  transports: [
-    new transports.File({ filename: "error.log", level: "error" }),
-    new transports.File({ filename: "combined.log" }),
-  ],
-});
+import { format, transports } from "winston";
+import { logger } from "./lib/logger.ts";
 
 if (process.env.NODE_ENV !== "production") {
   logger.add(
@@ -49,7 +33,7 @@ if (process.env.NODE_ENV !== "production") {
   );
 }
 
-connectDB();
+await connectDB();
 //populateLevels();
 //populateUserInfo();
 

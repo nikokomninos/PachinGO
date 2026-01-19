@@ -6,7 +6,7 @@
  */
 
 import mongoose from "mongoose";
-import { logger } from "../app.ts";
+import { logger } from "./logger.ts";
 
 const connectDB = async () => {
   try {

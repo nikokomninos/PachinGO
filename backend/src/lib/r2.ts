@@ -21,7 +21,7 @@ import {
   R2_BUCKET_NAME,
   R2_SECRET_ACCESS_KEY,
 } from "./env.ts";
-import { logger } from "../app.ts";
+import { logger } from "./logger.ts";
 
 const r2 = new S3Client({
   region: "auto",

@@ -6,7 +6,7 @@
  */
 
 import type { Request, Response } from "express";
-import { logger } from "../app.ts";
+import { logger } from "../lib/logger.ts";
 import { betterAuthUser } from "../models/BetterUser.ts";
 import Level from "../models/Level.ts";
 import UserInfo from "../models/UserInfo.ts";

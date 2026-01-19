@@ -1,7 +1,7 @@
 import { betterAuth } from "better-auth";
 import { mongodbAdapter } from "better-auth/adapters/mongodb";
 import { MongoClient } from "mongodb";
-import { logger } from "../app.ts";
+import { logger } from "./logger.ts";
 import { sendPasswordResetEmail, sendVerificationEmail } from "./email.ts";
 import { BETTER_AUTH_URL, MONGO_URI } from "./env.ts";
 import UserInfo from "../models/UserInfo.ts";

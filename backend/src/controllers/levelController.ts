@@ -12,7 +12,7 @@ import path from "node:path";
 import { fileURLToPath } from "node:url";
 import type { Request, Response } from "express";
 import multer from "multer";
-import { logger } from "../app.ts";
+import { logger } from "../lib/logger.ts";
 import { PYTHON_PATH, SCRIPT_PATH } from "../lib/env.ts";
 import { removeFromR2, uploadThumbnailToR2, uploadToR2 } from "../lib/r2.ts";
 import { betterAuthUser } from "../models/BetterUser.ts";

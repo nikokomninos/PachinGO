@@ -1,6 +1,6 @@
 import { Resend } from "resend";
 import { RESEND_API_KEY, RESEND_EMAIL } from "./env.ts";
-import { logger } from "../app.ts";
+import { logger } from "./logger.ts";
 
 const resend = new Resend(RESEND_API_KEY);
 
