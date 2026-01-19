@@ -76,6 +76,7 @@ export default function RegisterBox() {
               autoPlay
               disablePictureInPicture
               loop
+              muted
               className="rounded-md"
             >
               <source
@@ -164,6 +165,7 @@ export default function RegisterBox() {
             autoPlay
             disablePictureInPicture
             loop
+            muted
             className="rounded-md"
           >
             <source

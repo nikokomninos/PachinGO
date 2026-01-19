@@ -33,6 +33,8 @@ export default function Home() {
               height={600}
               autoPlay
               disablePictureInPicture
+              loop
+              muted
               className="rounded-md mb-10"
             >
               <source src="/Pachingo.mp4" type="video/mp4" />
@@ -117,6 +119,7 @@ export default function Home() {
             autoPlay
             disablePictureInPicture
             loop
+            muted
             className="rounded-md"
           >
             <source src={`${process.env.NEXT_PUBLIC_R2_URL}/Pachingo.mp4`} type="video/mp4" />

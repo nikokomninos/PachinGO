@@ -70,6 +70,7 @@ export default function LoginBox() {
               autoPlay
               disablePictureInPicture
               loop
+              muted
               className="rounded-md"
             >
               <source
@@ -176,6 +177,7 @@ export default function LoginBox() {
             autoPlay
             disablePictureInPicture
             loop
+            muted
             className="rounded-md"
           >
             <source
