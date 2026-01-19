@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import { ThemeProvider } from "next-themes";
-import "../globals.css";
+import "./globals.css";
 import C3Setter from "@/components/game/C3Setter";
 import { Analytics } from "@vercel/analytics/next";
 

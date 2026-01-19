@@ -23,21 +23,15 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={inter.variable} suppressHydrationWarning>
-      <body className="tracking-tight">
-        <ThemeProvider defaultTheme="dark" enableSystem>
-          <Navbar />
-          <div
-            style={{ backgroundImage: "var(--pattern-url)" }}
-            className="bg-repeat animate-[scroll-pattern_100s_linear_infinite] min-h-screen"
-          >
-            <Analytics />
-            <C3Setter />
-            {children}
-          </div>
-          <Footer />
-        </ThemeProvider>
-      </body>
-    </html>
+    <div>
+      <Navbar />
+      <div
+        style={{ backgroundImage: "var(--pattern-url)" }}
+        className="bg-repeat animate-[scroll-pattern_100s_linear_infinite] min-h-screen"
+      >
+        {children}
+      </div>
+      <Footer />
+    </div>
   );
 }

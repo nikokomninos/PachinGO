@@ -24,25 +24,19 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={inter.variable} suppressHydrationWarning>
-      <body className="tracking-tight">
-        <Suspense>
-        <ThemeProvider defaultTheme="dark" enableSystem>
-          <Navbar />
-          <div
-            style={{ backgroundImage: "var(--pattern-url)" }}
-            className="bg-repeat animate-[scroll-pattern_100s_linear_infinite] min-h-screen"
-          >
-            <div className="bg-(--background) flex-1 p-5 ml-[6vw] mr-[6vw] border-l border-l-(--border) border-r border-r-(--border) min-h-screen">
-              <Analytics />
-              <C3Setter />
-              {children}
-            </div>
+    <div>
+      <Suspense>
+        <Navbar />
+        <div
+          style={{ backgroundImage: "var(--pattern-url)" }}
+          className="bg-repeat animate-[scroll-pattern_100s_linear_infinite] min-h-screen"
+        >
+          <div className="bg-(--background) flex-1 p-5 ml-[6vw] mr-[6vw] border-l border-l-(--border) border-r border-r-(--border) min-h-screen">
+            {children}
           </div>
-          <Footer />
-        </ThemeProvider>
-        </Suspense>
-      </body>
-    </html>
+        </div>
+        <Footer />
+      </Suspense>
+    </div>
   );
 }
