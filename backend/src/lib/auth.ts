@@ -109,6 +109,12 @@ export const auth = betterAuth({
     "www.playpachingo.com",
   ],
   advanced: {
+    defaultCookieAttributes: {
+      httpOnly: true,
+      secure: true,
+      sameSite: "none",
+      partitioned: true,
+    },
     crossSubDomainCookies: {
       enabled: true,
       domain: "www.playpachingo.com",
