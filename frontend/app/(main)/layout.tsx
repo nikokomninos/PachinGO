@@ -6,6 +6,7 @@ import Footer from "@/components/nav/Footer";
 import "../globals.css";
 import C3Setter from "@/components/game/C3Setter";
 import { Analytics } from "@vercel/analytics/next";
+import { Suspense } from "react";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -25,6 +26,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={inter.variable} suppressHydrationWarning>
       <body className="tracking-tight">
+        <Suspense>
         <ThemeProvider defaultTheme="dark" enableSystem>
           <Navbar />
           <div
@@ -39,6 +41,7 @@ export default function RootLayout({
           </div>
           <Footer />
         </ThemeProvider>
+        </Suspense>
       </body>
     </html>
   );

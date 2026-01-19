@@ -4,6 +4,7 @@ import { ThemeProvider } from "next-themes";
 import "../globals.css";
 import C3Setter from "@/components/game/C3Setter";
 import { Analytics } from "@vercel/analytics/next";
+import { Suspense } from "react";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -23,6 +24,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={inter.variable} suppressHydrationWarning>
       <body className="tracking-tight">
+        <Suspense>
         <ThemeProvider defaultTheme="dark" enableSystem>
           <div
             style={{ backgroundImage: "var(--pattern-url)" }}
@@ -33,6 +35,7 @@ export default function RootLayout({
             {children}
           </div>
         </ThemeProvider>
+        </Suspense>
       </body>
     </html>
   );
