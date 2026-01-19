@@ -104,6 +104,7 @@ export const auth = betterAuth({
     return ctx;
   },
   advanced: {
+    useSecureCookies: true,
     cookies: {
       session_token: {
         attributes: {
@@ -117,6 +118,7 @@ export const auth = betterAuth({
       sameSite: "None",
       secure: true,
       httpOnly: true,
+      partitioned: true,
     },
   },
 });
