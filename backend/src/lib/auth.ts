@@ -103,13 +103,4 @@ export const auth = betterAuth({
     }
     return ctx;
   },
-  advanced: {
-    useSecureCookies: true,
-    defaultCookieAttributes: {
-      sameSite: "None",
-      secure: true,
-      httpOnly: true,
-      partitioned: true,
-    },
-  },
 });
