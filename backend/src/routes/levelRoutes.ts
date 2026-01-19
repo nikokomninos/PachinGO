@@ -7,6 +7,7 @@
  */
 
 import express from "express";
+import type { Router } from "express"
 import {
   addLikeToLevel,
   addPlayToLevel,
@@ -16,7 +17,7 @@ import {
   uploadLevel,
 } from "../controllers/levelController.ts";
 
-const router = express.Router();
+const router: Router = express.Router();
 
 router.post("/deleteLevel", deleteLevel);
 router.post("/uploadLevel", uploadLevel);

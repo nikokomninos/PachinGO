@@ -70,7 +70,7 @@ export const deleteLevel = async (req: Request, res: Response) => {
  * and a request upload containing: background, music
  * @param {Response} res a response body containing: message
  */
-export const uploadLevel = [
+export const uploadLevel: any[] = [
   upload.fields([
     { name: "background", maxCount: 1 },
     { name: "music", maxCount: 1 },

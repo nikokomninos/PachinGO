@@ -7,6 +7,7 @@
  */
 
 import express from "express";
+import type { Router } from "express"
 import {
   getMostLikedLevels,
   getMostPlayedLevels,
@@ -17,7 +18,7 @@ import {
   searchUsers,
 } from "../controllers/searchController.ts";
 
-const router = express.Router();
+const router: Router = express.Router();
 
 router.get("/getRecentLevels", getRecentLevels);
 router.get("/getMostPlayedLevels", getMostPlayedLevels);
