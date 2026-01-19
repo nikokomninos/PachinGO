@@ -56,8 +56,8 @@ export const auth = betterAuth({
           UserInfo.insertOne({
             userId: user.id,
             role: "Member",
-            likedLevels: []
-          })
+            likedLevels: [],
+          });
           logger.log({
             level: "info",
             message: `AUTH: User Registered (ID: ${user.id}, Email: ${user.email}, Username: ${user.name})`,
@@ -104,8 +104,15 @@ export const auth = betterAuth({
     return ctx;
   },
   advanced: {
+    cookies: {
+      session_token: {
+        attributes: {
+          sameSite: "None",
+        },
+      },
+    },
     defaultCookieAttributes: {
-      sameSite: "None"
-    }
-  }
+      sameSite: "None",
+    },
+  },
 });
