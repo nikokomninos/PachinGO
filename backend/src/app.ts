@@ -23,7 +23,6 @@ import { auth } from "./lib/auth.ts";
 import levelRoutes from "./routes/levelRoutes.ts";
 import searchRoutes from "./routes/searchRoutes.ts";
 import userRoutes from "./routes/userRoutes.ts";
-import { migrateUsersToBetterAuth } from "./migrate.ts";
 
 export const logger = createLogger({
   level: "info",

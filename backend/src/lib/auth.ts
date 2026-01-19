@@ -50,7 +50,7 @@ export const auth = betterAuth({
             throw new Error("NAME_ALREADY_TAKEN");
           }
 
-          return user;
+          return;
         },
         after: async (user) => {
           UserInfo.insertOne({

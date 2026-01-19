@@ -235,7 +235,7 @@ export const getRecentUsers = async (req: Request, res: Response) => {
 
     const resultsWithRoles = results.map((user) => {
       const info = allUserInfos.find(
-        (i) => i.userId.toString() === user._id.toString(),
+        (i) => i.userId.toString() === (user._id as any).toString(),
       );
       return {
         ...user,
@@ -301,7 +301,7 @@ export const searchUsers = async (req: Request, res: Response) => {
 
     const resultsWithRoles = results.map((user) => {
       const info = allUserInfos.find(
-        (i) => i.userId.toString() === user._id.toString(),
+        (i) => i.userId.toString() === (user._id as any).toString(),
       );
       return {
         ...user,
