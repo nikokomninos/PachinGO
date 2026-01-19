@@ -1,0 +1,1 @@
+{"level":"error","message":"LEVEL: Level like error (ID: undefined): ValidationError: role: Path `role` is required., dateJoined: Path `dateJoined` is required.","service":"pachingo","timestamp":"2026-01-10 15:37:28"}

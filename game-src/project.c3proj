@@ -1,6 +1,6 @@
 {
 	"projectFormatVersion": 1,
-	"savedWithRelease": 46600,
+	"savedWithRelease": 46602,
 	"name": "PachinGO!",
 	"runtime": "c3",
 	"useWorker": "auto",
@@ -80,13 +80,6 @@
 			"type": "plugin",
 			"id": "TextBox",
 			"name": "Text input",
-			"author": "Scirra",
-			"bundled": false
-		},
-		{
-			"type": "plugin",
-			"id": "Touch",
-			"name": "Touch",
 			"author": "Scirra",
 			"bundled": false
 		},
@@ -196,8 +189,7 @@
 			"Mouse",
 			"Keyboard",
 			"JSON",
-			"Audio",
-			"Touch"
+			"Audio"
 		],
 		"subfolders": [
 			{
@@ -338,8 +330,7 @@
 					"RightClickBox",
 					"MusicSelect",
 					"MusicHere",
-					"Sprite",
-					"ResetButton"
+					"Sprite"
 				],
 				"subfolders": [],
 				"name": "Level Editor"

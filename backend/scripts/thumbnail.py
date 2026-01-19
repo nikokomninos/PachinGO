@@ -76,7 +76,6 @@ def main():
         image.paste(rotated, (int(x), int(y)), rotated)
 
     image.save(output_filename, "PNG")
-    print("Thumbnail generated successfully")
 
 
 if __name__ == "__main__":

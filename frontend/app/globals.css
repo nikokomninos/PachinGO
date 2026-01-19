@@ -1,0 +1,62 @@
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+
+:root {
+  --background: #fff;
+  --background-alt: #f8f8f8;
+  --foreground: #352f36;
+  --foreground-alt: var(--color-neutral-500);
+  --border: #c1c1c1;
+  --border-alt: #e1e1e1;
+  --hero-button: #343434;
+  --pattern-url: url("/pattern_light.svg");
+}
+
+@theme inline {
+  --background: var(--background);
+  --background-alt: var(--background-alt);
+  --foreground: var(--foreground);
+  --foreground-alt: var(--foreground-alt);
+  --border: var(--border);
+  --border-alt: var(--border-alt);
+  --hero-button: var(--hero-button);
+  /*--font-sans: var(--font-geist-sans);*/
+  /*--font-mono: var(--font-geist-mono);*/
+  --font-inter: var(--font-inter);
+  --pattern-url: var(--pattern-url);
+}
+
+[data-theme="dark"] {
+  --background: #121212;
+  --background-alt: #161616;
+  --foreground: #e2e8f0;
+  --foreground-alt: var(--color-gray-400);
+  --border: #4e4e4e;
+  --border-alt: #2e2e2e;
+  --hero-button: #212121;
+  --pattern-url: url("/pattern_dark.svg");
+}
+
+html {
+  scrollbar-gutter: stable;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-inter), Arial, Helvetica, sans-serif;
+}
+
+.no-scroll {
+  overflow: hidden !important;
+}
+
+@keyframes scroll-pattern {
+  from {
+    background-position: 0 0;
+  }
+
+  to {
+    background-position: 100% 100%;
+  }
+}

@@ -11,6 +11,7 @@ import {
   getMostLikedLevels,
   getMostPlayedLevels,
   getRecentLevels,
+  getRecentUsers,
   searchLevelID,
   searchLevelName,
   searchUsers,
@@ -18,11 +19,12 @@ import {
 
 const router = express.Router();
 
-router.post("/getRecentLevels", getRecentLevels);
-router.post("/getMostPlayedLevels", getMostPlayedLevels);
-router.post("/getMostLikedLevels", getMostLikedLevels);
-router.post("/searchLevelName", searchLevelName);
-router.post("/searchLevelID", searchLevelID);
-router.post("/searchUsers", searchUsers);
+router.get("/getRecentLevels", getRecentLevels);
+router.get("/getMostPlayedLevels", getMostPlayedLevels);
+router.get("/getMostLikedLevels", getMostLikedLevels);
+router.get("/searchLevelName", searchLevelName);
+router.get("/searchLevelID", searchLevelID);
+router.get("/getRecentUsers", getRecentUsers)
+router.get("/searchUsers", searchUsers);
 
 export default router;

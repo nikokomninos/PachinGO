@@ -1,13 +1,4 @@
-# PachinGO: A Peggle-like Game
+# PachinGO!: A spiritual successor to Peggle
 
-Repo for CSC482 - Senior Seminar II
+The source code for the PachinGO! frontend, backend and game code
 
-## Project Structure:
-
-**docs** - Documentation regarding the Project
-
-**frontend** - The frontend that hosts the game
-
-**backend** - The backend that the game communicates with to make DB calls
-
-**game-src** - The game's source code

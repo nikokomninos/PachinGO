@@ -14,11 +14,21 @@ const scriptsInEvents = {
 
 	async Menu_Event5_Act2(runtime, localVars)
 	{
+		const env = localStorage.getItem("env");
+		if (env === "dev") {
+		    runtime.globalVars.BackendURL = "http://localhost:9000";
+		    runtime.globalVars.R2URL = "https://pub-562122f32271414bacf25950b437b9c9.r2.dev";
+		}
+		else if (env === "prod") {
+		    runtime.globalVars.BackendURL = "https://pachingo.onrender.com";
+		    runtime.globalVars.R2URL = "https://pub-420dc4c17ebf40e890bf857df37cacbb.r2.dev";
+		}
+		
 		const layout = localStorage.getItem("layout");
 		runtime.callFunction("CheckLayout", layout);
 	},
 
-	async Gameplay_Event43_Act4(runtime, localVars)
+	async Gameplay_Event44_Act4(runtime, localVars)
 	{
 // Load the level editor peg layout into the
 // gameplay test layout
@@ -96,7 +106,7 @@ if (runtime.layout.name === "Level Editor Online") {
 }
 	},
 
-	async Gameplay_Event337_Act15(runtime, localVars)
+	async Gameplay_Event338_Act15(runtime, localVars)
 	{
 		// Gets the logged in user, and loads the previous state of the level editor peg layout
 		
@@ -113,21 +123,21 @@ if (runtime.layout.name === "Level Editor Online") {
 		}
 	},
 
-	async Gameplay_Event436_Act2(runtime, localVars)
+	async Gameplay_Event437_Act2(runtime, localVars)
 	{
 		const backgroundPicker = runtime.objects.ImageHere;
 		const backgroundPickerInst = backgroundPicker.getFirstInstance();
 		if (backgroundPickerInst) window.cachedBGFile = backgroundPickerInst.getFiles()[0];
 	},
 
-	async Gameplay_Event471_Act5(runtime, localVars)
+	async Gameplay_Event472_Act5(runtime, localVars)
 	{
 		const musicPicker = runtime.objects.MusicHere;
 		const musicPickerInst = musicPicker.getFirstInstance();
 		if (musicPickerInst) window.cachedMusicFile = musicPickerInst.getFiles()[0];
 	},
 
-	async Gameplay_Event510_Act3(runtime, localVars)
+	async Gameplay_Event511_Act3(runtime, localVars)
 	{
 		// Save the peg layout into a JSON
 		
@@ -157,7 +167,7 @@ if (runtime.layout.name === "Level Editor Online") {
 		runtime.globalVars.PegData = JSON.stringify(pegDict);
 	},
 
-	async Gameplay_Event521_Act4(runtime, localVars)
+	async Gameplay_Event522_Act4(runtime, localVars)
 	{
 		// Save the peg layout into a JSON
 		
@@ -188,7 +198,7 @@ if (runtime.layout.name === "Level Editor Online") {
 		runtime.globalVars.PegData = JSON.stringify(pegDict);
 	},
 
-	async Gameplay_Event521_Act5(runtime, localVars)
+	async Gameplay_Event522_Act5(runtime, localVars)
 	{
 const pegs = JSON.parse(runtime.globalVars.PegData).data;
 
@@ -254,7 +264,7 @@ const upload = async () => {
 runtime.globalVars.BGIMageOpacity !== 0 ? await upload() : runtime.globalVars.UploadStatus = 1;
 	},
 
-	async Gameplay_Event524_Act8(runtime, localVars)
+	async Gameplay_Event525_Act8(runtime, localVars)
 	{
 		localStorage.setItem("uploaded", "true");
 	}

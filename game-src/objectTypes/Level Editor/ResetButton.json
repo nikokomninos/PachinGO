@@ -1,9 +1,0 @@
-{
-	"name": "ResetButton",
-	"plugin-id": "Button",
-	"sid": 319396589454470,
-	"isGlobal": false,
-	"editorNewInstanceIsReplica": true,
-	"instanceVariables": [],
-	"behaviorTypes": []
-}

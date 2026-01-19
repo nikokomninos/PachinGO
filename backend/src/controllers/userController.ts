@@ -6,34 +6,42 @@
  */
 
 import type { Request, Response } from "express";
+import { logger } from "../app.ts";
+import { betterAuthUser } from "../models/BetterUser.ts";
 import Level from "../models/Level.ts";
 import UserInfo from "../models/UserInfo.ts";
 
-/**
- * getUser
- *
- * Gets a user's info from the database
- * @param {Request} req, contains HTTP query with: username
- * @param {Response} res, contains HTTP body with: user info
- */
 export const getUser = async (req: Request, res: Response) => {
   try {
-    const username = req.query.username;
-    const populated = await UserInfo.find().populate({
-      path: "user",
-      match: { username: username },
-      select: "username",
-    });
-    const filter = populated.filter((info) => info.user);
-    const result = filter[0];
+    const name = req.query.name;
 
-    if (!result) {
+    const user = await betterAuthUser
+      .findOne({
+        name: new RegExp(`^${String(name)}$`, "i"),
+      })
+      .select("name createdAt");
+
+    if (!user) {
+      logger.log({
+        level: "warn",
+        message: `USER: User not found, does not exist (Username: ${name})`,
+      });
       return res.status(404).json({ result: "Not Found" });
     }
 
-    return res.status(200).json({ result: result });
+    const userInfo = await UserInfo.findOne({userId: user._id}).select("role likedLevels");
+
+    logger.log({
+      level: "info",
+      message: `USER: User retrieved (Username: ${name})`,
+    });
+
+    return res.status(200).json({ user, userInfo });
   } catch (e) {
-    console.error(e);
+    logger.log({
+      level: "error",
+      message: `USER: User retrieval error (Username: ${req.query.name}): ${e}`,
+    });
     return res.status(500).json({ result: "Internal server error" });
   }
 };
@@ -47,48 +55,33 @@ export const getUser = async (req: Request, res: Response) => {
  */
 export const getUserLevels = async (req: Request, res: Response) => {
   try {
-    const username = req.query.username;
-    const results = await Level.find({ author: username }).sort({
+    const name = req.query.name;
+    const results = await Level.find({ author: name }).sort({
       dateUploaded: -1,
     });
 
     if (!results) {
+      logger.log({
+        level: "warn",
+        message: `USER: User levels not retrieved, none exist (Username: ${name})`,
+      });
       return res.status(204).json({ message: "No results" });
     }
+
+    logger.log({
+      level: "info",
+      message: `USER: User levels retrieved (Username: ${name})`,
+    });
 
     return res.status(200).json({
       results,
     });
   } catch (e) {
-    console.error(e);
-    return res.status(500).json({ message: "Internal server error" });
-  }
-};
-
-/**
- * getUserLikedLevels
- *
- * Gets all levels liked by a user from the database
- * @param {Request} req, contains HTTP query with: username
- * @param {Response} res, contains HTTP body with: likedLevels
- */
-export const getUserLikedLevels = async (req: Request, res: Response) => {
-  try {
-    const username = req.query.username;
-    const populated = await UserInfo.find().populate({
-      path: "user",
-      match: { username: username },
+    logger.log({
+      level: "error",
+      message: `USER: User level retrieval error (Username: ${req.query.name}): ${e}`,
     });
-    const filter = populated.filter((info) => info.user);
-    const result = filter[0];
-
-    if (!result) {
-      return res.status(404).json({ result: "Not Found" });
-    }
-
-    return res.status(200).json({ likedLevels: result.likedLevels });
-  } catch (e) {
-    console.error(e);
     return res.status(500).json({ message: "Internal server error" });
   }
 };
+

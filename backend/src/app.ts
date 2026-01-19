@@ -11,29 +11,53 @@ import dotenv from "dotenv";
 
 dotenv.config();
 
+import { toNodeHandler } from "better-auth/node";
 import cookieParser from "cookie-parser";
 import cors from "cors";
 import express from "express";
-
-import connectDB from "./config/db.ts";
+import { createLogger, format, transports } from "winston";
+import connectDB from "./lib/db.ts";
+import { auth } from "./lib/auth.ts";
 //import { populateUserInfo } from "./config/populate.ts";
 //import { populateLevels } from "./config/populate.ts";
-import Level from "./models/Level.ts";
-import authRoutes from "./routes/authRoutes.ts";
 import levelRoutes from "./routes/levelRoutes.ts";
 import searchRoutes from "./routes/searchRoutes.ts";
-import testRoutes from "./routes/testRoutes.ts";
 import userRoutes from "./routes/userRoutes.ts";
+import { migrateUsersToBetterAuth } from "./migrate.ts";
+
+export const logger = createLogger({
+  level: "info",
+  format: format.combine(
+    format.timestamp({
+      format: "YYYY-MM-DD HH:mm:ss",
+    }),
+    format.errors({ stack: true }),
+    format.splat(),
+    format.json(),
+  ),
+  defaultMeta: { service: "pachingo" },
+  transports: [
+    new transports.File({ filename: "error.log", level: "error" }),
+    new transports.File({ filename: "combined.log" }),
+  ],
+});
+
+if (process.env.NODE_ENV !== "production") {
+  logger.add(
+    new transports.Console({
+      format: format.combine(format.colorize(), format.simple()),
+    }),
+  );
+}
 
 connectDB();
 //populateLevels();
 //populateUserInfo();
 
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 9000;
 const app = express();
 
 app.set("trust proxy", 1);
-app.use(express.json());
 app.use(cookieParser());
 app.use(
   cors({
@@ -49,10 +73,16 @@ app.use(
     credentials: true,
   }),
 );
-app.use("/api/v1", testRoutes);
-app.use("/api/v1/auth", authRoutes);
+
+app.use(express.json());
+
+app.all("/api/auth/*splat", toNodeHandler(auth));
 app.use("/api/v1/search", searchRoutes);
-app.use("/api/v1/users", userRoutes);
+app.use("/api/v1/user", userRoutes);
 app.use("/api/v1/level", levelRoutes);
 
-app.listen(PORT, () => console.log(`Sever running on Port ${PORT}`));
+//await migrateUsersToBetterAuth();
+
+app.listen(PORT, () =>
+  logger.log({ level: "info", message: `SERVER: Server running on Port ${PORT}` }),
+);

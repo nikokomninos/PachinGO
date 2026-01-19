@@ -1,0 +1,21 @@
+---
+title: "v0.2 - Site Rewrite"
+date: "2026-01-18"
+---
+
+This release reworks many major site functions, including an overhaul of the search page and user login and registration!
+
+#### Changes
+- The entire site has been ported over from **React Router** to **NextJS**, enabling easier and faster site development
+- The entire site is now fully dynamic to all different types of screen sizes and resolutions!
+- All components on the site are now fully animated!
+- User authentication has been entirely reworked to use **BetterAuth**
+  - When registering for an account, users will now be prompted to verify their emails
+  - Users now have the ability to reset their password
+- The search page has been entirely reworked, enabling more space for results and a more streamlined filtering experience
+- The changelog section is now live!
+
+#### Fixes
+- Themes are no longer broken when visiting the site for the first time, thanks to **next-themes**
+- Both light and dark mode been updated to make components stand out better
+- Pages that run checks prior to loading, including any pages that require a login, no longer flicker before loading the content

@@ -10,8 +10,7 @@
 import mongoose from "mongoose";
 
 const userInfoSchema = new mongoose.Schema({
-  user: { type: mongoose.Schema.Types.ObjectId, required: true, ref: "User" },
-  dateJoined: { type: Date, required: true },
+  userId: { type: mongoose.Schema.Types.ObjectId, required: true, ref: "User" },
   role: { type: String, required: true },
   likedLevels: { type: [Number], required: true },
 });

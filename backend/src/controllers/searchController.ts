@@ -6,428 +6,324 @@
  */
 
 import type { Request, Response } from "express";
+import { logger } from "../app.ts";
+import { betterAuthUser } from "../models/BetterUser.ts";
 import Level from "../models/Level.ts";
 import UserInfo from "../models/UserInfo.ts";
 
-/**
- * getRecentLevels
- *
- * Returns all levels, ordered by date uploaded, descending
- * current page, total pages
- *
- * @param {number} reqPage, the page number requested
- * @param {number} reqLimit, the number of results per page
- * @returns an object containing results, total, totalPages, currentPage
- */
-export const getRecentLevels = async ({
-  reqPage,
-  reqLimit,
-}: {
-  reqPage: number;
-  reqLimit: number;
-}) => {
+const getSort = (sort: string, order: string): object => {
+  switch (sort) {
+    case "date":
+      switch (order) {
+        case "asc":
+          return { dateUploaded: 1 };
+        case "desc":
+          return { dateUploaded: -1 };
+      }
+      break;
+    case "name":
+      switch (order) {
+        case "asc":
+          return { name: 1 };
+        case "desc":
+          return { name: -1 };
+      }
+      break;
+    case "plays":
+      switch (order) {
+        case "asc":
+          return { plays: 1 };
+        case "desc":
+          return { plays: -1 };
+      }
+      break;
+    case "likes":
+      switch (order) {
+        case "asc":
+          return { likes: 1 };
+        case "desc":
+          return { likes: -1 };
+      }
+      break;
+  }
+
+  return {};
+};
+
+export const getRecentLevels = async (req: Request, res: Response) => {
   try {
-    const page = reqPage || 1;
-    const limit = reqLimit || 25;
-    const skip = ((page as number) - 1) * (limit as number);
+    const limit = Number(req.query.limit) || 25;
+    const page = Number(req.query.page) || 1;
+    const skip = (page - 1) * limit;
 
     const total = (await Level.find()).length;
+
     const results = await Level.find()
       .sort({ dateUploaded: -1 })
       .skip(skip)
-      .limit(limit as number);
+      .limit(limit);
 
-    return {
-      results,
-      total,
-      totalPages: Math.ceil(total / (limit as number)),
-      currentPage: page as number,
-    };
+    logger.log({
+      level: "info",
+      message: "SEARCH: Most recent levels retrieved",
+    });
+
+    return res
+      .status(200)
+      .json({ results, total, totalPages: Math.ceil(total / limit) });
   } catch (e) {
-    console.error(e);
+    logger.log({
+      level: "error",
+      message: `SEARCH: Retrieve most recent levels error: ${e}`,
+    });
     return { message: "Internal server error" };
   }
 };
 
-/**
- * getMostPlayedLevels
- *
- * Returns all levels, ordered by plays, descending
- *
- * @param {number} reqPage, the page number requested
- * @param {number} reqLimit, the number of results per page
- * @returns an object containing results, total, totalPages, currentPage
- */
-export const getMostPlayedLevels = async ({
-  reqPage,
-  reqLimit,
-}: {
-  reqPage: number;
-  reqLimit: number;
-}) => {
+export const getMostPlayedLevels = async (req: Request, res: Response) => {
   try {
-    const page = reqPage || 1;
-    const limit = reqLimit || 25;
-    const skip = ((page as number) - 1) * (limit as number);
+    const limit = Number(req.query.limit) || 25;
+    const page = Number(req.query.page) || 1;
+    const skip = (page - 1) * limit;
 
     const total = (await Level.find()).length;
+
     const results = await Level.find()
       .sort({ plays: -1 })
       .skip(skip)
-      .limit(limit as number);
+      .limit(limit);
 
-    return {
-      results,
-      total,
-      totalPages: Math.ceil(total / (limit as number)),
-      currentPage: page as number,
-    };
+    logger.log({
+      level: "info",
+      message: "SEARCH: Most played levels retrieved",
+    });
+
+    return res
+      .status(200)
+      .json({ results, total, totalPages: Math.ceil(total / limit) });
   } catch (e) {
-    console.error(e);
+    logger.log({
+      level: "error",
+      message: `SEARCH: Retrieve most played levels error: ${e}`,
+    });
     return { message: "Internal server error" };
   }
 };
 
-/**
- * getMostLikedLevels
- *
- * Returns all levels, ordered by likes, descending
- *
- * @param {number} reqPage, the page number requested
- * @param {number} reqLimit, the number of results per page
- * @returns an object containing results, total, totalPages, currentPage
- */
-export const getMostLikedLevels = async ({
-  reqPage,
-  reqLimit,
-}: {
-  reqPage: number;
-  reqLimit: number;
-}) => {
+export const getMostLikedLevels = async (req: Request, res: Response) => {
   try {
-    const page = reqPage || 1;
-    const limit = reqLimit || 25;
-    const skip = ((page as number) - 1) * (limit as number);
+    const limit = Number(req.query.limit) || 25;
+    const page = Number(req.query.page) || 1;
+    const skip = (page - 1) * limit;
 
     const total = (await Level.find()).length;
+
     const results = await Level.find()
       .sort({ likes: -1 })
       .skip(skip)
-      .limit(limit as number);
+      .limit(limit);
 
-    return {
-      results,
-      total,
-      totalPages: Math.ceil(total / (limit as number)),
-      currentPage: page as number,
-    };
+    logger.log({
+      level: "info",
+      message: "SEARCH: Most liked levels retrieved",
+    });
+
+    return res
+      .status(200)
+      .json({ results, total, totalPages: Math.ceil(total / limit) });
   } catch (e) {
-    console.error(e);
+    logger.log({
+      level: "error",
+      message: `SEARCH: Retrieve most liked levels error: ${e}`,
+    });
     return { message: "Internal server error" };
   }
 };
 
-
-/**
- * searchLevelName
- *
- * Returns a paginated result given a search term,
- * based on level name.
- * The request body will determine what page of the
- * results to display
- *
- * @param {Request} req, contains HTTP body with: page, limit, term, sortType, sortOrderType
- * @param {Response} res, contains HTTP body with: status code, results,
- * current page, total pages
- * @returns an HTTP status code of 204 if no results, 200 and a response body if success,
- * 500 and error otherwise
- */
 export const searchLevelName = async (req: Request, res: Response) => {
   try {
-    const page = req.body.page || 1;
-    const limit = req.body.limit || 25;
-    const skip = ((page as number) - 1) * (limit as number);
+    const query = req.query.query;
+    const limit = Number(req.query.limit) || 25;
+    const page = Number(req.query.page) || 1;
+    const skip = (page - 1) * limit;
+    const sort = getSort(req.query.sort as string, req.query.order as string);
 
-    if (req.body.term === "$recent$") {
-      const searchResult: Object = await getRecentLevels({
-        reqPage: page as number,
-        reqLimit: limit as number,
-      });
-      return res.status(200).json({
-        results: (searchResult as any).results,
-        total: (searchResult as any).total,
-        totalPages: (searchResult as any).totalPages,
-        currentPage: (searchResult as any).currentPage,
-      });
-    }
-
-    if (req.body.term === "$plays$") {
-      const searchResult: Object = await getMostPlayedLevels({
-        reqPage: page as number,
-        reqLimit: limit as number,
-      });
-      return res.status(200).json({
-        results: (searchResult as any).results,
-        total: (searchResult as any).total,
-        totalPages: (searchResult as any).totalPages,
-        currentPage: (searchResult as any).currentPage,
-      });
-    }
-
-    if (req.body.term === "$likes$") {
-      const searchResult: Object = await getMostLikedLevels({
-        reqPage: page as number,
-        reqLimit: limit as number,
-      });
-      return res.status(200).json({
-        results: (searchResult as any).results,
-        total: (searchResult as any).total,
-        totalPages: (searchResult as any).totalPages,
-        currentPage: (searchResult as any).currentPage,
-      });
-    }
-
-    let sort;
-
-    // Handle sort type and order
-    switch (req.body.sortType) {
-      case "date":
-        switch (req.body.sortOrderType) {
-          case "asc":
-            sort = { dateUploaded: 1 };
-            break;
-          case "desc":
-            sort = { dateUploaded: -1 };
-            break;
-        }
-        break;
-      case "name":
-        switch (req.body.sortOrderType) {
-          case "asc":
-            sort = { name: 1 };
-            break;
-          case "desc":
-            sort = { name: -1 };
-            break;
-        }
-        break;
-      case "plays":
-        switch (req.body.sortOrderType) {
-          case "asc":
-            sort = { plays: 1 };
-            break;
-          case "desc":
-            sort = { plays: -1 };
-            break;
-        }
-        break;
-      case "likes":
-        switch (req.body.sortOrderType) {
-          case "asc":
-            sort = { likes: 1 };
-            break;
-          case "desc":
-            sort = { likes: -1 };
-            break;
-        }
-        break;
-    }
-
-    //Regex for a case-insensitive match
-    const total = (await Level.find({ name: new RegExp(req.body.term, "i") }))
+    const total = (await Level.find({ name: new RegExp(String(query), "i") }))
       .length;
-    const results = await Level.find({ name: new RegExp(req.body.term, "i") })
+
+    const results = await Level.find({
+      name: new RegExp(String(query), "i"),
+    })
       .sort(sort as any)
       .skip(skip)
-      .limit(limit as number);
+      .limit(limit);
 
     if (!results) {
+      logger.log({
+        level: "warn",
+        message: `SEARCH: No search results: (Type: Level Name, Query: ${req.query.query})`,
+      });
       return res.status(204).json({ message: "No results" });
     }
 
-    return res.status(200).json({
-      results,
-      total,
-      totalPages: Math.ceil(total / (limit as number)),
-      currentPage: page as number,
+    logger.log({
+      level: "info",
+      message: `SEARCH: Search results retrieved (Type: Level Name, Query: ${req.query.query})`,
     });
+
+    return res
+      .status(200)
+      .json({ results, total, totalPages: Math.ceil(total / limit) });
   } catch (e) {
-    console.error(e);
+    logger.log({
+      level: "error",
+      message: `SEARCH: Search error (Type: Level Name, Query: ${req.query.query}): ${e}`,
+    });
     return res.status(500).json({ message: "Internal server error" });
   }
 };
 
-/**
- * searchLevelID
- *
- * Returns a paginated result given a search term,
- * based on level name.
- * The request body will determine what page of the
- * results to display
- *
- * @param {Request} req, contains HTTP body with: page, limit, term
- * @param {Response} res, contains HTTP body with: status code, results,
- * current page, total pages
- * @returns an HTTP status code of 204 if no results, 200 and a response body if success,
- * 500 and error otherwise
- */
 export const searchLevelID = async (req: Request, res: Response) => {
   try {
-    const page = req.body.page || 1;
-    const limit = req.body.limit || 25;
-    const skip = ((page as number) - 1) * (limit as number);
-    const levelID = +req.body.term;
-    if (Number.isNaN(levelID)) return res.status(204).json({ message: "Invalid ID" });
-    //Regex for a case-insensitive match
-    const total = (await Level.find({ levelID })).length;
-    const results = await Level.find({ levelID })
-      .skip(skip)
-      .limit(limit as number);
+    const levelID = req.query.query;
+    const results = await Level.find({ levelID });
 
     if (!results) {
+      logger.log({
+        level: "warn",
+        message: `SEARCH: No search results: (Type: Level ID, Query: ${levelID})`,
+      });
       return res.status(204).json({ message: "No results" });
     }
 
-    return res.status(200).json({
-      results,
-      total,
-      totalPages: Math.ceil(total / (limit as number)),
-      currentPage: page as number,
+    logger.log({
+      level: "info",
+      message: `SEARCH: Search results retrieved (Type: Level ID, Query: ${levelID})`,
     });
+
+    return res.status(200).json({ results });
   } catch (e) {
-    console.error(e);
+    logger.log({
+      level: "error",
+      message: `SEARCH: Search error (Type: Level ID, Query: ${req.query.query}): ${e}`,
+    });
     return res.status(500).json({ message: "Internal server error" });
   }
 };
 
-/**
- * getRecentLevels
- *
- * Returns all levels, ordered by date uploaded, descending
- * current page, total pages
- *
- * @param {number} reqPage, the page number requested
- * @param {number} reqLimit, the number of results per page
- * @returns an object containing results, total, totalPages, currentPage
- */
-export const getRecentUsers = async ({
-  reqPage,
-  reqLimit,
-}: {
-  reqPage: number;
-  reqLimit: number;
-}) => {
+export const getRecentUsers = async (req: Request, res: Response) => {
   try {
-    const page = reqPage || 1;
-    const limit = reqLimit || 25;
-    const skip = ((page as number) - 1) * (limit as number);
+    const limit = Number(req.query.limit) || 25;
+    const page = Number(req.query.page) || 1;
+    const skip = (page - 1) * limit;
 
-    //const total = (await Level.find()).length;
-    //const results = await Level.find()
-    //  .sort({ dateUploaded: -1 })
-    //  .skip(skip)
-    //  .limit(limit as number);
-
-    const populated = await UserInfo.find()
-      .populate({
-        path: "user",
-        select: "username",
-      })
-      .sort({ dateJoined: -1 })
+    const total = (await betterAuthUser.find()).length;
+    const results = await betterAuthUser
+      .find()
+      .sort({ createdAt: -1 })
       .skip(skip)
-      .limit(limit as number);
-    const filtered = populated.filter((info) => info.user);
+      .limit(limit)
+      .lean();
 
-    const total = filtered.length;
-    const results = filtered.slice(skip, skip + (limit as number));
+    const userIds = results.map((u) => u._id);
 
-    return {
-      results,
-      total,
-      totalPages: Math.ceil(total / (limit as number)),
-      currentPage: page as number,
-    };
+    const allUserInfos = await UserInfo.find({
+      userId: { $in: userIds },
+    })
+      .select("userId role")
+      .lean();
+
+    const resultsWithRoles = results.map((user) => {
+      const info = allUserInfos.find(
+        (i) => i.userId.toString() === user._id.toString(),
+      );
+      return {
+        ...user,
+        role: info?.role || "user",
+      };
+    });
+
+    logger.log({
+      level: "info",
+      message: "SEARCH: Most recent users retrieved",
+    });
+
+    return res
+      .status(200)
+      .json({
+        results: resultsWithRoles,
+        total,
+        totalPages: Math.ceil(total / limit),
+      });
   } catch (e) {
-    console.error(e);
+    logger.log({
+      level: "error",
+      message: `SEARCH: Retrieve most recent users error: ${e}`,
+    });
     return { message: "Internal server error" };
   }
 };
 
-/**
- * searchUsers
- *
- * Returns a paginated result given a search term,
- * based on level name.
- * The request body will determine what page of the
- * results to display
- *
- * @param {Request} req, contains HTTP body with: page, limit, term
- * @param {Response} res, contains HTTP body with: status code, results,
- * current page, total pages
- * @returns an HTTP status code of 204 if no results, 200 and a response body if success,
- * 500 and error otherwise
- */
 export const searchUsers = async (req: Request, res: Response) => {
   try {
-    const page = req.body.page || 1;
-    const limit = req.body.limit || 25;
-    const skip = ((page as number) - 1) * (limit as number);
+    const query = req.query.query;
+    const limit = Number(req.query.limit) || 25;
+    const page = Number(req.query.page) || 1;
+    const skip = (page - 1) * limit;
+    const sort = getSort("name", req.query.order as string);
 
-    if (req.body.term === "$recent$") {
-      const searchResult: Object = await getRecentUsers({
-        reqPage: page as number,
-        reqLimit: limit as number,
-      });
-      return res.status(200).json({
-        results: (searchResult as any).results,
-        total: (searchResult as any).total,
-        totalPages: (searchResult as any).totalPages,
-        currentPage: (searchResult as any).currentPage,
-      });
-    }
-
-    let sort;
-
-    // Handle sort type and order
-    switch (req.body.sortType) {
-      case "name":
-        switch (req.body.sortOrderType) {
-          case "asc":
-            sort = { name: 1 };
-            break;
-          case "desc":
-            sort = { name: -1 };
-            break;
-        }
-        break;
-    }
-
-    const populated = await UserInfo.find()
-      .populate({
-        path: "user",
-        match: { username: new RegExp(req.body.term, "i") },
-        select: "username",
-      })
+    const total = (
+      await betterAuthUser.find({ name: new RegExp(String(query), "i") })
+    ).length;
+    const results = await betterAuthUser
+      .find({ name: new RegExp(String(query), "i") })
+      .select("name")
       .sort(sort as any)
       .skip(skip)
-      .limit(limit as number);
-    const filtered = populated.filter((info) => info.user);
-
-    const total = filtered.length;
-    const results = filtered.slice(skip, skip + (limit as number));
+      .limit(limit)
+      .lean();
 
     if (!results) {
+      logger.log({
+        level: "warn",
+        message: `SEARCH: No search results: (Type: User, Query: ${query})`,
+      });
       return res.status(204).json({ message: "No results" });
     }
 
+    const userIds = results.map((u) => u._id);
+
+    const allUserInfos = await UserInfo.find({
+      userId: { $in: userIds },
+    })
+      .select("userId role")
+      .lean();
+
+    const resultsWithRoles = results.map((user) => {
+      const info = allUserInfos.find(
+        (i) => i.userId.toString() === user._id.toString(),
+      );
+      return {
+        ...user,
+        role: info?.role || "user",
+      };
+    });
+
+    logger.log({
+      level: "info",
+      message: `SEARCH: Search results retrieved (Type: User, Query: ${query})`,
+    });
+
     return res.status(200).json({
-      results,
+      results: resultsWithRoles,
       total,
-      totalPages: Math.ceil(total / (limit as number)),
-      currentPage: page as number,
+      totalPages: Math.ceil(total / limit),
     });
   } catch (e) {
-    console.error(e);
+    logger.log({
+      level: "error",
+      message: `SEARCH: Search error (Type: User, Query: ${req.query.query}): ${e}`,
+    });
     return res.status(500).json({ message: "Internal server error" });
   }
 };

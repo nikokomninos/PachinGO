@@ -7,12 +7,11 @@
  */
 
 import express from "express";
-import { getUser, getUserLevels, getUserLikedLevels } from "../controllers/userController.ts";
+import { getUser, getUserLevels } from "../controllers/userController.ts";
 
 const router = express.Router();
 
 router.get("/getUser", getUser);
 router.get("/getUserLevels", getUserLevels);
-router.get("/getUserLikedLevels", getUserLikedLevels);
 
 export default router;

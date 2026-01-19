@@ -12,8 +12,10 @@ import path from "node:path";
 import { fileURLToPath } from "node:url";
 import type { Request, Response } from "express";
 import multer from "multer";
-import { PYTHON_PATH, SCRIPT_PATH } from "../config/env.ts";
-import { removeFromR2, uploadThumbnailToR2, uploadToR2 } from "../config/r2.ts";
+import { logger } from "../app.ts";
+import { PYTHON_PATH, SCRIPT_PATH } from "../lib/env.ts";
+import { removeFromR2, uploadThumbnailToR2, uploadToR2 } from "../lib/r2.ts";
+import { betterAuthUser } from "../models/BetterUser.ts";
 import Counter from "../models/Counter.ts";
 import Level from "../models/Level.ts";
 import UserInfo from "../models/UserInfo.ts";
@@ -29,9 +31,14 @@ const upload = multer();
  */
 export const deleteLevel = async (req: Request, res: Response) => {
   try {
-    const result = await Level.deleteOne({ levelID: req.body.levelID });
+    const level = await Level.findOne({ levelID: req.body.id });
+    const result = await Level.deleteOne({ levelID: req.body.id });
 
     if (!result) {
+      logger.log({
+        level: "warn",
+        message: `LEVEL: Level with ID ${req.body.levelID} not deleted`,
+      });
       return res.status(204).json({ message: "Level not deleted" });
     }
 
@@ -39,9 +46,18 @@ export const deleteLevel = async (req: Request, res: Response) => {
     removeFromR2(`bg-audio/${req.body.levelID}`);
     removeFromR2(`thumbnail/${req.body.levelID}.png`);
 
+    logger.log({
+      level: "info",
+      message: `LEVEL: Level deleted: ${level?.name} by ${level?.author} (ID: ${level?.levelID})`,
+    });
+
     return res.status(200).json({ message: "Level deleted successfuly" });
   } catch (e) {
     console.error(e);
+    logger.log({
+      level: "error",
+      message: `LEVEL: Level deletion error: ${e}`,
+    });
     return res.status(500).json({ message: "Internal server error" });
   }
 };
@@ -102,9 +118,20 @@ export const uploadLevel = [
           process.stderr.on("data", (err) => console.error(err.toString()));
 
           process.on("close", (code) => {
-            console.log(`Python exited with code ${code}`);
-            if (code === 0) resolve();
-            else reject(new Error(`Python script exited with code ${code}`));
+            //console.log(`Python exited with code ${code}`);
+            if (code === 0) {
+              logger.log({
+                level: "info",
+                message: `LEVEL: Thumbnail generated: ${name} by ${author} (ID: ${levelID})`,
+              });
+              resolve();
+            } else {
+              logger.log({
+                level: "warn",
+                message: `LEVEL: Thumbnail failed to generate: ${name} by ${author} (ID: ${levelID})`,
+              });
+              reject(new Error(`Python script exited with code ${code}`));
+            }
           });
         });
       };
@@ -148,11 +175,21 @@ export const uploadLevel = [
         );
 
         fs.unlink(tempPath, (err) => {
-          if (err) console.error("Failed to delete temp file:", err);
+          //if (err) console.error("Failed to delete temp file:", err);
+          if (err)
+            logger.log({
+              level: "error",
+              message: `LEVEL: Failed to delete temp dir from FS: ${err}`,
+            });
         });
 
         fs.unlink(path.join(scriptPath, outputFileName), (err) => {
-          if (err) console.error("Failed to delete thumbnail:", err);
+          //if (err) console.error("Failed to delete thumbnail:", err);
+          if (err)
+            logger.log({
+              level: "error",
+              message: `LEVEL: Failed to delete temp thumbnail file from FS: ${err}`,
+            });
         });
       } else {
         // If there is no user-uploaded background image,
@@ -177,7 +214,12 @@ export const uploadLevel = [
         );
 
         fs.unlink(path.join(scriptPath, outputFileName), (err) => {
-          if (err) console.error("Failed to delete thumbnail:", err);
+          //if (err) console.error("Failed to delete thumbnail:", err);
+          if (err)
+            logger.log({
+              level: "error",
+              message: `LEVEL: Failed to delete temp thumbnail file from FS: ${err}`,
+            });
         });
       }
 
@@ -209,6 +251,11 @@ export const uploadLevel = [
       });
       await newLevel.save();
 
+      logger.log({
+        level: "info",
+        message: `LEVEL: Level successfully uploaded: ${name} by ${author} (ID: ${levelID})`,
+      });
+
       /*
       const user = await User.findOne({ username: author });
       await UserInfo.updateOne(
@@ -225,6 +272,10 @@ export const uploadLevel = [
       });
     } catch (e) {
       console.error(e);
+      logger.log({
+        level: "error",
+        message: `LEVEL: Level uploaded failed (${req.body.name} by ${req.body.author}): ${e}`,
+      });
       return res.status(500).json({ message: "Internal server error" });
     }
   },
@@ -242,12 +293,24 @@ export const loadLevel = async (req: Request, res: Response) => {
     const level = await Level.findOne({ levelID: req.query.levelID });
 
     if (!level) {
+      logger.log({
+        level: "warn",
+        message: `LEVEL: Level failed to load, does not exist: (ID: ${req.query.levelID})`,
+      });
       return res.status(204).json({ message: "Level not found" });
     }
 
+    logger.log({
+      level: "info",
+      message: `LEVEL: Level successfully loaded: (ID: ${req.query.levelID})`,
+    });
+
     return res.status(200).json({ message: "Level found", level });
   } catch (e) {
-    console.error(e);
+    logger.log({
+      level: "error",
+      message: `LEVEL: Level load error (ID: ${req.query.levelID}): ${e}`,
+    });
     return res.status(500).json({ message: "Internal server error" });
   }
 };
@@ -260,18 +323,31 @@ export const loadLevel = async (req: Request, res: Response) => {
  */
 export const addPlayToLevel = async (req: Request, res: Response) => {
   try {
-    const level = await Level.findOne({ levelID: req.body.levelID });
+    const id = Number(req.body.id)
+    const level = await Level.findOne({ levelID: id });
 
     if (!level) {
+      logger.log({
+        level: "warn",
+        message: `LEVEL: Play not added to level, does not exist: (ID: ${id})`,
+      });
       return res.status(204).json({ message: "Level not found" });
     }
 
     level.plays = (level.plays || 0) + 1;
     await level.save();
 
+    logger.log({
+      level: "info",
+      message: `LEVEL: Play added to level: (ID: ${id})`,
+    });
+
     return res.status(200).json({ message: "Play added to level" });
   } catch (e) {
-    console.error(e);
+    logger.log({
+      level: "error",
+      message: `LEVEL: Level play adding error (ID: ${req.body.id}): ${e}`,
+    });
     return res.status(500).json({ message: "Internal server error" });
   }
 };
@@ -285,34 +361,53 @@ export const addPlayToLevel = async (req: Request, res: Response) => {
  */
 export const addLikeToLevel = async (req: Request, res: Response) => {
   try {
-    const level = await Level.findOne({ levelID: req.body.levelID });
+    const levelID = req.body.id;
+    const level = await Level.findOne({ levelID: levelID });
 
     if (!level) {
+      logger.log({
+        level: "warn",
+        message: `LEVEL: Like not added to level, does not exist: (ID: ${levelID})`,
+      });
       return res.status(204).json({ message: "Level not found" });
     }
+
+    const name = req.body.name;
+
+    const user = await betterAuthUser
+      .findOne({
+        name: new RegExp(`^${String(name)}$`, "i"),
+      })
+      .select("name createdAt");
+
+    if (!user) {
+      logger.log({
+        level: "warn",
+        message: `LEVEL: Like not added to level, user does not exist: (User: ${name}, ID: ${levelID})`,
+      });
+      return res.status(404).json({ result: "User not Found" });
+    }
+
+    const userInfo = await UserInfo.findOne({userId: user._id}).select("role likedLevels");
 
     level.likes = (level.likes || 0) + 1;
     await level.save();
 
-    const username = req.body.username;
-    const populated = await UserInfo.find().populate({
-      path: "user",
-      match: { username: username },
+    if (!userInfo?.likedLevels?.includes(levelID))
+      userInfo?.likedLevels?.push(levelID);
+    await userInfo?.save();
+
+    logger.log({
+      level: "info",
+      message: `LEVEL: Like added to level: (User: ${name}, ID: ${levelID})`,
     });
-    const filter = populated.filter((info) => info.user);
-    const result = filter[0];
-
-    if (!result) {
-      return res.status(404).json({ result: "User not Found" });
-    }
-
-    if (!result.likedLevels?.includes(req.body.levelID))
-      result.likedLevels?.push(req.body.levelID);
-    await result.save();
 
     return res.status(200).json({ message: "Like added to level" });
   } catch (e) {
-    console.error(e);
+    logger.log({
+      level: "error",
+      message: `LEVEL: Level like error (ID: ${req.body.id}): ${e}`,
+    });
     return res.status(500).json({ message: "Internal server error" });
   }
 };
@@ -326,36 +421,57 @@ export const addLikeToLevel = async (req: Request, res: Response) => {
  */
 export const removeLikeFromLevel = async (req: Request, res: Response) => {
   try {
-    const level = await Level.findOne({ levelID: req.body.levelID });
+    const levelID = req.body.id;
+    const level = await Level.findOne({ levelID: levelID });
 
     if (!level) {
+      logger.log({
+        level: "warn",
+        message: `LEVEL: Like not added to level, does not exist: (ID: ${levelID})`,
+      });
       return res.status(204).json({ message: "Level not found" });
     }
+
+    const name = req.body.name;
+
+    const user = await betterAuthUser
+      .findOne({
+        name: new RegExp(`^${String(name)}$`, "i"),
+      })
+      .select("name createdAt");
+
+    if (!user) {
+      logger.log({
+        level: "warn",
+        message: `LEVEL: Like not added to level, user does not exist: (User: ${name}, ID: ${levelID})`,
+      });
+      return res.status(404).json({ result: "User not Found" });
+    }
+
+    const userInfo = await UserInfo.findOne({userId: user._id}).select("role likedLevels");
 
     level.likes = (level.likes || 0) - 1;
     await level.save();
 
-    const username = req.body.username;
-    const populated = await UserInfo.find().populate({
-      path: "user",
-      match: { username: username },
+    let filtered: number[];
+
+    if (userInfo?.likedLevels?.includes(levelID)) {
+      filtered = userInfo?.likedLevels?.filter((id: number) => id !== levelID);
+      userInfo.likedLevels = filtered;
+    }
+    await userInfo?.save();
+
+    logger.log({
+      level: "info",
+      message: `LEVEL: Like removed from level: (User: ${name}, ID: ${levelID})`,
     });
-    const filter = populated.filter((info) => info.user);
-    const result = filter[0];
-
-    if (!result) {
-      return res.status(404).json({ result: "User not Found" });
-    }
-
-    if (result.likedLevels?.includes(req.body.levelID)) {
-      const filtered = result.likedLevels?.filter((id) => id !== req.body.levelID);
-      result.likedLevels = filtered;
-    }
-    await result.save();
 
     return res.status(200).json({ message: "Like removed from level" });
   } catch (e) {
-    console.error(e);
+    logger.log({
+      level: "error",
+      message: `LEVEL: Level like error (ID: ${req.body.id}): ${e}`,
+    });
     return res.status(500).json({ message: "Internal server error" });
   }
-}
+};
