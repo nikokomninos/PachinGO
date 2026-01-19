@@ -108,11 +108,15 @@ export const auth = betterAuth({
       session_token: {
         attributes: {
           sameSite: "None",
+          secure: true,
+          httpOnly: true,
         },
       },
     },
     defaultCookieAttributes: {
       sameSite: "None",
+      secure: true,
+      httpOnly: true,
     },
   },
 });

@@ -61,6 +61,7 @@ export default function LoginBox() {
           className="mb-20 hover:drop-shadow-lg dark:hover:drop-shadow-neutral-700 ease-linear duration-150"
         >
           <Logo width={300} height={300} />
+          <h1 className="text-sm mt-4"><strong>Note:</strong> If you participated in our beta, you will need to reset your password before being able to log in again</h1>
         </a>
         <div className="flex md:hidden w-full flex-col justify-center items-center">
           <div className="bg-(--color-bg-alt) flex flex-col justify-center items-center w-full aspect-4/3 mb-10 border border-(--border-alt) rounded-xl">
