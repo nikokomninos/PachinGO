@@ -103,4 +103,15 @@ export const auth = betterAuth({
     }
     return ctx;
   },
+  trustedOrigins: [
+    "playpachingo.vercel.app",
+    "playpachingo.com",
+    "www.playpachingo.com",
+  ],
+  advanced: {
+    crossSubDomainCookies: {
+      enabled: true,
+      domain: "www.playpachingo.com",
+    },
+  },
 });
