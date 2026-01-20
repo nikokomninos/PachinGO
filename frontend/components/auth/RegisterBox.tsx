@@ -57,7 +57,7 @@ export default function RegisterBox() {
   //if (isLoading) return null;
 
   return (
-    <div className="w-[90vw] h-fit md:h-[90vh] bg-(--background) rounded-2xl border border-(--border-alt) flex flex-row overflow-y-scroll">
+    <div className="w-[95vw] md:w-[90vw] h-fit md:h-[90vh] m-2 bg-(--background) rounded-2xl border border-(--border) flex flex-row overflow-y-scroll">
       <div className="flex flex-col items-center lg:items-start p-10 w-fit">
         <Link
           href="/"

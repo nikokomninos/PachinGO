@@ -19,7 +19,7 @@ export default function Home() {
       <div className="flex w-full justify-end mr-[12vw] lg:mr-[5vw] lg:mt-0 md:mt-2 mt-2">
         <AuthMenu />
       </div>
-      <div className="m-2 p-8 md:p-16 sm:p-20 grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-10 w-[95vw] sm:w-[90vw] lg:h-[90vh] md:h-fit rounded-2xl bg-(--background) border border-(--border-alt) overflow-hidden">
+      <div className="m-2 p-8 md:p-16 sm:p-20 grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-10 w-[95vw] sm:w-[90vw] lg:h-[90vh] md:h-fit rounded-2xl bg-(--background) border border-(--border) overflow-hidden">
         <div className="col-span-1 flex flex-col justify-center text-center sm:items-center md:items-center lg:items-center">
           <div className="mb-10">
             <Logo width={400} height={400} />
