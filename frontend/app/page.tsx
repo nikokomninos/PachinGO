@@ -24,8 +24,17 @@ export default function Home() {
           <div className="mb-10">
             <Logo width={400} height={400} />
           </div>
-          <h2 className="text-lg md:text-xl mb-5 md:mb-15 text-(--foreground-alt) font-semibold">
+          <h2 className="text-lg md:text-xl mb-3 text-(--foreground-alt) font-semibold">
             A spiritual successor to <i>Peggle</i>, featuring a level editor!
+          </h2>
+          <h2 className="text-sm text-(--foreground-alt) font-semibold mb-5 md:mb-15">
+            v0.2 out now!{" "}
+            <Link
+              href="/changelog"
+              className="underline text-sm font-semibold hover:text-(--foreground-alt)/75 ease-linear duration-75 whitespace-nowrap"
+            >
+              View Changes {"->"}
+            </Link>
           </h2>
           <div className="sm:flex md:flex lg:hidden w-full flex-col justify-center items-center">
             <video

@@ -11,6 +11,7 @@ export const {
   SCRIPT_PATH,
   BETTER_AUTH_SECRET,
   BETTER_AUTH_URL,
+  BETTER_AUTH_DOMAIN,
   RESEND_API_KEY,
   RESEND_EMAIL,
 } = process.env as Record<string, string>;

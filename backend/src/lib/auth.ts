@@ -3,7 +3,7 @@ import { mongodbAdapter } from "better-auth/adapters/mongodb";
 import { MongoClient } from "mongodb";
 import { logger } from "./logger.ts";
 import { sendPasswordResetEmail, sendVerificationEmail } from "./email.ts";
-import { BETTER_AUTH_URL, MONGO_URI } from "./env.ts";
+import { BETTER_AUTH_DOMAIN, BETTER_AUTH_URL, MONGO_URI } from "./env.ts";
 import UserInfo from "../models/UserInfo.ts";
 
 const client = new MongoClient(MONGO_URI as string);
@@ -112,12 +112,12 @@ export const auth = betterAuth({
   ],
   advanced: {
     defaultCookieAttributes: {
-      httpOnly: true,
-      secure: true,
-      sameSite: "none",
-      partitioned: true,
+      httpOnly: process.env.NODE_ENV  === "production",
+      secure: process.env.NODE_ENV  === "production",
+      sameSite: (process.env.NODE_ENV  === "production" ? "none" : "lax"), 
+      partitioned: process.env.NODE_ENV  === "production",
       path: "/",
-      domain: "playpachingo.com",
+      domain: BETTER_AUTH_DOMAIN!,
     },
   },
 });
