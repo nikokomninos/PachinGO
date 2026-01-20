@@ -31,7 +31,7 @@ export default function RootLayout({
           style={{ backgroundImage: "var(--pattern-url)" }}
           className="bg-repeat animate-[scroll-pattern_100s_linear_infinite] min-h-screen"
         >
-          <div className="bg-(--background) flex-1 p-5 ml-[6vw] mr-[6vw] border-l border-l-(--border) border-r border-r-(--border) min-h-screen">
+          <div className="bg-(--background) flex-1 p-5 ml-[3vw] mr-[3vw] md:ml-[6vw] md:mr-[6vw] border-l border-l-(--border) border-r border-r-(--border) min-h-screen">
             {children}
           </div>
         </div>
