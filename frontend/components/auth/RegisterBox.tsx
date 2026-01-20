@@ -158,10 +158,10 @@ export default function RegisterBox() {
         </div>
       </div>
       <div className="w-full hidden md:block bg-(--background-alt)">
-        <div className="w-full h-full flex flex-col justify-center items-center border-l border-l-(--border-alt) rounded-2xl">
+        <div className="w-full h-full flex flex-col justify-center items-center border-l border-l-(--border-alt) rounded-2xl p-10">
           <video
-            width={800}
-            height={600}
+            width={2000}
+            height={2000}
             autoPlay
             disablePictureInPicture
             loop

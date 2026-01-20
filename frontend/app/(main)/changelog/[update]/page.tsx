@@ -26,7 +26,7 @@ export default async function ChangelogPage({
       <div className="border-t border-b border-(--border) p-10">
         <h1 className="text-3xl font-bold mb-2">{data.title}</h1>
         <p className="text-(--foreground-alt) mb-8">{data.date}</p>
-        <article className="prose prose-p:text-(--foreground) prose-headings:text-(--foreground) prose-li:text-(--foreground) prose-strong:text-(--foreground) prose-invert lg:prose-lg mb-10 line-clamp-8 max-w-none">
+        <article className="prose prose-p:text-(--foreground) prose-headings:text-(--foreground) prose-li:text-(--foreground) prose-strong:text-(--foreground) prose-invert lg:prose-lg mb-10 max-w-none">
           <MDXRemote source={content} />
         </article>
         <div className="flex gap-2 items-center">

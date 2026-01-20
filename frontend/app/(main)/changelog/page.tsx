@@ -27,7 +27,7 @@ export default async function ChangelogIndex() {
               </h2>
             </Link>
 
-            <article className="prose prose-p:text-(--foreground) prose-headings:text-(--foreground) prose-li:text-(--foreground) prose-strong:text-(--foreground) prose-invert lg:prose-lg mb-10 max-w-none">
+            <article className="prose prose-p:text-(--foreground) prose-headings:text-(--foreground) prose-li:text-(--foreground) prose-strong:text-(--foreground) prose-invert lg:prose-lg mb-10 line-clamp-8 max-w-none">
               <MDXRemote source={post.content} />
             </article>
 

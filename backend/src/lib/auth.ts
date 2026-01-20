@@ -104,6 +104,22 @@ export const auth = betterAuth({
     return ctx;
   },
   advanced: {
+    crossSubDomainCookies: {
+      enabled: true,
+      domain: "playpachingo.com",
+    },
+    cookies: {
+      session_token: {
+        attributes: {
+          httpOnly: true,
+          secure: true,
+          sameSite: "none",
+          partitioned: true,
+          path: "/",
+          domain: ".playpachingo.com",
+        },
+      },
+    },
     defaultCookieAttributes: {
       httpOnly: true,
       secure: true,
