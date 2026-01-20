@@ -103,30 +103,21 @@ export const auth = betterAuth({
     }
     return ctx;
   },
+  trustedOrigins: [
+    "https://pachingo.onrender.com",
+    "https://api.playpachingo.com",
+    "https://playpachingo.vercel.app",
+    "https://playpachingo.com",
+    "https://www.playpachingo.com",
+  ],
   advanced: {
-    crossSubDomainCookies: {
-      enabled: true,
-      domain: "playpachingo.com",
-    },
-    cookies: {
-      session_token: {
-        attributes: {
-          httpOnly: true,
-          secure: true,
-          sameSite: "none",
-          partitioned: true,
-          path: "/",
-          domain: ".playpachingo.com",
-        },
-      },
-    },
     defaultCookieAttributes: {
       httpOnly: true,
       secure: true,
       sameSite: "none",
       partitioned: true,
       path: "/",
-      domain: ".playpachingo.com"
+      domain: "playpachingo.com",
     },
   },
 });
