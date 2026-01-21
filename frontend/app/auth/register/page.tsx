@@ -3,7 +3,7 @@ import RegisterBox from "@/components/auth/RegisterBox";
 
 export const metadata: Metadata = {
   title: "Register - PachinGO!",
-  description: "Peggle Reborn",
+  description: "Ready to become a PachinGOD?",
 };
 
 export default function Login() {

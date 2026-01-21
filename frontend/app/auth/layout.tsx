@@ -13,7 +13,7 @@ const inter = Inter({
 
 export const metadata: Metadata = {
   title: "PachinGO!",
-  description: "Peggle Reborn",
+  description: "Ready to become a PachinGOD?",
 };
 
 export default function RootLayout({

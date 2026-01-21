@@ -3,7 +3,7 @@ import Logo from "@/components/nav/Logo";
 
 export const metadata: Metadata = {
   title: "About - PachinGO!",
-  description: "Peggle Reborn",
+  description: "Ready to become a PachinGOD?",
 };
 
 export default function About() {

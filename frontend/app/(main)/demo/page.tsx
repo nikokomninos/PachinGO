@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Demo Levels - PachinGO!",
-  description: "Peggle Reborn",
+  description: "Ready to become a PachinGOD?",
 };
 
 export default function Demo() {

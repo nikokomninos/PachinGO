@@ -4,7 +4,7 @@ import { notFound } from "next/navigation";
 
 export const metadata: Metadata = {
   title: "Play - PachinGO!",
-  description: "Peggle Reborn",
+  description: "Ready to become a PachinGOD?",
 };
 
 async function checkLevelExists(id: string) {

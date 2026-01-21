@@ -7,7 +7,7 @@ import { Suspense } from "react";
 
 export const metadata: Metadata = {
   title: "Search - PachinGO!",
-  description: "Peggle Reborn",
+  description: "Ready to become a PachinGOD?",
 };
 
 export default function RootLayout({

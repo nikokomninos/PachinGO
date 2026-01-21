@@ -3,7 +3,7 @@ import PachinGO from "@/components/game/PachinGO";
 
 export const metadata: Metadata = {
   title: "Editor - PachinGO!",
-  description: "Peggle Reborn",
+  description: "Ready to become a PachinGOD?",
 };
 
 export default function Editor() {
