@@ -11,7 +11,7 @@ import dotenv from "dotenv";
 
 dotenv.config();
 
-import { toNodeHandler } from "better-auth/node";
+import { toNodeHandler, fromNodeHeaders } from "better-auth/node";
 import cookieParser from "cookie-parser";
 import cors from "cors";
 import express from "express";
@@ -64,6 +64,13 @@ app.all("/api/auth/*splat", toNodeHandler(auth));
 app.use("/api/v1/search", searchRoutes);
 app.use("/api/v1/user", userRoutes);
 app.use("/api/v1/level", levelRoutes);
+
+app.get("/api/v1/me", async (req, res) => {
+ 	const session = await auth.api.getSession({
+      headers: fromNodeHeaders(req.headers),
+    });
+	return res.json({name: session?.user.name});
+});
 
 app.listen(PORT, () =>
   logger.log({ level: "info", message: `SERVER: Server running on Port ${PORT}` }),

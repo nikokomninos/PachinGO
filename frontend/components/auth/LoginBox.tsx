@@ -46,7 +46,7 @@ export default function LoginBox() {
     );
 
     if (data) {
-      localStorage.setItem("user", data.user.name);
+      //localStorage.setItem("user", data.user.name);
       router.push("/");
     }
   };

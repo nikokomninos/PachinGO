@@ -108,19 +108,30 @@ if (runtime.layout.name === "Level Editor Online") {
 
 	async Gameplay_Event338_Act15(runtime, localVars)
 	{
-		// Gets the logged in user, and loads the previous state of the level editor peg layout
-		
-		runtime.globalVars.CustomerLevelAuthor = localStorage.getItem("user") || "PachinGO!";
-		
-		const pegDict = JSON.parse(runtime.globalVars.PegData).data;
-		
-		for (const key in pegDict) {
-		    const pegData = pegDict[key];
-		
-		    const newPeg = runtime.objects.Peg.createInstance("Pegs", pegData.x, pegData.y);
-		    newPeg.angle = pegData.angle;
-		    newPeg.setAnimation(pegData.animation);
-		}
+// Gets the logged in user, and loads the previous state of the level editor peg layout
+
+const res = await fetch(`${runtime.globalVars.BackendURL}/api/v1/me`, {
+    method: "GET",
+    mode: "cors",
+    credentials: "include",
+});
+
+const data = await res.json();
+const username = data.name || "PachinGO! Player";
+
+runtime.globalVars.CustomerLevelAuthor = username;
+
+//runtime.globalVars.CustomerLevelAuthor = localStorage.getItem("user") || "PachinGO!";
+
+const pegDict = JSON.parse(runtime.globalVars.PegData).data;
+
+for (const key in pegDict) {
+    const pegData = pegDict[key];
+
+    const newPeg = runtime.objects.Peg.createInstance("Pegs", pegData.x, pegData.y);
+    newPeg.angle = pegData.angle;
+    newPeg.setAnimation(pegData.animation);
+}
 	},
 
 	async Gameplay_Event437_Act2(runtime, localVars)
@@ -206,7 +217,7 @@ const upload = async () => {
     const formData = new FormData();
 
     formData.append("name", runtime.globalVars.CustomLevelName || "Custom Level");
-    formData.append("author", localStorage.getItem("user"));
+    formData.append("author", runtime.globalVars.CustomerLevelAuthor);
     formData.append("desc", runtime.globalVars.CustomLevelDesc || "This level is so fun!");
     formData.append("pegLayout", runtime.globalVars.PegData);
     formData.append("numOrange", runtime.globalVars.NumberOfOrangePegsInLevel);

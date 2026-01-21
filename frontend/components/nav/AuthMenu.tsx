@@ -29,7 +29,7 @@ export default function AuthMenu() {
       {},
       {
         onSuccess: () => {
-          localStorage.removeItem("user");
+          //localStorage.removeItem("user");
           router.push("/");
         },
         onError: (ctx) => {
