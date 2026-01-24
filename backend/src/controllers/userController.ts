@@ -11,6 +11,12 @@ import { betterAuthUser } from "../models/BetterUser.ts";
 import Level from "../models/Level.ts";
 import UserInfo from "../models/UserInfo.ts";
 
+/**
+ * Gets a user's information
+ *
+ * @param req a Request containing: name
+ * @param res A Response containing: user (name, createdAt), userInfo (role, likedLevels)
+ */
 export const getUser = async (req: Request, res: Response) => {
   try {
     const name = req.query.name;
@@ -52,7 +58,7 @@ export const getUser = async (req: Request, res: Response) => {
  * getUserLevels
  *
  * Gets all levels created by a user from the database
- * @param {Request} req, contains HTTP query with: username
+ * @param {Request} req, contains HTTP query with: name
  * @param {Response} res, contains HTTP body with: levels
  */
 export const getUserLevels = async (req: Request, res: Response) => {
