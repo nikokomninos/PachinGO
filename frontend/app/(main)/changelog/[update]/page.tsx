@@ -1,9 +1,13 @@
+// The entry for one specific app update. Pulls the text from
+// an MDX file in /content/changelog, and displays it using
+// MDXRemote
+
 import fs from "node:fs";
 import path from "node:path";
 import matter from "gray-matter";
-import { MDXRemote } from "next-mdx-remote/rsc";
-import { notFound } from "next/navigation";
 import Image from "next/image";
+import { notFound } from "next/navigation";
+import { MDXRemote } from "next-mdx-remote/rsc";
 
 export default async function ChangelogPage({
   params,
@@ -41,7 +45,7 @@ export default async function ChangelogPage({
         </div>
       </div>
     );
-  } catch (e) {
+  } catch (_e) {
     return notFound();
   }
 }

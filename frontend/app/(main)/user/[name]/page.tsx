@@ -1,3 +1,6 @@
+// Page for a user's public profile
+/** biome-ignore-all lint/suspicious/noArrayIndexKey: Order never changes */
+
 import { notFound } from "next/navigation";
 import { Suspense } from "react";
 import LevelCard from "@/components/level/LevelCard";
@@ -5,6 +8,12 @@ import LevelCardSkeleton from "@/components/level/LevelCardSkeleton";
 import UserBox from "@/components/user/UserBox";
 import type { Level } from "@/types/definitions";
 
+/**
+ * Gets a user's info / checks if they exist. If they exist,
+ * return their data, otherwise return null
+ *
+ * @param name the user's name
+ */
 async function getUser(name: string) {
   if (!name) return null;
 
@@ -18,8 +27,12 @@ async function getUser(name: string) {
   return data;
 }
 
+/**
+ * Gets a user's levels.
+ *
+ * @param name the user's name
+ */
 async function getUserLevels(name: string) {
-  //await new Promise((resolve) => setTimeout(resolve, 2000));
   if (!name) return null;
 
   const res = await fetch(
@@ -32,6 +45,11 @@ async function getUserLevels(name: string) {
   return data.results;
 }
 
+/**
+ * The rendered results list of a user's levels after fetching
+ *
+ * @param name the user's name
+ */
 async function UserLevelsList({ name }: { name: string }) {
   const levels: Level[] = await getUserLevels(name);
 
@@ -84,11 +102,7 @@ export default async function User({
 
   return (
     <div className="flex flex-col items-center gap-4 md:gap-6">
-      <UserBox
-        username={username}
-        dateJoined={dateJoined}
-        role={role}
-      />
+      <UserBox username={username} dateJoined={dateJoined} role={role} />
       <Suspense fallback={<LevelsSkeletonGrid />}>
         <UserLevelsList name={username} />
       </Suspense>

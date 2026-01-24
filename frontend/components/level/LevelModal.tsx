@@ -14,6 +14,27 @@ import { getLoggedInUser } from "@/lib/auth";
 import type { UserData } from "@/types/definitions";
 import UserCard from "../user/UserCard";
 
+/**
+ * A component for showing more details about a level, and
+ * handling various action including playing the level,
+ * liking the level and deleting the level
+ *
+ * @param id the level's ID
+ * @param name the level's name
+ * @param author the level's author
+ * @param desc the level's description
+ * @param thumbnail a slug to the level's thumbnail
+ * @param plays the number of plays the level has
+ * @param likes the number of likes the level has
+ * @param dateUploaded the date the level was uploaded
+ * @param numPegs the total number of pegs present in the level
+ * @param numOrange the number of orange pegs present in the level
+ * @param numBalls the number of balls in the level
+ * @param hasBackground a boolean representing if the level uses
+ * a custom background
+ * @param hasMusic a boolean representing if the level uses custom
+ * background music/audio
+ */
 export default function LevelModal({
   setShowModal,
   id,
@@ -30,7 +51,7 @@ export default function LevelModal({
   hasBackground,
   hasMusic,
 }: {
-  setShowModal: Function;
+  setShowModal: React.Dispatch<React.SetStateAction<boolean>>;
   id: string;
   name: string;
   author: string;
@@ -48,6 +69,10 @@ export default function LevelModal({
   const [userData, setUserData] = useState<UserData>();
   const [authorRole, setAuthorRole] = useState("Member");
 
+  // On mount, the component will check the logged in user
+  // to determine various conditions, including allowing
+  // the user to delete a level if it is theirs and whether
+  // they have liked the level already or not
   useEffect(() => {
     async function getUserData() {
       const data = await getLoggedInUser();
@@ -149,7 +174,7 @@ export default function LevelModal({
                 </div>
                 <div className="flex gap-3">
                   <LikeButton
-                    name={userData?.session.user.name || ""}
+                    user={userData?.session.user.name || ""}
                     id={id}
                     likedLevels={userData?.userInfo.likedLevels || []}
                   />
@@ -171,6 +196,21 @@ export default function LevelModal({
   );
 }
 
+/**
+ * A display under the title and author that shows the levels
+ * more intricate data
+ *
+ * @param plays the number of plays the level has
+ * @param likes the number of likes the level has
+ * @param dateUploaded the date the level was uploaded
+ * @param numPegs the total number of pegs present in the level
+ * @param numOrange the number of orange pegs present in the level
+ * @param numBalls the number of balls in the level
+ * @param hasBackground a boolean representing if the level uses
+ * a custom background
+ * @param hasMusic a boolean representing if the level uses custom
+ * background music/audio
+ */
 function LevelInfo({
   plays,
   likes,
@@ -257,6 +297,12 @@ function LevelInfo({
   );
 }
 
+/**
+ * A button that brings the user to the level's
+ * play page
+ *
+ * @param id the level's Level ID
+ */
 function PlayButton({ id }: { id: string }) {
   const router = useRouter();
 
@@ -287,12 +333,21 @@ function PlayButton({ id }: { id: string }) {
   );
 }
 
+/**
+ * A button that likes or unlikes a level.
+ *
+ * @param user the name of the logged in user, null if
+ * not logged in
+ * @param id the level's Level ID
+ * @param likedLevel an array containing all the level's of
+ * the currently logged in user, null if not logged in
+ */
 function LikeButton({
-  name,
+  user,
   id,
   likedLevels,
 }: {
-  name: string;
+  user: string;
   id: string;
   likedLevels: number[];
 }) {
@@ -305,7 +360,7 @@ function LikeButton({
   }, [likedLevels, id]);
 
   async function handleLike() {
-    if (!name) router.push("/auth/login");
+    if (!user) router.push("/auth/login");
     else {
       const res = await fetch(
         `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/v1/level/addLikeToLevel`,
@@ -318,7 +373,7 @@ function LikeButton({
           },
           body: JSON.stringify({
             id: id,
-            name: name,
+            name: user,
           }),
         },
       );
@@ -329,7 +384,7 @@ function LikeButton({
   }
 
   async function handleUnlike() {
-    if (!name) router.push("/auth/login");
+    if (!user) router.push("/auth/login");
     else {
       const res = await fetch(
         `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/v1/level/removeLikeFromLevel`,
@@ -342,7 +397,7 @@ function LikeButton({
           },
           body: JSON.stringify({
             id: id,
-            name: name,
+            name: user,
           }),
         },
       );
@@ -384,13 +439,25 @@ function LikeButton({
   );
 }
 
+/**
+ * A button to delete a level. Is only clickable if the
+ * currently logged in user is the author of the level,
+ * or if they are an admin/moderator
+ *
+ *
+ * @param user the name of the logged in user, null if
+ * not logged in
+ *@param author the author of the level being viewed
+ *@param id the Level ID of the level being viewed
+ *@param role the role of the currently logged in user
+ */
 function DeleteButton({
-  name,
+  user,
   author,
   id,
   role,
 }: {
-  name: string;
+  user: string;
   author: string;
   id: string;
   role: string;
@@ -400,10 +467,10 @@ function DeleteButton({
   const router = useRouter();
 
   useEffect(() => {
-    if (name === author || role === "Moderator" || role === "PachinGOD")
+    if (user === author || role === "Moderator" || role === "PachinGOD")
       setAuthorized(true);
     else setAuthorized(false);
-  }, [name, author, role]);
+  }, [user, author, role]);
 
   async function handleDeletion() {
     const res = await fetch(

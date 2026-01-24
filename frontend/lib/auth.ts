@@ -1,5 +1,9 @@
 import { authClient } from "./auth-client";
 
+/**
+ * Gets the currently logged in user if needed
+ * server-side
+ */
 export async function getLoggedInUser() {
   const { data: session } = await authClient.getSession();
 

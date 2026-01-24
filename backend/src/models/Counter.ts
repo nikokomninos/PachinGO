@@ -1,6 +1,6 @@
 /**
  * Counter
- * 
+ *
  * Schema for a MongoDB document that
  * stores an auto-incrementing sequence
  * used for level IDs

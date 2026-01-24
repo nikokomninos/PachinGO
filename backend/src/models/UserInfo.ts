@@ -1,6 +1,6 @@
 /**
  * UserInfo
- * 
+ *
  * Schema for a MongoDB document that
  * stores a user's info regarding various
  * game features (i.e. links to their created

@@ -6,8 +6,8 @@
  * Uses the functions defined in searchController.ts
  */
 
+import type { Router } from "express";
 import express from "express";
-import type { Router } from "express"
 import {
   getMostLikedLevels,
   getMostPlayedLevels,
@@ -25,7 +25,7 @@ router.get("/getMostPlayedLevels", getMostPlayedLevels);
 router.get("/getMostLikedLevels", getMostLikedLevels);
 router.get("/searchLevelName", searchLevelName);
 router.get("/searchLevelID", searchLevelID);
-router.get("/getRecentUsers", getRecentUsers)
+router.get("/getRecentUsers", getRecentUsers);
 router.get("/searchUsers", searchUsers);
 
 export default router;

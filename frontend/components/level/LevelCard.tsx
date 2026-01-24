@@ -1,12 +1,32 @@
 "use client";
 
-import { AnimatePresence, motion } from "motion/react";
+import { motion } from "motion/react";
 import Image from "next/image";
 import { useState } from "react";
 import { FaCalendarAlt, FaPlayCircle } from "react-icons/fa";
 import { FaThumbsUp } from "react-icons/fa6";
 import LevelModal from "./LevelModal";
 
+/**
+ * A component for showing a level in search results. Clicking
+ * on it will open a modal with more level information
+ *
+ * @param id the level's ID
+ * @param name the level's name
+ * @param author the level's author
+ * @param desc the level's description
+ * @param thumbnail a slug to the level's thumbnail
+ * @param plays the number of plays the level has
+ * @param likes the number of likes the level has
+ * @param dateUploaded the date the level was uploaded
+ * @param numPegs the total number of pegs present in the level
+ * @param numOrange the number of orange pegs present in the level
+ * @param numBalls the number of balls in the level
+ * @param hasBackground a boolean representing if the level uses
+ * a custom background
+ * @param hasMusic a boolean representing if the level uses custom
+ * background music/audio
+ */
 export default function LevelCard({
   id,
   name,
@@ -96,24 +116,24 @@ export default function LevelCard({
             </div>
           </div>
         </div>
-      {showModal && (
-        <LevelModal
-          setShowModal={setShowModal}
-          id={id}
-          name={name}
-          author={author}
-          desc={desc}
-          thumbnail={thumbnail}
-          plays={plays}
-          likes={likes}
-          dateUploaded={dateUploaded}
-          numPegs={numPegs}
-          numOrange={numOrange}
-          numBalls={numBalls}
-          hasBackground={hasBackground}
-          hasMusic={hasMusic}
-        />
-      )}
+        {showModal && (
+          <LevelModal
+            setShowModal={setShowModal}
+            id={id}
+            name={name}
+            author={author}
+            desc={desc}
+            thumbnail={thumbnail}
+            plays={plays}
+            likes={likes}
+            dateUploaded={dateUploaded}
+            numPegs={numPegs}
+            numOrange={numOrange}
+            numBalls={numBalls}
+            hasBackground={hasBackground}
+            hasMusic={hasMusic}
+          />
+        )}
       </div>
     </motion.div>
   );

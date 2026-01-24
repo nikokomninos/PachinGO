@@ -1,3 +1,6 @@
+// The page notifying the user to check for a
+// verification email after registering
+
 import Link from "next/link";
 import Logo from "@/components/nav/Logo";
 

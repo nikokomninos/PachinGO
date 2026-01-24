@@ -11,19 +11,17 @@ import dotenv from "dotenv";
 
 dotenv.config();
 
-import { toNodeHandler, fromNodeHeaders } from "better-auth/node";
+import { fromNodeHeaders, toNodeHandler } from "better-auth/node";
 import cookieParser from "cookie-parser";
 import cors from "cors";
 import express from "express";
-import connectDB from "./lib/db.ts";
+import { format, transports } from "winston";
 import { auth } from "./lib/auth.ts";
-//import { populateUserInfo } from "./config/populate.ts";
-//import { populateLevels } from "./config/populate.ts";
+import connectDB from "./lib/db.ts";
+import { logger } from "./lib/logger.ts";
 import levelRoutes from "./routes/levelRoutes.ts";
 import searchRoutes from "./routes/searchRoutes.ts";
 import userRoutes from "./routes/userRoutes.ts";
-import { format, transports } from "winston";
-import { logger } from "./lib/logger.ts";
 
 if (process.env.NODE_ENV !== "production") {
   logger.add(
@@ -34,8 +32,6 @@ if (process.env.NODE_ENV !== "production") {
 }
 
 await connectDB();
-//populateLevels();
-//populateUserInfo();
 
 const PORT = process.env.PORT || 9000;
 const app = express();
@@ -66,12 +62,15 @@ app.use("/api/v1/user", userRoutes);
 app.use("/api/v1/level", levelRoutes);
 
 app.get("/api/v1/me", async (req, res) => {
- 	const session = await auth.api.getSession({
-      headers: fromNodeHeaders(req.headers),
-    });
-	return res.json({name: session?.user.name});
+  const session = await auth.api.getSession({
+    headers: fromNodeHeaders(req.headers),
+  });
+  return res.json({ name: session?.user.name });
 });
 
 app.listen(PORT, () =>
-  logger.log({ level: "info", message: `SERVER: Server running on Port ${PORT}` }),
+  logger.log({
+    level: "info",
+    message: `SERVER: Server running on Port ${PORT}`,
+  }),
 );

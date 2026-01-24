@@ -5,6 +5,8 @@ import Image from "next/image";
 import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
 
+// The site's logo. Changes colors depending on
+// the user's selected theme
 export default function Logo({
   width,
   height,
@@ -20,10 +22,7 @@ export default function Logo({
   }, []);
 
   return (
-    <div
-      style={{height: height / 4 }}
-      className=""
-    >
+    <div style={{ height: height / 4 }}>
       {!mounted ? null : (
         <AnimatePresence mode="popLayout">
           <motion.div

@@ -1,5 +1,3 @@
-"use client";
-
 import { motion } from "motion/react";
 import { useState } from "react";
 import { GiResize } from "react-icons/gi";
@@ -9,9 +7,9 @@ export default function ResizeButton({
   setGameSize,
 }: {
   gameSize: number[];
-  setGameSize: Function;
+  setGameSize: React.Dispatch<React.SetStateAction<number[]>>;
 }) {
-  const handleGameResize = (width: number, height: number) => {
+  const handleGameResize = (width: number, height: number): void => {
     setGameSize([width, height]);
     const game = document.getElementById("game");
     game?.scrollIntoView({ block: "center", behavior: "smooth" });
@@ -30,7 +28,7 @@ export default function ResizeButton({
             : "flex justify-center items-center w-10 h-10 border border-(--border) bg-(--background-alt) hover:bg-(--background-alt) hover:text-(--foreground-alt) rounded-lg cursor-pointer ease-linear duration-75"
         }
       >
-        <GiResize size={18}/>
+        <GiResize size={18} />
       </button>
 
       {showMenu && (
@@ -93,8 +91,8 @@ function ResizeButtonOption({
   height,
   scale,
 }: {
-  handleGameResize: Function;
-  setShowMenu: Function;
+  handleGameResize: (width: number, height: number) => void;
+  setShowMenu: React.Dispatch<React.SetStateAction<boolean>>;
   gameSize: number[];
   width: number;
   height: number;

@@ -6,8 +6,8 @@
  * Uses the functions defined in userController.ts
  */
 
+import type { Router } from "express";
 import express from "express";
-import type { Router } from "express"
 import { getUser, getUserLevels } from "../controllers/userController.ts";
 
 const router: Router = express.Router();

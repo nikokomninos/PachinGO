@@ -2,8 +2,8 @@
 
 import { AnimatePresence, motion } from "motion/react";
 import { useRouter } from "next/navigation";
-import { useEffect, useState } from "react";
-import { FaCaretDown } from "react-icons/fa";
+import { useState } from "react";
+import { CgProfile } from "react-icons/cg";
 import {
   IoIosExit,
   IoIosLogIn,
@@ -12,24 +12,20 @@ import {
 } from "react-icons/io";
 import { authClient } from "@/lib/auth-client";
 import ThemeMenu from "./ThemeMenu";
-import { CgProfile } from "react-icons/cg";
 
+// A menu above the Navbar that contains anything related
+// to user authentication and profile navigation, as well
+// as changing the site theme
 export default function AuthMenu() {
-  const {
-    data: session,
-    isPending,
-    error,
-    refetch,
-  } = authClient.useSession();
+  const { data: session, isPending } = authClient.useSession();
 
   const router = useRouter();
 
-  const handleLogout = async () => {
-    const { data, error } = await authClient.signOut(
+  const handleLogout = async (): Promise<void> => {
+    await authClient.signOut(
       {},
       {
         onSuccess: () => {
-          //localStorage.removeItem("user");
           router.push("/");
         },
         onError: (ctx) => {
@@ -45,16 +41,16 @@ export default function AuthMenu() {
   return (
     <div className="w-full flex justify-end md:mr-[3vw] tracking-tight">
       {session ? (
-          <motion.div
-            initial={{ scale: 1, opacity: 0, y: -10 }}
-            animate={{ scale: 1, opacity: 1, y: 0 }}
-            exit={{ scale: 1, opacity: 0, y: -10 }}
-            transition={{
-              ease: "backOut",
-              duration: 0.15,
-            }}
-            className="flex flex-row items-center gap-2"
-          >
+        <motion.div
+          initial={{ scale: 1, opacity: 0, y: -10 }}
+          animate={{ scale: 1, opacity: 1, y: 0 }}
+          exit={{ scale: 1, opacity: 0, y: -10 }}
+          transition={{
+            ease: "backOut",
+            duration: 0.15,
+          }}
+          className="flex flex-row items-center gap-2"
+        >
           <ThemeMenu />
           <UserMenu username={session.user.name} handleLogout={handleLogout} />
         </motion.div>
@@ -79,6 +75,8 @@ export default function AuthMenu() {
   );
 }
 
+// The button shown when a user is not logged in
+// Brings them to the login screen
 function LoginButton() {
   return (
     <AnimatePresence>
@@ -98,19 +96,21 @@ function LoginButton() {
           }}
           className="flex items-center justify-center"
         >
-          <IoIosLogIn size={13}/>
+          <IoIosLogIn size={13} />
         </motion.div>
       </a>
     </AnimatePresence>
   );
 }
 
+// The button / popup menu shown when a user
+// is logged in
 function UserMenu({
   username,
   handleLogout,
 }: {
   username: string;
-  handleLogout: Function;
+  handleLogout: () => Promise<void>;
 }) {
   const [showMenu, setShowMenu] = useState(false);
 

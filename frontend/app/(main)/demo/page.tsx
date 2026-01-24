@@ -1,3 +1,5 @@
+// Page for demo levels;
+
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {

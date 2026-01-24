@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 import { FaSortAlphaDown, FaSortAmountDown } from "react-icons/fa";
 import { MdNumbers } from "react-icons/md";
 
+// The filter types available on the search page
 export default function FilterTypes() {
   return (
     <div className="flex gap-4">
@@ -115,7 +116,7 @@ function SortByButton({
 }: {
   value: string;
   currentSort: string;
-  setShowMenu: Function;
+  setShowMenu: React.Dispatch<React.SetStateAction<boolean>>;
 }) {
   const router = useRouter();
   const pathname = usePathname();
@@ -218,7 +219,7 @@ function OrderByButton({
 }: {
   value: string;
   currentOrder: string;
-  setShowMenu: Function;
+  setShowMenu: React.Dispatch<React.SetStateAction<boolean>>;
 }) {
   const router = useRouter();
   const pathname = usePathname();
@@ -326,7 +327,7 @@ function LimitByButton({
 }: {
   value: number;
   currentLimit: number;
-  setShowMenu: Function;
+  setShowMenu: React.Dispatch<React.SetStateAction<boolean>>;
 }) {
   const router = useRouter();
   const pathname = usePathname();

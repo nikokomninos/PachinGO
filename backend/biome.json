@@ -1,13 +1,8 @@
 {
-  "$schema": "https://biomejs.dev/schemas/2.2.0/schema.json",
-  "vcs": {
-    "enabled": true,
-    "clientKind": "git",
-    "useIgnoreFile": true
-  },
+  "$schema": "https://biomejs.dev/schemas/2.3.10/schema.json",
   "files": {
     "ignoreUnknown": true,
-    "includes": ["**", "!node_modules", "!.next", "!dist", "!build", "!public"]
+    "includes": ["**", "!node_modules", "!dist", "!build"]
   },
   "formatter": {
     "enabled": true,
@@ -22,10 +17,7 @@
         "noUnknownAtRules": "off"
       }
     },
-    "domains": {
-      "next": "recommended",
-      "react": "recommended"
-    }
+    "domains": {}
   },
   "assist": {
     "actions": {

@@ -1,3 +1,5 @@
+// The page for the level editor; cannot be accessed unless logged in
+
 import type { Metadata } from "next";
 import PachinGO from "@/components/game/PachinGO";
 

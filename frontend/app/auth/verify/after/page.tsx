@@ -1,3 +1,7 @@
+// The page for processing a user verification
+// after clicking on the verification link
+// in an email
+
 "use client";
 
 import Link from "next/link";
@@ -18,7 +22,7 @@ export default function VerifyAfter() {
         setStatus("Invalid verification!");
         return;
       }
-      const { data, error } = await authClient.verifyEmail({
+      const { error } = await authClient.verifyEmail({
         query: {
           token: token,
         },

@@ -1,10 +1,17 @@
 "use client";
 
 import { usePathname, useRouter } from "next/navigation";
-import { useEffect, useRef, useState, useCallback } from "react";
+import { useEffect, useRef, useState } from "react";
 import ResizeButton from "@/components/game/ResizeButton";
 import GuidelinesButton from "./GuidelinesButton";
 
+/**
+ * The main game component. Holds the game's iframe
+ * and various game settings
+ *
+ * @param id A Level ID. If empty, the game is in editor mode.
+ * If not empty, the game is in play mode
+ */
 export default function PachinGO({ id }: { id: string }) {
   const iframeRef = useRef<HTMLIFrameElement>(null);
   const [gameSize, setGameSize] = useState<number[]>([]);
@@ -12,8 +19,8 @@ export default function PachinGO({ id }: { id: string }) {
   const pathname = usePathname();
   const router = useRouter();
 
-  const [reload, setReload] = useState(0);
-
+  // Prevents the arrow keys from scrolling the page, and instead
+  // allows them to function as in-game controls for the level editor
   useEffect(() => {
     const iframe = iframeRef.current;
     iframe?.contentWindow?.addEventListener("keydown", (e) => {
@@ -25,6 +32,7 @@ export default function PachinGO({ id }: { id: string }) {
     iframe?.addEventListener("mouseover", () => iframe.contentWindow?.focus());
   });
 
+  // Sets various game variables through localStorage
   useEffect(() => {
     if (id) localStorage.setItem("levelID", id);
 
@@ -46,6 +54,9 @@ export default function PachinGO({ id }: { id: string }) {
       setGameSize([800, 600]);
     }
 
+    // On the editor page, this function run on an interval
+    // to check if a user has uploaded a level. If they have,
+    // they will be redirected to the newly uploaded level page
     if (pathname.endsWith("/editor")) {
       const checkUploadStatus = () => {
         const value = localStorage.getItem("uploaded");
@@ -71,6 +82,7 @@ export default function PachinGO({ id }: { id: string }) {
     }
   }, [router, pathname, id]);
 
+  // Scrolls the game into view on page load
   useEffect(() => {
     const game = document.getElementById("game");
     if (gameLoaded) {

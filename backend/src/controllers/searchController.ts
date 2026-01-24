@@ -248,13 +248,11 @@ export const getRecentUsers = async (req: Request, res: Response) => {
       message: "SEARCH: Most recent users retrieved",
     });
 
-    return res
-      .status(200)
-      .json({
-        results: resultsWithRoles,
-        total,
-        totalPages: Math.ceil(total / limit),
-      });
+    return res.status(200).json({
+      results: resultsWithRoles,
+      total,
+      totalPages: Math.ceil(total / limit),
+    });
   } catch (e) {
     logger.log({
       level: "error",

@@ -2,7 +2,7 @@ import { model, Schema } from "mongoose";
 
 /**
  * User
- * 
+ *
  * Schema for a MongoDB document that
  * stores user account credentials info.
  */

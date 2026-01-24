@@ -1,10 +1,13 @@
+// The page for entering an email to send a password
+// reset link to
+
 "use client";
 
+import Link from "next/link";
 import { useState } from "react";
 import { MdMail } from "react-icons/md";
 import Logo from "@/components/nav/Logo";
 import { authClient } from "@/lib/auth-client";
-import Link from "next/link"
 
 export default function ResetPasswordBefore() {
   const [email, setEmail] = useState("");
@@ -17,7 +20,7 @@ export default function ResetPasswordBefore() {
   };
 
   const handleSendResetEmail = async () => {
-    const { data, error } = await authClient.requestPasswordReset({
+    const { error } = await authClient.requestPasswordReset({
       email: email,
     });
 

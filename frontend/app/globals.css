@@ -48,7 +48,7 @@ body {
 }
 
 .no-scroll {
-  overflow: hidden !important;
+  overflow: hidden;
 }
 
 @keyframes scroll-pattern {

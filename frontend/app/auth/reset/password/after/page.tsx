@@ -1,12 +1,15 @@
+// The page for setting a new password after clicking
+// on a reset link
+
 "use client";
 
+import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useState } from "react";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { MdPassword } from "react-icons/md";
 import Logo from "@/components/nav/Logo";
 import { authClient } from "@/lib/auth-client";
-import Link from "next/link";
 
 export default function ResetPasswordAfter() {
   const params = useSearchParams();
@@ -27,7 +30,7 @@ export default function ResetPasswordAfter() {
       setStatus("Invalid password reset.");
       return;
     }
-    const { data, error } = await authClient.resetPassword({
+    const { error } = await authClient.resetPassword({
       newPassword: password,
       token: token,
     });

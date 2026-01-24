@@ -29,7 +29,9 @@ export const getUser = async (req: Request, res: Response) => {
       return res.status(404).json({ result: "Not Found" });
     }
 
-    const userInfo = await UserInfo.findOne({userId: user._id}).select("role likedLevels");
+    const userInfo = await UserInfo.findOne({ userId: user._id }).select(
+      "role likedLevels",
+    );
 
     logger.log({
       level: "info",
@@ -84,4 +86,3 @@ export const getUserLevels = async (req: Request, res: Response) => {
     return res.status(500).json({ message: "Internal server error" });
   }
 };
-

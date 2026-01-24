@@ -13,7 +13,7 @@ export const sendVerificationEmail = async ({
   subject: string;
   text: string;
 }) => {
-  const { data, error } = await resend.emails.send({
+  const { error } = await resend.emails.send({
     from: `PachinGO! <${RESEND_EMAIL}>`,
     to: to,
     subject: subject,
@@ -44,7 +44,7 @@ export const sendPasswordResetEmail = async ({
   subject: string;
   text: string;
 }) => {
-  const { data, error } = await resend.emails.send({
+  const { error } = await resend.emails.send({
     from: `PachinGO! <${RESEND_EMAIL}>`,
     to: to,
     subject: subject,

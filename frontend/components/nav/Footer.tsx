@@ -1,10 +1,7 @@
-/**
- * Footer.tsx - a component for a reusable footer
- */
-
 import Image from "next/image";
 import Link from "next/link";
 
+// The site's footer
 const Footer = () => {
   return (
     <div className="h-fit md:h-10 bg-(--background-alt) border-t border-t-(--border) p-5 flex flex-row justify-center items-center gap-12 md:gap-5">

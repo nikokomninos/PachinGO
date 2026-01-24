@@ -6,8 +6,8 @@
  * Uses the functions defined in levelController.ts
  */
 
+import type { Router } from "express";
 import express from "express";
-import type { Router } from "express"
 import {
   addLikeToLevel,
   addPlayToLevel,

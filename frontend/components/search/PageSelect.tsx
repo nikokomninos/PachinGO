@@ -3,6 +3,7 @@
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { FaCaretLeft, FaCaretRight } from "react-icons/fa";
 
+// The page selection component located at the bottom of a search
 export default function PageSelect({
   page,
   totalPages,
@@ -25,15 +26,16 @@ export default function PageSelect({
     if (e.key === "Enter") {
       const currentParams = new URLSearchParams(params.toString());
       const input = document.getElementById("pageInput") as HTMLInputElement;
+
+      // Prevent all invalid input types
       if (Number.isNaN(+input.value)) return;
       else currentParams.set("page", input.value.toString());
 
       if (Number(input.value) < 1) currentParams.set("page", "1");
-      if (Number(input.value) > totalPages) currentParams.set("page", totalPages.toString());
+      if (Number(input.value) > totalPages)
+        currentParams.set("page", totalPages.toString());
 
       router.push(`${pathname}?${currentParams.toString()}`);
-
-      //e.currentTarget.blur();
     }
   };
 

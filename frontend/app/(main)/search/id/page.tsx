@@ -1,11 +1,17 @@
+// Page for level search by Level ID
+/** biome-ignore-all lint/suspicious/noArrayIndexKey: Order never changes */
+
 import { Suspense } from "react";
 import LevelCard from "@/components/level/LevelCard";
 import LevelCardSkeleton from "@/components/level/LevelCardSkeleton";
 import type { Level } from "@/types/definitions";
 
+/**
+ * Gets the results of a Level ID search query
+ *
+ * @param query the search query (Level ID)
+ */
 async function getResults(query: string) {
-  //await new Promise((resolve) => setTimeout(resolve, 2000));
-
   if (!query) return [];
   const res = await fetch(
     `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/v1/search/searchLevelID?query=${query}`,
@@ -17,6 +23,11 @@ async function getResults(query: string) {
   return data;
 }
 
+/**
+ * The rendered results list of a Level ID search query
+ *
+ * @param query the search query (Level ID)
+ */
 async function SearchResultsList({ query }: { query: string }) {
   const data = query ? await getResults(query) : { results: [] };
 

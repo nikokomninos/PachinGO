@@ -1,6 +1,6 @@
 /**
  * Level
- * 
+ *
  * Schema for a MongoDB document that
  * stores a level and its attributes
  */
@@ -48,7 +48,7 @@ levelSchema.pre("save", async function (next) {
     const counter = await Counter.findByIdAndUpdate(
       { _id: "levelId" },
       { $inc: { seq: 1 } },
-      { new: true, upsert: true }
+      { new: true, upsert: true },
     );
     this.levelID = counter.seq;
   }

@@ -1,14 +1,10 @@
 "use client";
 
-/**
- * Navbar.tsx - a component for the site's navbar
- */
-
-import { AnimatePresence, easeOut, motion } from "motion/react";
+import { AnimatePresence, motion } from "motion/react";
+import Link from "next/link";
 import { useState } from "react";
 import {
   FaCaretDown,
-  FaCaretUp,
   FaInfoCircle,
   FaMoneyBillWave,
   FaPlay,
@@ -18,8 +14,9 @@ import {
 import { IoMail } from "react-icons/io5";
 import AuthMenu from "./AuthMenu";
 import NavbarLogo from "./NavbarLogo";
-import Link from "next/link";
 
+// The site's multi-layered Navbar. On top is a the AuthMenu,
+// on bottom is the the main navigation links
 export default function Navbar() {
   const [showMenu, setShowMenu] = useState(false);
 

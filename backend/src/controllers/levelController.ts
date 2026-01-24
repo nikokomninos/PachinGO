@@ -12,8 +12,8 @@ import path from "node:path";
 import { fileURLToPath } from "node:url";
 import type { Request, Response } from "express";
 import multer from "multer";
-import { logger } from "../lib/logger.ts";
 import { PYTHON_PATH, SCRIPT_PATH } from "../lib/env.ts";
+import { logger } from "../lib/logger.ts";
 import { removeFromR2, uploadThumbnailToR2, uploadToR2 } from "../lib/r2.ts";
 import { betterAuthUser } from "../models/BetterUser.ts";
 import Counter from "../models/Counter.ts";
@@ -101,9 +101,9 @@ export const uploadLevel: any[] = [
 
       // Helper to generate thumbnails
       const runThumbnailGeneration = (
-        pythonPath: any,
-        scriptPath: any,
-        args: any,
+        pythonPath: string,
+        scriptPath: string,
+        args: any[],
       ) => {
         return new Promise<void>((resolve, reject) => {
           const process = spawn(
@@ -118,7 +118,6 @@ export const uploadLevel: any[] = [
           process.stderr.on("data", (err) => console.error(err.toString()));
 
           process.on("close", (code) => {
-            //console.log(`Python exited with code ${code}`);
             if (code === 0) {
               logger.log({
                 level: "info",
@@ -142,7 +141,7 @@ export const uploadLevel: any[] = [
         backgroundUrl = await uploadToR2(
           bgFile,
           "bg-image",
-          levelID!.toString(),
+          levelID?.toString() || "",
         );
 
         // Create temp dir to save background file
@@ -156,8 +155,8 @@ export const uploadLevel: any[] = [
         const __filename = fileURLToPath(import.meta.url);
         const __dirname = path.dirname(__filename);
         //const pythonPath = path.resolve(__dirname, "../../scripts", PYTHON_PATH!);
-        const pythonPath = path.resolve(__dirname, PYTHON_PATH!);
-        const scriptPath = path.resolve(__dirname, SCRIPT_PATH!);
+        const pythonPath = path.resolve(__dirname, PYTHON_PATH || "");
+        const scriptPath = path.resolve(__dirname, SCRIPT_PATH || "");
 
         const outputFileName = `thumbnail_${levelID}.png`;
 
@@ -171,7 +170,7 @@ export const uploadLevel: any[] = [
 
         thumbnailUrl = await uploadThumbnailToR2(
           path.join(scriptPath, outputFileName),
-          levelID!.toString(),
+          levelID.toString() || "",
         );
 
         fs.unlink(tempPath, (err) => {
@@ -196,8 +195,8 @@ export const uploadLevel: any[] = [
         // still generate the thumbnail
         const __filename = fileURLToPath(import.meta.url);
         const __dirname = path.dirname(__filename);
-        const pythonPath = path.resolve(__dirname, PYTHON_PATH!);
-        const scriptPath = path.resolve(__dirname, SCRIPT_PATH!);
+        const pythonPath = path.resolve(__dirname, PYTHON_PATH || "");
+        const scriptPath = path.resolve(__dirname, SCRIPT_PATH || "");
         const outputFileName = `thumbnail_${levelID}.png`;
 
         await runThumbnailGeneration(pythonPath, scriptPath, [
@@ -210,7 +209,7 @@ export const uploadLevel: any[] = [
 
         thumbnailUrl = await uploadThumbnailToR2(
           path.join(scriptPath, outputFileName),
-          levelID!.toString(),
+          levelID.toString() || "",
         );
 
         fs.unlink(path.join(scriptPath, outputFileName), (err) => {
@@ -225,8 +224,9 @@ export const uploadLevel: any[] = [
 
       // If a music file is included
       if (req.files && "music" in req.files) {
-        const musicFile = (req.files as any)["music"][0];
-        musicUrl = await uploadToR2(musicFile, "bg-audio", levelID!.toString());
+        const musicFile = (req.files as any).music[0];
+        musicUrl =
+          (await uploadToR2(musicFile, "bg-audio", levelID.toString())) || "";
       }
 
       const newLevel = new Level({
@@ -323,7 +323,7 @@ export const loadLevel = async (req: Request, res: Response) => {
  */
 export const addPlayToLevel = async (req: Request, res: Response) => {
   try {
-    const id = Number(req.body.id)
+    const id = Number(req.body.id);
     const level = await Level.findOne({ levelID: id });
 
     if (!level) {
@@ -388,7 +388,9 @@ export const addLikeToLevel = async (req: Request, res: Response) => {
       return res.status(404).json({ result: "User not Found" });
     }
 
-    const userInfo = await UserInfo.findOne({userId: user._id}).select("role likedLevels");
+    const userInfo = await UserInfo.findOne({ userId: user._id }).select(
+      "role likedLevels",
+    );
 
     level.likes = (level.likes || 0) + 1;
     await level.save();
@@ -448,7 +450,9 @@ export const removeLikeFromLevel = async (req: Request, res: Response) => {
       return res.status(404).json({ result: "User not Found" });
     }
 
-    const userInfo = await UserInfo.findOne({userId: user._id}).select("role likedLevels");
+    const userInfo = await UserInfo.findOne({ userId: user._id }).select(
+      "role likedLevels",
+    );
 
     level.likes = (level.likes || 0) - 1;
     await level.save();

@@ -4,6 +4,8 @@ import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { useState } from "react";
 import { VscSearch } from "react-icons/vsc";
 
+// The search bar located on all search pages
+// Works by pushing search parameters to the URL
 export default function SearchBar() {
   const router = useRouter();
   const pathname = usePathname();

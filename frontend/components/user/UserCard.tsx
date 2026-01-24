@@ -2,9 +2,16 @@
 
 import { motion } from "motion/react";
 import Image from "next/image";
-import { useEffect, useState } from "react";
 import Link from "next/link";
+import { useEffect, useState } from "react";
 
+/**
+ * A component for showing a user in search results. Clicking
+ * on it will navigate to the user's public profile
+ *
+ * @param name the user's name
+ * @param role the user's role
+ */
 export default function UserCard({
   name,
   role,

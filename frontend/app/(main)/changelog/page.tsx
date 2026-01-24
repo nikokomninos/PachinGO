@@ -1,3 +1,7 @@
+// Page that shows all individual changelog entries. Aggregates
+// them from the /content/changelog folder using
+// the getAllChangelogs function
+
 import Link from "next/link";
 import { MDXRemote } from "next-mdx-remote/rsc";
 import { getAllChangelogs } from "@/lib/changelog";

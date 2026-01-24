@@ -1,26 +1,21 @@
 "use client";
 
-/**
- * RegisterBox.tsx - a component for the registration box,
- * contains frontend logic for user registration
- */
-
+import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { IoMdContact } from "react-icons/io";
 import { MdEmail, MdPassword } from "react-icons/md";
 import { authClient } from "@/lib/auth-client";
 import Logo from "../nav/Logo";
-import Link from "next/link";
 
+// A component for the register box, contains frontend logic for user registration
 export default function RegisterBox() {
   const [email, setEmail] = useState("");
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const [status, setStatus] = useState("");
-  const [isLoading, setIsLoading] = useState(true);
 
   const router = useRouter();
 
@@ -31,7 +26,7 @@ export default function RegisterBox() {
   };
 
   const handleRegister = async () => {
-    const { data, error } = await authClient.signUp.email(
+    const { error } = await authClient.signUp.email(
       {
         email: email,
         name: username,
@@ -44,7 +39,6 @@ export default function RegisterBox() {
         onSuccess: () => {
           router.push("/auth/verify/before");
         },
-        onError: (ctx) => {},
       },
     );
 
@@ -53,8 +47,6 @@ export default function RegisterBox() {
       else setStatus(error.message || "");
     }
   };
-
-  //if (isLoading) return null;
 
   return (
     <div className="w-[95vw] md:w-[90vw] h-fit md:h-[90vh] m-2 bg-(--background) rounded-2xl border border-(--border) flex flex-row overflow-y-scroll">

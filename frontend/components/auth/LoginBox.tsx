@@ -1,10 +1,5 @@
 "use client";
 
-/**
- * LoginBox.tsx - a component for the login box,
- * contains frontend logic for user login
- */
-
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
@@ -12,6 +7,7 @@ import { MdMail, MdPassword } from "react-icons/md";
 import { authClient } from "@/lib/auth-client";
 import Logo from "../nav/Logo";
 
+// A component for the login box, contains frontend logic for user login
 export default function LoginBox() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -46,12 +42,9 @@ export default function LoginBox() {
     );
 
     if (data) {
-      //localStorage.setItem("user", data.user.name);
       router.push("/");
     }
   };
-
-  //if (isLoading) return null;
 
   return (
     <div className="w-[95vw] md:w-[90vw] h-fit md:h-[90vh] m-2 bg-(--background) rounded-2xl border border-(--border) flex flex-row overflow-y-scroll">

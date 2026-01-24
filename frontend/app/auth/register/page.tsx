@@ -1,3 +1,5 @@
+// The page for registering an account
+
 import type { Metadata } from "next";
 import RegisterBox from "@/components/auth/RegisterBox";
 

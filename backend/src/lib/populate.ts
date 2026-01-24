@@ -8,7 +8,7 @@ export const populateLevels = async () => {
       name: `My Level ${i}`,
       author: "testUser",
       description: `Desc ${i}`,
-      pegLayout: {"Peg1":"Test"},
+      pegLayout: { Peg1: "Test" },
       backgroundImage: "image",
       backgroundAudio: "audio",
       numOrange: "25",
@@ -16,14 +16,14 @@ export const populateLevels = async () => {
     });
     await newLevel.save();
   }
-}
+};
 
 export const populateUserInfo = async () => {
   const allUsers = await User.find();
   for (let i = 0; i < allUsers.length; i++) {
     const newUserInfo = new UserInfo({
-      user: allUsers[i]
-    })
+      user: allUsers[i],
+    });
     await newUserInfo.save();
   }
-}
+};

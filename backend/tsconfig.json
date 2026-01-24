@@ -2,16 +2,16 @@
   // Visit https://aka.ms/tsconfig to read more about this file
   "compilerOptions": {
     // File Layout
-     "rootDir": "./",
-     "outDir": "./dist",
+    "rootDir": "./",
+    "outDir": "./dist",
 
     // Environment Settings
     // See also https://aka.ms/tsconfig/module
     "module": "nodenext",
     "target": "esnext",
     // For nodejs:
-     "lib": ["esnext"],
-     "types": ["node", "jest"],
+    "lib": ["esnext"],
+    "types": ["node", "jest"],
     // and npm install -D @types/node
 
     // Other Outputs
@@ -42,6 +42,6 @@
 
     "emitDeclarationOnly": true,
     "allowImportingTsExtensions": true,
-    "esModuleInterop": true,
+    "esModuleInterop": true
   }
 }

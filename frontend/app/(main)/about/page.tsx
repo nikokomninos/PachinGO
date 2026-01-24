@@ -1,7 +1,9 @@
+// About page; displays info about the game, website and dev team
+
 import type { Metadata } from "next";
-import Logo from "@/components/nav/Logo";
-import { FaGithub, FaLinkedin } from "react-icons/fa";
 import Image from "next/image";
+import { FaGithub, FaLinkedin } from "react-icons/fa";
+import Logo from "@/components/nav/Logo";
 
 export const metadata: Metadata = {
   title: "About - PachinGO!",
@@ -86,7 +88,13 @@ function Developer({
   return (
     <div className="flex flex-col justify-center items-center mt-5">
       <div className="flex w-40 h-40 justify-center items-center text-lg">
-        <Image src={picture} alt={name} width={800} height={800} className="rounded-sm"/>
+        <Image
+          src={picture}
+          alt={name}
+          width={800}
+          height={800}
+          className="rounded-sm"
+        />
       </div>
       <p className="mt-5 text-md md:text-lg">{name}</p>
       <p className="text-(--foreground-alt) text-sm mb-3">{roles}</p>

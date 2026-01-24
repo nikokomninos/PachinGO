@@ -1,9 +1,21 @@
+// Page for level search by Level Name
+/** biome-ignore-all lint/suspicious/noArrayIndexKey: Order never changes */
+
 import { Suspense } from "react";
 import LevelCard from "@/components/level/LevelCard";
 import LevelCardSkeleton from "@/components/level/LevelCardSkeleton";
 import PageSelect from "@/components/search/PageSelect";
 import type { Level } from "@/types/definitions";
 
+/**
+ * Gets the results of a Level Name search query
+ *
+ * @param query the search query (Level Name)
+ * @param page the page to pull from the results
+ * @param limit the number of search results to show on page
+ * @param sort how the results are sorted by (DATE, NAME, etc.)
+ * @param order how the results are ordered by (ASC, DESC)
+ */
 async function getResults(
   query: string,
   page: string,
@@ -11,8 +23,6 @@ async function getResults(
   sort: string,
   order: string,
 ) {
-  //await new Promise((resolve) => setTimeout(resolve, 2000));
-
   if (!query) return [];
   const res = await fetch(
     `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/v1/search/searchLevelName?query=${query}&page=${page}&limit=${limit}&sort=${sort}&order=${order}`,
@@ -24,6 +34,14 @@ async function getResults(
   return data;
 }
 
+/**
+ * Retrieves the results of a special search
+ * (i.e. "Most Played" & "Most Liked")
+ *
+ * @param query the search query (Level Name)
+ * @param page the page to pull from the results
+ * @param limit the number of search results to show on page
+ */
 async function getSpecialSearch(type: string, page: string, limit: string) {
   if (type === "plays") {
     const res = await fetch(
@@ -48,9 +66,14 @@ async function getSpecialSearch(type: string, page: string, limit: string) {
   }
 }
 
+/**
+ * Retrieves the most recent levels, which are what are shown
+ * by default on first page load if no query is present
+ *
+ * @param page the page to pull from the results
+ * @param limit the number of search results to show on page
+ */
 async function getRecent(page: string, limit: string) {
-  //await new Promise((resolve) => setTimeout(resolve, 2000));
-
   const res = await fetch(
     `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/v1/search/getRecentLevels?page=${page}&limit=${limit}`,
     { cache: "no-store" },
@@ -61,6 +84,15 @@ async function getRecent(page: string, limit: string) {
   return data;
 }
 
+/**
+ * The rendered results list of a Level Name search query
+ *
+ * @param query the search query (Level Name)
+ * @param page the page to pull from the results
+ * @param limit the number of search results to show on page
+ * @param sort how the results are sorted by (DATE, NAME, etc.)
+ * @param order how the results are ordered by (ASC, DESC)
+ */
 async function SearchResultsList({
   query,
   page,
@@ -78,7 +110,9 @@ async function SearchResultsList({
 }) {
   const data = query
     ? await getResults(query, page, limit, sort, order)
-    : (special ? await getSpecialSearch(special, page, limit) : await getRecent(page, limit));
+    : special
+      ? await getSpecialSearch(special, page, limit)
+      : await getRecent(page, limit);
 
   const results: Level[] = data.results;
   const total: number = data.total;

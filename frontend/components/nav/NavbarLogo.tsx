@@ -5,6 +5,8 @@ import Image from "next/image";
 import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
 
+// A version of logo specifically made to fit the Navbar
+// Changes colors depending on the user's selected theme
 export default function NavbarLogo({
   width,
   height,
@@ -20,10 +22,7 @@ export default function NavbarLogo({
   }, []);
 
   return (
-    <div
-      style={{width: width, height: height / 4 }}
-      className=""
-    >
+    <div style={{ width: width, height: height / 4 }}>
       {!mounted ? null : (
         <AnimatePresence mode="popLayout">
           <motion.div

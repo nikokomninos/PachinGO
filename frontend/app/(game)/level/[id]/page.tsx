@@ -1,12 +1,20 @@
+// The page for playing a level; will show a notFound error
+// if the level does not exist
+
 import type { Metadata } from "next";
-import PachinGO from "@/components/game/PachinGO";
 import { notFound } from "next/navigation";
+import PachinGO from "@/components/game/PachinGO";
 
 export const metadata: Metadata = {
   title: "Play - PachinGO!",
   description: "Ready to become a PachinGOD?",
 };
 
+/**
+ * checkLevelExists - The server checks if a level exists.
+ * If it does, load the game in with the level. Otherwise,
+ * display a notFound error.
+ */
 async function checkLevelExists(id: string) {
   const res = await fetch(
     `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/v1/level/loadLevel?levelID=${id}`,

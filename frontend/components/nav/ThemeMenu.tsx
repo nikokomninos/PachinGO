@@ -6,6 +6,8 @@ import { useEffect, useState } from "react";
 import { FaMoon, FaSun } from "react-icons/fa";
 import { MdMonitor } from "react-icons/md";
 
+// A menu that allows the user to change the site's theme
+// between Light, Dark and System
 export default function ThemeMenu() {
   const [showMenu, setShowMenu] = useState(false);
   const [mounted, setMounted] = useState(false);

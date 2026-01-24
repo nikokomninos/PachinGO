@@ -1,17 +1,26 @@
+// Page for user search
+/** biome-ignore-all lint/suspicious/noArrayIndexKey: Order never changes */
+
 import { Suspense } from "react";
 import PageSelect from "@/components/search/PageSelect";
 import UserCard from "@/components/user/UserCard";
 import UserCardSkeleton from "@/components/user/UserCardSkeleton";
 import type { PachUser } from "@/types/definitions";
 
+/**
+ * Gets the results of a User search query
+ *
+ * @param query the search query (User)
+ * @param page the page to pull from the results
+ * @param limit the number of search results to show on page
+ * @param order how the results are ordered by (ASC, DESC)
+ */
 async function getResults(
   query: string,
   page: string,
   limit: string,
   order: string,
 ) {
-  //await new Promise((resolve) => setTimeout(resolve, 2000));
-
   if (!query) return [];
   const res = await fetch(
     `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/v1/search/searchUsers?query=${query}&page=${page}&limit=${limit}&order=${order}`,
@@ -23,9 +32,14 @@ async function getResults(
   return data;
 }
 
+/**
+ * Retrieves the most recent users, which are what are shown
+ * by default on first page load if no query is present
+ *
+ * @param page the page to pull from the results
+ * @param limit the number of search results to show on page
+ */
 async function getRecent(page: string, limit: string) {
-  //await new Promise((resolve) => setTimeout(resolve, 2000));
-
   const res = await fetch(
     `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/v1/search/getRecentUsers?page=${page}&limit=${limit}`,
     { cache: "no-store" },
@@ -36,17 +50,23 @@ async function getRecent(page: string, limit: string) {
   return data;
 }
 
+/**
+ * The rendered results list of a User search query
+ *
+ * @param query the search query (User)
+ * @param page the page to pull from the results
+ * @param limit the number of search results to show on page
+ * @param order how the results are ordered by (ASC, DESC)
+ */
 async function SearchResultsList({
   query,
   page,
   limit,
-  sort,
   order,
 }: {
   query: string;
   page: string;
   limit: string;
-  sort: string;
   order: string;
 }) {
   const data = query
@@ -99,7 +119,6 @@ export default async function SearchName({
   const query = resolvedParams.query;
   const page = resolvedParams.page || "1";
   const limit = resolvedParams.limit || "25";
-  const sort = resolvedParams.sort || "date";
   const order = resolvedParams.order || "desc";
   const key = JSON.stringify(resolvedParams);
 
@@ -110,7 +129,6 @@ export default async function SearchName({
           query={query}
           page={page}
           limit={limit}
-          sort={sort}
           order={order}
         />
       </Suspense>

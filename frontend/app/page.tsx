@@ -1,3 +1,4 @@
+import Link from "next/link";
 import {
   FaInfoCircle,
   FaMoneyBillWave,
@@ -8,7 +9,6 @@ import {
 import { IoMail } from "react-icons/io5";
 import AuthMenu from "@/components/nav/AuthMenu";
 import Logo from "@/components/nav/Logo";
-import Link from "next/link";
 
 export default function Home() {
   return (

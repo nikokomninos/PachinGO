@@ -112,12 +112,12 @@ export const auth = betterAuth({
   ],
   advanced: {
     defaultCookieAttributes: {
-      httpOnly: process.env.NODE_ENV  === "production",
-      secure: process.env.NODE_ENV  === "production",
-      sameSite: (process.env.NODE_ENV  === "production" ? "none" : "lax"), 
-      partitioned: process.env.NODE_ENV  === "production",
+      httpOnly: process.env.NODE_ENV === "production",
+      secure: process.env.NODE_ENV === "production",
+      sameSite: process.env.NODE_ENV === "production" ? "none" : "lax",
+      partitioned: process.env.NODE_ENV === "production",
       path: "/",
-      domain: BETTER_AUTH_DOMAIN!,
+      domain: BETTER_AUTH_DOMAIN || "",
     },
   },
 });

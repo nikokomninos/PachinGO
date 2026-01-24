@@ -1,7 +1,8 @@
-"use client"
+"use client";
 
 import { usePathname } from "next/navigation";
 
+// The different search types pickable by the user
 export default function SearchTypes() {
   return (
     <div className="flex gap-4">

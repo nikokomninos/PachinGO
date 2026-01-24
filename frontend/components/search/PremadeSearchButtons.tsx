@@ -1,5 +1,6 @@
 import { FaClock, FaHeart, FaPlayCircle } from "react-icons/fa";
 
+// The multiple special searches located on all search pages
 export default function PremadeSearchButtons() {
   return (
     <div className="flex md:flex-row md:justify-between gap-4">

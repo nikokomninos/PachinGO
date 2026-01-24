@@ -11,6 +11,8 @@ function setRoleStyle(role: string) {
   }
 }
 
+// A box visible on a user's public profile containing
+// their public information
 export default function UserBox({
   username,
   role,

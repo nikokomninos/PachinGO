@@ -3,6 +3,7 @@ import { useCallback, useEffect, useState } from "react";
 import { FaQuestion } from "react-icons/fa";
 import Logo from "@/components/nav/Logo";
 
+// A component that shows the user guidelines on the editor page
 export default function GuidelinesButton() {
   const [showModal, setShowModal] = useState(() => {
     if (localStorage.getItem("seenGuidelines") === "true") return false;
@@ -10,8 +11,7 @@ export default function GuidelinesButton() {
   });
 
   useEffect(() => {
-    setTimeout(() => {
-    }, 500);
+    setTimeout(() => {}, 500);
   }, []);
 
   return (
@@ -32,7 +32,16 @@ export default function GuidelinesButton() {
   );
 }
 
-function GuidelinesModal({ setShowModal }: { setShowModal: Function }) {
+/**
+ * The modal that appears when the guidelines button is clicked
+ *
+ * @param setShowModal a useState function to set the modal to active or inactive
+ */
+function GuidelinesModal({
+  setShowModal,
+}: {
+  setShowModal: React.Dispatch<React.SetStateAction<boolean>>;
+}) {
   const handleKeyDown = useCallback(
     (e: globalThis.KeyboardEvent) => {
       if (e.key === "Escape") {
@@ -78,7 +87,9 @@ function GuidelinesModal({ setShowModal }: { setShowModal: Function }) {
             <div className="mb-6">
               <Logo width={300} height={300} />
             </div>
-            <h1 className="text-lg md:text-xl mb-10 md:mb-20">Content Guidelines</h1>
+            <h1 className="text-lg md:text-xl mb-10 md:mb-20">
+              Content Guidelines
+            </h1>
             <h2 className="text-md md:text-lg mb-10 font-semibold">
               Before uploading your level, please ensure that it adheres to our
               content guidelines:

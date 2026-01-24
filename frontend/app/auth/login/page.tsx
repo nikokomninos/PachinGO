@@ -1,3 +1,5 @@
+// The page for logging in
+
 import type { Metadata } from "next";
 import LoginBox from "@/components/auth/LoginBox";
 
