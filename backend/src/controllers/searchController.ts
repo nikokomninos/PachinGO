@@ -11,6 +11,10 @@ import { betterAuthUser } from "../models/BetterUser.ts";
 import Level from "../models/Level.ts";
 import UserInfo from "../models/UserInfo.ts";
 
+/**
+ * Determines the sort object to be passed to Mongoose
+ * when performing a query
+ */
 const getSort = (sort: string, order: string): object => {
   switch (sort) {
     case "date":
@@ -50,6 +54,12 @@ const getSort = (sort: string, order: string): object => {
   return {};
 };
 
+/**
+ * Gets the most recently uploaded levels
+ *
+ * @param req a Request containing: limit, page
+ * @param res A Response containing: results, message
+ */
 export const getRecentLevels = async (req: Request, res: Response) => {
   try {
     const limit = Number(req.query.limit) || 25;
@@ -80,6 +90,12 @@ export const getRecentLevels = async (req: Request, res: Response) => {
   }
 };
 
+/**
+ * Gets the most played levels
+ *
+ * @param req a Request containing: limit, page
+ * @param res A Response containing: results, message
+ */
 export const getMostPlayedLevels = async (req: Request, res: Response) => {
   try {
     const limit = Number(req.query.limit) || 25;
@@ -110,6 +126,12 @@ export const getMostPlayedLevels = async (req: Request, res: Response) => {
   }
 };
 
+/**
+ * Gets the most liked levels
+ *
+ * @param req a Request containing: limit, page
+ * @param res A Response containing: results, message
+ */
 export const getMostLikedLevels = async (req: Request, res: Response) => {
   try {
     const limit = Number(req.query.limit) || 25;
@@ -140,6 +162,12 @@ export const getMostLikedLevels = async (req: Request, res: Response) => {
   }
 };
 
+/**
+ * Searches for a level by name based on a query
+ *
+ * @param req a Request containing: query, limit, page, sort, order
+ * @param res A Response containing: results, message
+ */
 export const searchLevelName = async (req: Request, res: Response) => {
   try {
     const query = req.query.query;
@@ -183,6 +211,12 @@ export const searchLevelName = async (req: Request, res: Response) => {
   }
 };
 
+/**
+ * Searches for a level by ID based on a query
+ *
+ * @param req a Request containing: query, limit, page, sort, order
+ * @param res A Response containing: results, message
+ */
 export const searchLevelID = async (req: Request, res: Response) => {
   try {
     const levelID = req.query.query;
@@ -211,6 +245,12 @@ export const searchLevelID = async (req: Request, res: Response) => {
   }
 };
 
+/**
+ * Gets the most recently registered users
+ *
+ * @param req a Request containing: limit, page
+ * @param res A Response containing: results, message
+ */
 export const getRecentUsers = async (req: Request, res: Response) => {
   try {
     const limit = Number(req.query.limit) || 25;
@@ -262,6 +302,12 @@ export const getRecentUsers = async (req: Request, res: Response) => {
   }
 };
 
+/**
+ * Searches for a user by name based on a query
+ *
+ * @param req a Request containing: query, limit, page, order
+ * @param res A Response containing: results, message
+ */
 export const searchUsers = async (req: Request, res: Response) => {
   try {
     const query = req.query.query;

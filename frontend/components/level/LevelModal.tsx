@@ -179,7 +179,7 @@ export default function LevelModal({
                     likedLevels={userData?.userInfo.likedLevels || []}
                   />
                   <DeleteButton
-                    name={userData?.session.user.name || ""}
+                    user={userData?.session.user.name || ""}
                     author={author}
                     id={id}
                     role={userData?.userInfo.role || ""}

@@ -256,14 +256,6 @@ export const uploadLevel: any[] = [
         message: `LEVEL: Level successfully uploaded: ${name} by ${author} (ID: ${levelID})`,
       });
 
-      /*
-      const user = await User.findOne({ username: author });
-      await UserInfo.updateOne(
-        { user: user!._id },
-        { $push: { levels: levelID } },
-      );
-      */
-
       return res.status(201).json({
         message: "Level uploaded successfully",
         backgroundUrl,
