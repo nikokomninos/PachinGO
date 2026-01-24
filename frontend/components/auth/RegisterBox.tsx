@@ -20,9 +20,8 @@ export default function RegisterBox() {
   const router = useRouter();
 
   const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
-    if (e.key === "Enter") {
-      handleRegister();
-    }
+    if (e.key === " ") e.preventDefault();
+    if (e.key === "Enter") handleRegister();
   };
 
   const handleRegister = async () => {

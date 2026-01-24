@@ -18,9 +18,8 @@ export default function LoginBox() {
   const router = useRouter();
 
   const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
-    if (e.key === "Enter") {
-      handleLogin();
-    }
+    if (e.key === " ") e.preventDefault();
+    if (e.key === "Enter") handleLogin();
   };
 
   const handleLogin = async () => {
