@@ -12,6 +12,7 @@ import { FaThumbsUp } from "react-icons/fa6";
 import { IoMdMusicalNote } from "react-icons/io";
 import { getLoggedInUser } from "@/lib/auth";
 import type { UserData } from "@/types/definitions";
+import UserCard from "../user/UserCard";
 
 export default function LevelModal({
   setShowModal,
@@ -45,6 +46,7 @@ export default function LevelModal({
   hasMusic: string;
 }) {
   const [userData, setUserData] = useState<UserData>();
+  const [authorRole, setAuthorRole] = useState("Member");
 
   useEffect(() => {
     async function getUserData() {
@@ -53,8 +55,19 @@ export default function LevelModal({
       else return;
     }
 
+    async function getAuthorInfo() {
+      const res = await fetch(
+        `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/v1/user/getUser?name=${author}`,
+        { cache: "no-store" },
+      );
+      if (!res.ok) return null;
+      const data = await res.json();
+      setAuthorRole(data?.userInfo.role);
+    }
+
+    getAuthorInfo();
     getUserData();
-  }, []);
+  }, [author]);
 
   const handleKeyDown = useCallback(
     (e: globalThis.KeyboardEvent) => {
@@ -111,24 +124,9 @@ export default function LevelModal({
               {name}
             </h1>
 
-            <a
-              href={`/user/${author}`}
-              className="flex flex-row items-center w-fit h-15 p-2 mb-5 border border-(--border) rounded-lg tracking-tight bg-(--background-alt) cursor-pointer hover:bg-(--background-alt)/50 ease-linear duration-75"
-            >
-              <div className="flex justify-center items-center w-10 h-10 rounded-lg border border-(--border) mr-3">
-                <Image
-                  src="/logo_small.png"
-                  alt="PachinGO Logo, small"
-                  width={100}
-                  height={100}
-                />
-              </div>
-
-              <div className="flex justify-center items-center w-fit break-all">
-                <h1>{author}</h1>
-              </div>
-            </a>
-
+            <div className="mb-4">
+              <UserCard name={author} role={authorRole} />
+            </div>
             <LevelInfo
               plays={plays}
               likes={likes}
@@ -164,7 +162,7 @@ export default function LevelModal({
                 </div>
               </div>
 
-            <h1 className="text-xs">Level ID: {id}</h1>
+              <h1 className="text-xs">Level ID: {id}</h1>
             </div>
           </div>
         </div>
@@ -275,7 +273,7 @@ function PlayButton({ id }: { id: string }) {
       },
     );
 
-    if (res.ok) router.push(`/level/${id}`)
+    if (res.ok) router.push(`/level/${id}`);
   }
 
   return (
