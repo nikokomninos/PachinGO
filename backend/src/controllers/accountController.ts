@@ -14,6 +14,15 @@ import UserInfo from "../models/UserInfo.ts";
 
 const upload = multer();
 
+/**
+ * Changes the user's profile picture, and deletes
+ * the previous one from the R2 bucket
+ *
+ * @param {Request} req request containing a formdata body with: name, pfp (file)
+ * @param {Response} res response containing: message, pfpURL
+ *
+ * @returns status 201 if successful
+ */
 export const changeProfilePicture: any[] = [
   upload.fields([{ name: "pfp", maxCount: 1 }]),
   async (req: Request, res: Response) => {
