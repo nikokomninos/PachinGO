@@ -1,5 +1,6 @@
 "use client";
 
+import { AnimatePresence, motion } from "motion/react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
@@ -61,7 +62,13 @@ export default function ProfilePic({
         onChange={(e) => handleFile(e)}
       />
 
-      <button
+      <motion.button
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        transition={{
+          duration: 0.1,
+        }}
         type="button"
         onClick={() => fileInputRef.current?.click()}
         className={
@@ -73,7 +80,7 @@ export default function ProfilePic({
         }
       >
         <IoPencil />
-      </button>
+      </motion.button>
       <div className="flex justify-center items-center w-full h-full">
         <Image
           src={`${process.env.NEXT_PUBLIC_R2_URL}/${pfp}`}
