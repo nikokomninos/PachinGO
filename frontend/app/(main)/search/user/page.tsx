@@ -76,7 +76,6 @@ async function SearchResultsList({
   const results: PachUser[] = data.results;
   const total: number = data.total;
   const totalPages: number = data.totalPages;
-  console.log(results)
 
   if (results.length === 0)
     return (
