@@ -99,10 +99,11 @@ export default async function User({
   const username = data.user.name;
   const dateJoined = data.user.createdAt;
   const role = data.userInfo.role;
+  const profilePicture = data.userInfo.profilePicture;
 
   return (
     <div className="flex flex-col items-center gap-4 md:gap-6">
-      <UserBox username={username} dateJoined={dateJoined} role={role} />
+      <UserBox username={username} dateJoined={dateJoined} role={role} pfp={profilePicture} />
       <Suspense fallback={<LevelsSkeletonGrid />}>
         <UserLevelsList name={username} />
       </Suspense>

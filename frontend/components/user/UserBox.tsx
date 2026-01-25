@@ -1,4 +1,4 @@
-import Image from "next/image";
+import ProfilePic from "./ProfilePic";
 
 function setRoleStyle(role: string) {
   switch (role) {
@@ -17,10 +17,12 @@ export default function UserBox({
   username,
   role,
   dateJoined,
+  pfp,
 }: {
   username: string;
   role: string;
   dateJoined: Date;
+  pfp: string;
 }) {
   const formattedDate = new Date(dateJoined).toLocaleDateString("en-US", {
     month: "2-digit",
@@ -33,12 +35,7 @@ export default function UserBox({
   return (
     <div className="bg-(--background-alt) flex flex-col md:flex-row justify-center items-center gap-5 md:gap-10 border border-(--border) p-5 rounded-lg h-fit w-fit md:w-full mb-4 md:mb-6">
       <div className="flex justify-center items-center w-50 h-50 rounded-lg border border-(--border-alt) bg-(--background-alt)/50">
-        <Image
-          src="/logo_small.png"
-          alt="PachinGO Logo, small"
-          width={128}
-          height={128}
-        />
+        <ProfilePic username={username} pfp={pfp}/>
       </div>
 
       <div className="flex flex-col gap-3">

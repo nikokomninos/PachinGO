@@ -25,7 +25,7 @@ import { logger } from "./logger.ts";
 
 const r2 = new S3Client({
   region: "auto",
-  endpoint: `https://${R2_ACCOUNT_ID!}.r2.cloudflarestorage.com`,
+  endpoint: `https://${R2_ACCOUNT_ID || ""}.r2.cloudflarestorage.com`,
   credentials: {
     accessKeyId: `${R2_ACCESS_KEY_ID}`,
     secretAccessKey: `${R2_SECRET_ACCESS_KEY}`,
@@ -71,7 +71,6 @@ export const uploadToR2 = async (
     message: `SERVER: R2 command success: Upload ${type} for level (ID: ${levelID})`,
   });
 
-  // Return the public URL (if bucket has public access enabled)
   return `${key}`;
 };
 
@@ -86,12 +85,13 @@ export const uploadThumbnailToR2 = async (
   filePath: string,
   levelID: string,
 ): Promise<string> => {
+  const key = `thumbnail/${levelID}.png`;
   // Read the PNG file as binary data
   const fileBuffer = await fs.readFile(filePath);
 
   const command = new PutObjectCommand({
     Bucket: R2_BUCKET_NAME,
-    Key: `thumbnail/${levelID}.png`, // add .png extension for clarity
+    Key: key, // add .png extension for clarity
     Body: fileBuffer,
     ContentType: "image/png",
   });
@@ -110,7 +110,47 @@ export const uploadThumbnailToR2 = async (
     message: `SERVER: R2 command success: Upload thumbnail for level (ID: ${levelID})`,
   });
 
-  return `thumbnail/${levelID}.png`;
+  return `${key}`;
+};
+
+/**
+ * uploadPFPToR2
+ *
+ * Uploads a multer request body file to the R2 bucket
+ * @param file - the multer file to upload
+ * @param user - the associated user
+ * @returns the key of the uploaded file in R2
+ */
+export const uploadPFPToR2 = async (
+  file: Express.Multer.File,
+  user: string,
+): Promise<string> => {
+  const key = `pfp/${user}-${Date.now()}`;
+  const fileBuffer = file.buffer;
+  const mimeType = file.mimetype;
+
+  const command = new PutObjectCommand({
+    Bucket: `${R2_BUCKET_NAME}`,
+    Key: key,
+    Body: fileBuffer,
+    ContentType: mimeType,
+  });
+
+  try {
+    await r2.send(command);
+  } catch (e) {
+    logger.log({
+      level: "error",
+      message: `SERVER: R2 command failed: Upload PFP for user (User: ${user}): ${e}`,
+    });
+  }
+
+  logger.log({
+    level: "info",
+    message: `SERVER: R2 command success: Upload PFP for user (User: ${user})`,
+  });
+
+  return `${key}`;
 };
 
 /** removeFromR2

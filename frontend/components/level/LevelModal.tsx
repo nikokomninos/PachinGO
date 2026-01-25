@@ -68,7 +68,8 @@ export default function LevelModal({
   hasMusic: string;
 }) {
   const [userData, setUserData] = useState<UserData>();
-  const [authorRole, setAuthorRole] = useState("Member");
+  const [authorRole, setAuthorRole] = useState<string>("Member");
+  const [authorPFP, setAuthorPFP] = useState<string>("");
 
   // On mount, the component will check the logged in user
   // to determine various conditions, including allowing
@@ -89,6 +90,7 @@ export default function LevelModal({
       if (!res.ok) return null;
       const data = await res.json();
       setAuthorRole(data?.userInfo.role);
+      setAuthorPFP(data?.userInfo.profilePicture);
     }
 
     getAuthorInfo();
@@ -161,7 +163,7 @@ export default function LevelModal({
             </div>
 
             <div className="mb-4">
-              <UserCard name={author} role={authorRole} />
+              <UserCard name={author} role={authorRole} pfp={authorPFP}/>
             </div>
             <LevelInfo
               plays={plays}

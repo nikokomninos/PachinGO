@@ -15,9 +15,11 @@ import { useEffect, useState } from "react";
 export default function UserCard({
   name,
   role,
+  pfp,
 }: {
   name: string;
   role: string;
+  pfp: string;
 }) {
   const [roleStyle, setRoleStyle] = useState("");
 
@@ -50,11 +52,17 @@ export default function UserCard({
       >
         <div className="flex justify-center items-center w-10 h-10 rounded-lg border border-(--border) mr-3">
           <Image
-            src="/logo_small.png"
+            src={`${process.env.NEXT_PUBLIC_R2_URL}/${pfp}`}
             alt="PachinGO! Logo, small"
             width={100}
             height={100}
+            className={
+              pfp
+              ? "w-full h-full rounded-lg"
+              : "hidden"
+            }
           />
+          <p className={pfp ? "hidden" : "text-sm select-none"}>{name.charAt(0).toUpperCase()}</p>
         </div>
 
         <div className="flex justify-center items-center w-fit">

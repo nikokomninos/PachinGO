@@ -76,6 +76,7 @@ async function SearchResultsList({
   const results: PachUser[] = data.results;
   const total: number = data.total;
   const totalPages: number = data.totalPages;
+  console.log(results)
 
   if (results.length === 0)
     return (
@@ -86,7 +87,7 @@ async function SearchResultsList({
     <div className="flex flex-col items-center">
       <div className="flex flex-row justify-center flex-wrap gap-4 md:gap-6 mb-10">
         {results.map((r: PachUser) => (
-          <UserCard key={r.name} name={r.name} role={r.role} />
+          <UserCard key={r.name} name={r.name} role={r.role} pfp={r.profilePicture}/>
         ))}
       </div>
       <PageSelect page={Number(page) || 1} totalPages={totalPages} />

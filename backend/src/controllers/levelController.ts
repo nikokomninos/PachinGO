@@ -1,7 +1,7 @@
 /**
  * levelController
  *
- * Contains logic relating to the /api/level endpoint
+ * Contains logic relating to the /api/v1/level endpoint
  * Handles anything related to database level updates
  */
 
@@ -263,10 +263,9 @@ export const uploadLevel: any[] = [
         levelID,
       });
     } catch (e) {
-      console.error(e);
       logger.log({
         level: "error",
-        message: `LEVEL: Level uploaded failed (${req.body.name} by ${req.body.author}): ${e}`,
+        message: `LEVEL: Level upload failed (${req.body.name} by ${req.body.author}): ${e}`,
       });
       return res.status(500).json({ message: "Internal server error" });
     }

@@ -13,6 +13,7 @@ const userInfoSchema = new mongoose.Schema({
   userId: { type: mongoose.Schema.Types.ObjectId, required: true, ref: "User" },
   role: { type: String, required: true },
   likedLevels: { type: [Number], required: true },
+  profilePicture: { type: String, required: false },
 });
 
 export default mongoose.model("UserInfo", userInfoSchema);

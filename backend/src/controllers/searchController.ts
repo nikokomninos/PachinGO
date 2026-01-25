@@ -1,7 +1,7 @@
 /**
  * searchController
  *
- * Contans logic relating to the /api/search endpoint
+ * Contans logic relating to the /api/v1/search endpoint
  * Handles logic regarding level search functionality
  */
 
@@ -174,7 +174,7 @@ export const getRandomLevel = async (req: Request, res: Response) => {
 
     const total = 1;
 
-    const results = (await Level.aggregate([{ $sample: { size: 1 } }]));
+    const results = await Level.aggregate([{ $sample: { size: 1 } }]);
 
     logger.log({
       level: "info",
@@ -301,16 +301,17 @@ export const getRecentUsers = async (req: Request, res: Response) => {
     const allUserInfos = await UserInfo.find({
       userId: { $in: userIds },
     })
-      .select("userId role")
+      //.select("userId role")
       .lean();
 
-    const resultsWithRoles = results.map((user) => {
+    const resultsWithUserInfo = results.map((user) => {
       const info = allUserInfos.find(
         (i) => i.userId.toString() === (user._id as any).toString(),
       );
       return {
         ...user,
-        role: info?.role || "user",
+        role: info?.role || "Member",
+        profilePicture: info?.profilePicture || "",
       };
     });
 
@@ -320,7 +321,7 @@ export const getRecentUsers = async (req: Request, res: Response) => {
     });
 
     return res.status(200).json({
-      results: resultsWithRoles,
+      results: resultsWithUserInfo,
       total,
       totalPages: Math.ceil(total / limit),
     });
@@ -371,16 +372,17 @@ export const searchUsers = async (req: Request, res: Response) => {
     const allUserInfos = await UserInfo.find({
       userId: { $in: userIds },
     })
-      .select("userId role")
+      //.select("userId role profilePicture")
       .lean();
 
-    const resultsWithRoles = results.map((user) => {
+    const resultsWithUserInfo = results.map((user) => {
       const info = allUserInfos.find(
         (i) => i.userId.toString() === (user._id as any).toString(),
       );
       return {
         ...user,
-        role: info?.role || "user",
+        role: info?.role || "Member",
+        profilePicture: info?.profilePicture || "",
       };
     });
 
@@ -390,7 +392,7 @@ export const searchUsers = async (req: Request, res: Response) => {
     });
 
     return res.status(200).json({
-      results: resultsWithRoles,
+      results: resultsWithUserInfo,
       total,
       totalPages: Math.ceil(total / limit),
     });

@@ -34,6 +34,7 @@ export type PachUser = {
   createdAt: Date;
   updatedAt: Date;
   role: string;
+  profilePicture: string;
 };
 
 export type UserInfo = {
