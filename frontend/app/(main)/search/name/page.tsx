@@ -64,6 +64,17 @@ async function getSpecialSearch(type: string, page: string, limit: string) {
     const data = await res.json();
     return data;
   }
+
+  if (type === "random") {
+    const res = await fetch(
+      `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/v1/search/getRandomLevel?page=${page}&limit=${limit}`,
+      { cache: "no-store" },
+    );
+
+    if (!res.ok) return [];
+    const data = await res.json();
+    return data;
+  }
 }
 
 /**

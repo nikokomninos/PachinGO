@@ -11,6 +11,7 @@ import express from "express";
 import {
   getMostLikedLevels,
   getMostPlayedLevels,
+  getRandomLevel,
   getRecentLevels,
   getRecentUsers,
   searchLevelID,
@@ -23,6 +24,7 @@ const router: Router = express.Router();
 router.get("/getRecentLevels", getRecentLevels);
 router.get("/getMostPlayedLevels", getMostPlayedLevels);
 router.get("/getMostLikedLevels", getMostLikedLevels);
+router.get("/getRandomLevel", getRandomLevel);
 router.get("/searchLevelName", searchLevelName);
 router.get("/searchLevelID", searchLevelID);
 router.get("/getRecentUsers", getRecentUsers);
