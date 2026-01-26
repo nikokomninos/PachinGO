@@ -125,6 +125,7 @@ function SortByButton({
   const handleClick = () => {
     const currentParams = new URLSearchParams(params.toString());
     currentParams.set("sort", value.toLowerCase());
+    currentParams.set("page", "1");
 
     router.push(`${pathname}?${currentParams.toString()}`);
     setShowMenu(false);
@@ -228,6 +229,7 @@ function OrderByButton({
   const handleClick = () => {
     const currentParams = new URLSearchParams(params.toString());
     currentParams.set("order", value.toLowerCase());
+    currentParams.set("page", "1");
 
     router.push(`${pathname}?${currentParams.toString()}`);
     setShowMenu(false);
@@ -336,6 +338,7 @@ function LimitByButton({
   const handleClick = () => {
     const currentParams = new URLSearchParams(params.toString());
     currentParams.set("limit", value.toString());
+    currentParams.set("page", "1");
 
     router.push(`${pathname}?${currentParams.toString()}`);
     setShowMenu(false);
