@@ -137,7 +137,7 @@ export default function LevelModal({
           onClick={(e) => e.stopPropagation()}
           className="fixed flex flex-col lg:flex-row top-1/8 left-1/8 w-3/4 h-3/4 bg-(--background) border border-(--border-alt) rounded-lg drop-shadow-2xl overflow-x-hidden"
         >
-          <div className="w-full lg:w-3/4 p-10 flex justify-center items-center">
+          <div className="w-full lg:w-5/8 p-10 flex justify-center items-center">
             <Image
               src={thumbnail}
               alt="Level thumbnail"
@@ -147,9 +147,9 @@ export default function LevelModal({
             />
           </div>
 
-          <div className="w-full lg:w-1/4 lg:pr-10 px-10 lg:px-0 lg:py-10 flex flex-col items-center lg:items-start overflow-y-scroll">
+          <div className="w-full lg:w-3/8 lg:pr-10 px-10 lg:px-0 lg:py-10 flex flex-col items-center lg:items-start overflow-y-scroll">
             <div className="flex flex-col items-center md:items-start md:flex-row md:justify-between w-full md:gap-4 mb-4 md:mb-0">
-              <h1 className="text-xl lg:text-2xl text-left font-semibold mb-3 whitespace-normal break-all">
+              <h1 className="text-xl lg:text-2xl text-left font-semibold mb-3 whitespace-normal wrap-break-word">
                 {name}
               </h1>
               <EditButton
@@ -163,7 +163,7 @@ export default function LevelModal({
             </div>
 
             <div className="mb-4">
-              <UserCard name={author} role={authorRole} pfp={authorPFP}/>
+              <UserCard name={author} role={authorRole} pfp={authorPFP} />
             </div>
             <LevelInfo
               plays={plays}
@@ -176,7 +176,7 @@ export default function LevelModal({
               hasMusic={hasMusic}
             />
 
-            <p className="text-md text-left mb-10 whitespace-normal break-all">
+            <p className="text-md text-left mb-10 whitespace-normal wrap-break-word">
               {desc}
             </p>
 
@@ -236,10 +236,9 @@ function EditButton({
     else setAuthorized(false);
   }, [user, author, role]);
 
-  //TODO make button work
   async function handleEdit() {
-    if (!newName) setNewName("Custom Level");
-    if (!newDesc) setNewDesc("This level is so fun!");
+    const name = newName || "Custom Level";
+    const desc = newDesc || "This level is so fun!";
 
     const res = await fetch(
       `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/v1/level/editLevel`,
@@ -251,8 +250,8 @@ function EditButton({
           "Access-Control-Allow-Credentials": "true",
         },
         body: JSON.stringify({
-          name: newName,
-          desc: newDesc,
+          name: name,
+          desc: desc,
           levelID: id,
         }),
       },
@@ -264,9 +263,13 @@ function EditButton({
     }
   }
 
-  function handleKeyDown (e: React.KeyboardEvent<HTMLInputElement> | React.KeyboardEvent<HTMLTextAreaElement>) {
+  function handleKeyDown(
+    e:
+      | React.KeyboardEvent<HTMLInputElement>
+      | React.KeyboardEvent<HTMLTextAreaElement>,
+  ) {
     if (e.key === "Enter") handleEdit();
-  };
+  }
 
   if (authorized === null)
     return (
@@ -329,6 +332,7 @@ function EditButton({
                     value={newName}
                     onChange={(e) => setNewName(e.target.value)}
                     onKeyDown={(e) => handleKeyDown(e)}
+                    placeholder="Custom Level"
                     className="w-full md:w-75 lg:w-100 p-2 mb-5 border border-(--border) rounded-md focus:outline-none focus:ring-2 focus:ring-(--border-alt) ease-linear duration-75 bg-(--background-alt) focus:bg-(--background-alt)/50"
                   />
                 </div>
@@ -339,6 +343,7 @@ function EditButton({
                     value={newDesc}
                     onChange={(e) => setNewDesc(e.target.value)}
                     onKeyDown={(e) => handleKeyDown(e)}
+                    placeholder="This level is so fun!"
                     className="w-full md:w-75 lg:w-100 h-30 p-2 mb-5 border border-(--border) rounded-md focus:outline-none focus:ring-2 focus:ring-(--border-alt) ease-linear duration-75 bg-(--background-alt) focus:bg-(--background-alt)/50 resize-none md:resize"
                   />
                 </div>
