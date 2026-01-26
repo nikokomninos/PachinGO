@@ -40,6 +40,7 @@ export const auth = betterAuth({
       create: {
         before: async (user) => {
           if (!user.name) throw new Error("NAME_EMPTY");
+          if (user.name.length < 5 || user.name.length > 30) throw new Error("NAME_LENGTH");
 
           const existingUser = await db
             .collection("user")

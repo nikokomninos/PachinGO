@@ -25,6 +25,17 @@ export default function RegisterBox() {
   };
 
   const handleRegister = async () => {
+    const usernameRegex = /^[a-zA-Z0-9]*$/;
+    if (!usernameRegex.test(username)) {
+      setStatus("Username can only contain letters and numbers");
+      return;
+    }
+
+    if (username.length < 5 || username.length > 30) {
+      setStatus("Username must be between 5 and 30 characters");
+      return;
+    }
+
     const { error } = await authClient.signUp.email(
       {
         email: email,
