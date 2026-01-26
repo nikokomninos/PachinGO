@@ -26,11 +26,12 @@ async function checkLevelExists(id: string) {
 }
 
 export default async function Level({
-  params,
+  searchParams,
 }: {
-  params: Promise<{ id: string }>;
+  searchParams: Promise<{ id: string }>;
 }) {
-  const { id } = await params;
+  const resolvedParams = await searchParams;
+  const id = resolvedParams.id;
   const exists = await checkLevelExists(id);
 
   if (exists)

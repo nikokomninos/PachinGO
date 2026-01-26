@@ -1,5 +1,5 @@
 import Logo from "@/components/nav/Logo";
-import "../../../globals.css";
+import "../../globals.css";
 import Link from "next/link";
 
 export default function NotFound() {

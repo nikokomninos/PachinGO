@@ -487,7 +487,7 @@ function PlayButton({ id }: { id: string }) {
       },
     );
 
-    if (res.ok) router.push(`/level/${id}`);
+    if (res.ok) router.push(`/level/?id=${id}`);
   }
 
   return (
