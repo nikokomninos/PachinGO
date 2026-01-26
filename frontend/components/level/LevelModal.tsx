@@ -10,6 +10,7 @@ import {
 } from "react-icons/fa";
 import { FaThumbsUp } from "react-icons/fa6";
 import { IoMdMusicalNote } from "react-icons/io";
+import { IoPencil } from "react-icons/io5";
 import { getLoggedInUser } from "@/lib/auth";
 import type { UserData } from "@/types/definitions";
 import UserCard from "../user/UserCard";
@@ -67,7 +68,8 @@ export default function LevelModal({
   hasMusic: string;
 }) {
   const [userData, setUserData] = useState<UserData>();
-  const [authorRole, setAuthorRole] = useState("Member");
+  const [authorRole, setAuthorRole] = useState<string>("Member");
+  const [authorPFP, setAuthorPFP] = useState<string>("");
 
   // On mount, the component will check the logged in user
   // to determine various conditions, including allowing
@@ -88,6 +90,7 @@ export default function LevelModal({
       if (!res.ok) return null;
       const data = await res.json();
       setAuthorRole(data?.userInfo.role);
+      setAuthorPFP(data?.userInfo.profilePicture);
     }
 
     getAuthorInfo();
@@ -145,12 +148,22 @@ export default function LevelModal({
           </div>
 
           <div className="w-full lg:w-1/4 lg:pr-10 px-10 lg:px-0 lg:py-10 flex flex-col items-center lg:items-start overflow-y-scroll">
-            <h1 className="text-xl lg:text-2xl text-left font-semibold mb-3 whitespace-normal break-all">
-              {name}
-            </h1>
+            <div className="flex flex-col items-center md:items-start md:flex-row md:justify-between w-full md:gap-4 mb-4 md:mb-0">
+              <h1 className="text-xl lg:text-2xl text-left font-semibold mb-3 whitespace-normal break-all">
+                {name}
+              </h1>
+              <EditButton
+                user={userData?.session.user.name || ""}
+                author={author}
+                id={id}
+                role={userData?.userInfo.role || ""}
+                name={name}
+                desc={desc}
+              />
+            </div>
 
             <div className="mb-4">
-              <UserCard name={author} role={authorRole} />
+              <UserCard name={author} role={authorRole} pfp={authorPFP}/>
             </div>
             <LevelInfo
               plays={plays}
@@ -193,6 +206,153 @@ export default function LevelModal({
         </div>
       </motion.div>
     </AnimatePresence>
+  );
+}
+
+function EditButton({
+  user,
+  author,
+  id,
+  role,
+  name,
+  desc,
+}: {
+  user: string;
+  author: string;
+  id: string;
+  role: string;
+  name: string;
+  desc: string;
+}) {
+  const [authorized, setAuthorized] = useState<boolean | null>(null);
+  const [showModal, setShowModal] = useState<boolean>(false);
+  const [newName, setNewName] = useState<string>(name);
+  const [newDesc, setNewDesc] = useState<string>(desc);
+  const router = useRouter();
+
+  useEffect(() => {
+    if (user === author || role === "Moderator" || role === "PachinGOD")
+      setAuthorized(true);
+    else setAuthorized(false);
+  }, [user, author, role]);
+
+  //TODO make button work
+  async function handleEdit() {
+    const res = await fetch(
+      `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/v1/level/editLevel`,
+      {
+        method: "POST",
+        mode: "cors",
+        headers: {
+          "Content-Type": "application/json",
+          "Access-Control-Allow-Credentials": "true",
+        },
+        body: JSON.stringify({
+          name: newName,
+          desc: newDesc,
+          levelID: id,
+        }),
+      },
+    );
+    if (!res.ok) alert("Level editing failed");
+    else {
+      setShowModal(false);
+      router.refresh();
+    }
+  }
+
+  function handleKeyDown (e: React.KeyboardEvent<HTMLInputElement> | React.KeyboardEvent<HTMLTextAreaElement>) {
+    if (e.key === "Enter") handleEdit();
+  };
+
+  if (authorized === null)
+    return (
+      <div className="w-8 h-8 border border-(--border-alt) rounded-lg bg-(--background-alt)"></div>
+    );
+
+  if (authorized === false)
+    return (
+      <button
+        type="button"
+        className="w-8 h-8 flex justify-center items-center bg-(--background-alt)/50 text-(--foreground-alt) border border-(--border-alt) rounded-lg cursor-not-allowed ease-linear duration-75"
+      >
+        <IoPencil />
+      </button>
+    );
+
+  return (
+    <div className="relative inline-block">
+      <button
+        type="button"
+        onClick={() => setShowModal((prev) => !prev)}
+        className={
+          showModal
+            ? "w-8 h-8 flex justify-center items-center bg-(--background-alt)/50 text-(--foreground-alt) border border-(--border-alt) rounded-lg cursor-pointer ease-linear duration-75"
+            : "w-8 h-8 flex justify-center items-center bg-(--background-alt) hover:bg-(--background-alt)/50 hover:text-(--foreground-alt) border border-(--border) rounded-lg cursor-pointer ease-linear duration-75"
+        }
+      >
+        <IoPencil />
+      </button>
+
+      {showModal && (
+        <AnimatePresence>
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{
+              duration: 0.1,
+            }}
+            className="bg-black/75 w-full h-full fixed top-0 left-0 z-40 cursor-auto"
+            onClick={(e) => {
+              e.stopPropagation();
+              setShowModal(false);
+            }}
+          >
+            <div
+              role="none"
+              //onKeyDown={(e) => handleKeyDown(e.nativeEvent)}
+              onClick={(e) => e.stopPropagation()}
+              className="fixed flex flex-col lg:flex-row md:top-1/8 md:left-1/8 w-full h-3/4 top-1/8 md:w-3/4 md:h-3/4 bg-(--background) border border-(--border-alt) rounded-lg drop-shadow-2xl overflow-y-scroll overflow-x-hidden"
+            >
+              <div className="flex flex-col w-full h-full justify-center items-center p-10 md:p-0">
+                <h1 className="text-xl lg:text-2xl font-semibold mb-10">
+                  Edit Level Info
+                </h1>
+                <div className="flex flex-col gap-2">
+                  <h2 className="text-sm">Level Name</h2>
+                  <input
+                    type="text"
+                    value={newName}
+                    onChange={(e) => setNewName(e.target.value)}
+                    onKeyDown={(e) => handleKeyDown(e)}
+                    className="w-full md:w-75 lg:w-100 p-2 mb-5 border border-(--border) rounded-md focus:outline-none focus:ring-2 focus:ring-(--border-alt) ease-linear duration-75 bg-(--background-alt) focus:bg-(--background-alt)/50"
+                  />
+                </div>
+
+                <div className="flex flex-col gap-2">
+                  <h2 className="text-sm">Level Description</h2>
+                  <textarea
+                    value={newDesc}
+                    onChange={(e) => setNewDesc(e.target.value)}
+                    onKeyDown={(e) => handleKeyDown(e)}
+                    className="w-full md:w-75 lg:w-100 h-30 p-2 mb-5 border border-(--border) rounded-md focus:outline-none focus:ring-2 focus:ring-(--border-alt) ease-linear duration-75 bg-(--background-alt) focus:bg-(--background-alt)/50 resize-none md:resize"
+                  />
+                </div>
+
+                <button
+                  type="submit"
+                  onClick={() => handleEdit()}
+                  className="text-md rounded-md w-full md:w-75 lg:w-100 mb-4 pt-2 pb-2 border border-(--border) bg-(--background-alt) hover:bg-(--background-alt)/50 hover:text-(--foreground-alt) ease-linear duration-75 cursor-pointer"
+                >
+                  Submit
+                </button>
+              </div>
+            </div>
+          </motion.div>
+        </AnimatePresence>
+      )}
+    </div>
   );
 }
 

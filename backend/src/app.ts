@@ -22,6 +22,7 @@ import { logger } from "./lib/logger.ts";
 import levelRoutes from "./routes/levelRoutes.ts";
 import searchRoutes from "./routes/searchRoutes.ts";
 import userRoutes from "./routes/userRoutes.ts";
+import accountRoutes from "./routes/accountRoutes.ts"
 
 if (process.env.NODE_ENV !== "production") {
   logger.add(
@@ -60,6 +61,7 @@ app.all("/api/auth/*splat", toNodeHandler(auth));
 app.use("/api/v1/search", searchRoutes);
 app.use("/api/v1/user", userRoutes);
 app.use("/api/v1/level", levelRoutes);
+app.use("/api/v1/account", accountRoutes);
 
 app.get("/api/v1/me", async (req, res) => {
   const session = await auth.api.getSession({

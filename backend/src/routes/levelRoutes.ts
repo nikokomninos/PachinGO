@@ -12,6 +12,7 @@ import {
   addLikeToLevel,
   addPlayToLevel,
   deleteLevel,
+  editLevel,
   loadLevel,
   removeLikeFromLevel,
   uploadLevel,
@@ -21,6 +22,7 @@ const router: Router = express.Router();
 
 router.post("/deleteLevel", deleteLevel);
 router.post("/uploadLevel", uploadLevel);
+router.post("/editLevel", editLevel)
 router.get("/loadLevel", loadLevel);
 router.post("/addPlayToLevel", addPlayToLevel);
 router.post("/addLikeToLevel", addLikeToLevel);

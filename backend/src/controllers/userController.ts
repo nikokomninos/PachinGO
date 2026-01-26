@@ -1,8 +1,8 @@
 /**
  * userController
  *
- * Contains logic relating to the /api/users endpoint.
- * Handles anything realted to user profiles
+ * Contains logic relating to the /api/v1/user endpoint.
+ * Handles anything related to public user profile information
  */
 
 import type { Request, Response } from "express";
@@ -36,7 +36,7 @@ export const getUser = async (req: Request, res: Response) => {
     }
 
     const userInfo = await UserInfo.findOne({ userId: user._id }).select(
-      "role likedLevels",
+      "role likedLevels profilePicture",
     );
 
     logger.log({

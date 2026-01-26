@@ -1,7 +1,7 @@
 /**
  * levelController
  *
- * Contains logic relating to the /api/level endpoint
+ * Contains logic relating to the /api/v1/level endpoint
  * Handles anything related to database level updates
  */
 
@@ -263,15 +263,52 @@ export const uploadLevel: any[] = [
         levelID,
       });
     } catch (e) {
-      console.error(e);
       logger.log({
         level: "error",
-        message: `LEVEL: Level uploaded failed (${req.body.name} by ${req.body.author}): ${e}`,
+        message: `LEVEL: Level upload failed (${req.body.name} by ${req.body.author}): ${e}`,
       });
       return res.status(500).json({ message: "Internal server error" });
     }
   },
 ];
+
+/**
+ * Edits a level's name and or description
+ *
+ * @param {Request} req a request body containing: name, desc, id
+ * @param {Response} res a response body containing: status
+ */
+export const editLevel = async (req: Request, res: Response) => {
+  try {
+    const { name, desc, levelID } = req.body;
+    const level = await Level.findOne({ levelID: levelID });
+
+    if (!level) {
+      logger.log({
+        level: "warn",
+        message: `LEVEL: Level could not be edited, does not exist: (ID: ${req.body.levelID})`,
+      });
+      return res.status(204).json({ message: "Level not found" });
+    }
+
+    level.name = name;
+    level.description = desc;
+    await level.save();
+
+    logger.log({
+      level: "info",
+      message: `LEVEL: Level successfully edited: (ID: ${levelID})`,
+    });
+
+    return res.status(200).json({ message: "Level successfully edited" });
+  } catch (e) {
+    logger.log({
+      level: "error",
+      message: `LEVEL: Level edit error (ID: ${req.body.levelID}): ${e}`,
+    });
+    return res.status(500).json({ message: "Internal server error" });
+  }
+};
 
 /**
  * loadLevel
