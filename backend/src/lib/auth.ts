@@ -39,6 +39,8 @@ export const auth = betterAuth({
     user: {
       create: {
         before: async (user) => {
+          if (!user.name) throw new Error("NAME_EMPTY");
+
           const existingUser = await db
             .collection("user")
             .findOne(
