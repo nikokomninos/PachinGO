@@ -76,7 +76,7 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { query } = await searchParams;
   if (query) return { title: `Results for "${query}" - PachinGO!` };
-  else return { title: `Search - PachinGO!`};
+  else return { title: `Search Level ID - PachinGO!`};
 }
 
 export default async function SearchID({
