@@ -32,6 +32,11 @@ export default function ProfilePic({
   async function handleFile(e: React.ChangeEvent<HTMLInputElement>) {
     const file = e.target.files?.[0];
     if (!file) return;
+    // 2MB file size max
+    if (file.size > 2 * 1024 * 1024) {
+      alert("File must be 2MB or less");
+      return;
+    }
     else {
       const formData = new FormData();
       formData.append("name", username);
