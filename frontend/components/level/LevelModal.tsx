@@ -238,6 +238,9 @@ function EditButton({
 
   //TODO make button work
   async function handleEdit() {
+    if (!newName) setNewName("Custom Level");
+    if (!newDesc) setNewDesc("This level is so fun!");
+
     const res = await fetch(
       `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/v1/level/editLevel`,
       {
