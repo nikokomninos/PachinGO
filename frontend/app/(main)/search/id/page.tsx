@@ -1,6 +1,7 @@
 // Page for level search by Level ID
 /** biome-ignore-all lint/suspicious/noArrayIndexKey: Order never changes */
 
+import type { Metadata } from "next";
 import { Suspense } from "react";
 import LevelCard from "@/components/level/LevelCard";
 import LevelCardSkeleton from "@/components/level/LevelCardSkeleton";
@@ -66,6 +67,16 @@ async function SearchResultsList({ query }: { query: string }) {
       </div>
     </div>
   );
+}
+
+export async function generateMetadata({
+  searchParams,
+}: {
+  searchParams: Promise<{ query: string; }>;
+}): Promise<Metadata> {
+  const { query } = await searchParams;
+  if (query) return { title: `Results for "${query}" - PachinGO!` };
+  else return { title: `Search - PachinGO!`};
 }
 
 export default async function SearchID({

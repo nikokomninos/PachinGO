@@ -1,6 +1,7 @@
 // Page for a user's public profile
 /** biome-ignore-all lint/suspicious/noArrayIndexKey: Order never changes */
 
+import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { Suspense } from "react";
 import LevelCard from "@/components/level/LevelCard";
@@ -87,6 +88,15 @@ async function UserLevelsList({ name }: { name: string }) {
   );
 }
 
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ name: string }>;
+}): Promise<Metadata> {
+  const { name } = await params;
+  return { title: `${name}'s Profile - PachinGO!` };
+}
+
 export default async function User({
   params,
 }: {
@@ -103,7 +113,12 @@ export default async function User({
 
   return (
     <div className="flex flex-col items-center gap-4 md:gap-6">
-      <UserBox username={username} dateJoined={dateJoined} role={role} pfp={profilePicture} />
+      <UserBox
+        username={username}
+        dateJoined={dateJoined}
+        role={role}
+        pfp={profilePicture}
+      />
       <Suspense fallback={<LevelsSkeletonGrid />}>
         <UserLevelsList name={username} />
       </Suspense>

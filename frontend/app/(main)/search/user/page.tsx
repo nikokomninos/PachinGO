@@ -1,6 +1,7 @@
 // Page for user search
 /** biome-ignore-all lint/suspicious/noArrayIndexKey: Order never changes */
 
+import type { Metadata } from "next";
 import { Suspense } from "react";
 import PageSelect from "@/components/search/PageSelect";
 import UserCard from "@/components/user/UserCard";
@@ -102,6 +103,16 @@ async function SearchResultsList({
       </h1>
     </div>
   );
+}
+
+export async function generateMetadata({
+  searchParams,
+}: {
+  searchParams: Promise<{ query: string, page: string }>;
+}): Promise<Metadata> {
+  const { query, page } = await searchParams;
+  if (query) return { title: `Results for "${query}" - Page ${page || "1"} - PachinGO!` };
+  else return { title: `Search User - Page ${page || "1"} - PachinGO!`};
 }
 
 export default async function SearchName({

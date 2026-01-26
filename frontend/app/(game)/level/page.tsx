@@ -5,10 +5,16 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import PachinGO from "@/components/game/PachinGO";
 
-export const metadata: Metadata = {
-  title: "Play - PachinGO!",
-  description: "Ready to become a PachinGOD?",
-};
+export async function generateMetadata({
+  searchParams,
+}: {
+  searchParams: Promise<{ id: string }>;
+}): Promise<Metadata> {
+  const { id } = await searchParams;
+  const level = await checkLevelExists(id);
+  if (level) return { title: `${level} - PachinGO!` };
+  else return {title: "Play - PachinGO!"}
+}
 
 /**
  * checkLevelExists - The server checks if a level exists.
@@ -21,8 +27,13 @@ async function checkLevelExists(id: string) {
     { cache: "no-store" },
   );
 
-  if (res.status === 204) return false;
-  else return true;
+  if (res.status === 204) return null;
+  else {
+    const data = await res.json();
+    const name = (data.level.name);
+    const finalName = name.length > 20 ? `${name.slice(0, 20)}...` : name;
+    return finalName;
+  }
 }
 
 export default async function Level({

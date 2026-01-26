@@ -1,6 +1,7 @@
 // Page for level search by Level Name
 /** biome-ignore-all lint/suspicious/noArrayIndexKey: Order never changes */
 
+import type { Metadata } from "next";
 import { Suspense } from "react";
 import LevelCard from "@/components/level/LevelCard";
 import LevelCardSkeleton from "@/components/level/LevelCardSkeleton";
@@ -173,6 +174,23 @@ async function SearchResultsList({
       </h1>
     </div>
   );
+}
+
+export async function generateMetadata({
+  searchParams,
+}: {
+  searchParams: Promise<{ query: string, page: string, special: string }>;
+}): Promise<Metadata> {
+  const { query, page, special } = await searchParams;
+  let specialTitle = "";
+  switch (special) {
+    case "plays": specialTitle = "Most Played Levels"; break;
+    case "likes": specialTitle = "Most Liked Levels"; break;
+    case "random": specialTitle = "Random Level"; break;
+  }
+  if (query && !special) return { title: `Results for "${query}" - Page ${page || "1"} - PachinGO!` };
+  else if (special) return { title: `${specialTitle} - Page ${page || "1"} - PachinGO!`};
+  else return { title: `Search Level - Page ${page || "1"} - PachinGO!`};
 }
 
 export default async function SearchName({
