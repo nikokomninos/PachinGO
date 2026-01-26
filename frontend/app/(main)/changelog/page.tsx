@@ -26,7 +26,7 @@ export default async function ChangelogIndex() {
             </span>
 
             <Link href={`/changelog/${post.update}`}>
-              <h2 className="text-2xl font-semibold mt-2 hover:text-(--foreground-alt) ease-linear duration-75">
+              <h2 className="text-2xl font-semibold mt-2 hover:text-(--foreground-alt) ease-linear duration-75 mb-4">
                 {post.title}
               </h2>
             </Link>

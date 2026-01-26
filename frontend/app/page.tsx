@@ -28,7 +28,7 @@ export default function Home() {
             A spiritual successor to <i>Peggle</i>, featuring a level editor!
           </h2>
           <h2 className="text-sm text-(--foreground-alt) font-semibold mb-5 md:mb-15">
-            v0.2 out now!{" "}
+            v0.2.1 out now!{" "}
             <Link
               href="/changelog"
               className="underline text-sm font-semibold hover:text-(--foreground-alt)/75 ease-linear duration-75 whitespace-nowrap"

@@ -26,7 +26,7 @@ export default function Navbar() {
         <div className="flex flex-col md:flex-row md:justify-between items-center">
           <div className="md:ml-[6vw]">
             <h1 className="text-xs font-light mb-3 md:mb-0">
-              🎉 PachinGO! v0.2 out now!{" "}
+              🎉 PachinGO! v0.2.1 out now!{" "}
               <Link
                 href="/changelog"
                 className="underline text-xs font-light hover:text-(--foreground-alt) ease-linear duration-75 whitespace-nowrap"
