@@ -17,14 +17,14 @@ export async function generateMetadata({
     return {
       title: `${name} by ${author} - PachinGO!`,
       openGraph: {
-        title: name,
+        title: `${name} by ${author} - PachinGO!`,
         images: [`${process.env.NEXT_PUBLIC_R2_URL}/${thumbnail}`],
       },
       twitter: {
         card: "summary_large_image",
-        title: name,
+        title: `${name} by ${author} - PachinGO!`,
         images: [`${process.env.NEXT_PUBLIC_R2_URL}/${thumbnail}`],
-      }
+      },
     };
   } else return { title: "Play - PachinGO!" };
 }
