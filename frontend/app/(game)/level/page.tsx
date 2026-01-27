@@ -14,7 +14,18 @@ export async function generateMetadata({
   const level = await checkLevelExists(id);
   if (level) {
     const { finalName: name, thumbnail } = level;
-    return { title: `${name} - PachinGO!`, openGraph: {title: name, images: [`${process.env.NEXT_PUBLIC_R2_URL}/${thumbnail}`]} };
+    return {
+      title: `${name} - PachinGO!`,
+      openGraph: {
+        title: name,
+        images: [`${process.env.NEXT_PUBLIC_R2_URL}/${thumbnail}`],
+      },
+      twitter: {
+        card: "summary_large_image",
+        title: name,
+        images: [`${process.env.NEXT_PUBLIC_R2_URL}/${thumbnail}`],
+      }
+    };
   } else return { title: "Play - PachinGO!" };
 }
 
