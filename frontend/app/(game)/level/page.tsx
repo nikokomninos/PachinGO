@@ -12,8 +12,10 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { id } = await searchParams;
   const level = await checkLevelExists(id);
-  if (level) return { title: `${level} - PachinGO!` };
-  else return {title: "Play - PachinGO!"}
+  if (level) {
+    const { finalName: name, thumbnail } = level;
+    return { title: `${name} - PachinGO!`, openGraph: {title: name, images: [`${process.env.NEXT_PUBLIC_R2_URL}/${thumbnail}`]} };
+  } else return { title: "Play - PachinGO!" };
 }
 
 /**
@@ -30,9 +32,10 @@ async function checkLevelExists(id: string) {
   if (res.status === 204) return null;
   else {
     const data = await res.json();
-    const name = (data.level.name);
+    const name = data.level.name;
+    const thumbnail = data.level.thumbnail;
     const finalName = name.length > 20 ? `${name.slice(0, 20)}...` : name;
-    return finalName;
+    return { finalName, thumbnail };
   }
 }
 
