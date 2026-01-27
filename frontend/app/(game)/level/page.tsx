@@ -13,9 +13,9 @@ export async function generateMetadata({
   const { id } = await searchParams;
   const level = await checkLevelExists(id);
   if (level) {
-    const { finalName: name, thumbnail } = level;
+    const { name, author, thumbnail } = level;
     return {
-      title: `${name} - PachinGO!`,
+      title: `${name} by ${author} - PachinGO!`,
       openGraph: {
         title: name,
         images: [`${process.env.NEXT_PUBLIC_R2_URL}/${thumbnail}`],
@@ -44,9 +44,9 @@ async function checkLevelExists(id: string) {
   else {
     const data = await res.json();
     const name = data.level.name;
+    const author = data.level.author;
     const thumbnail = data.level.thumbnail;
-    const finalName = name.length > 20 ? `${name.slice(0, 20)}...` : name;
-    return { finalName, thumbnail };
+    return { name, author, thumbnail };
   }
 }
 

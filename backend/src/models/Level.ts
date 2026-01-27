@@ -10,9 +10,9 @@ import Counter from "./Counter.ts";
 
 const levelSchema = new mongoose.Schema({
   levelID: { type: Number, unique: true },
-  name: { type: String, required: true, min: 1, max: 50 },
+  name: { type: String, required: true, min: 1, max: 200 },
   author: { type: String, required: true, min: 1, max: 50 },
-  description: { type: String, required: true, min: 0, max: 200 },
+  description: { type: String, required: true, min: 0, max: 1000 },
   thumbnail: { type: String, required: true },
   pegLayout: { type: Object, required: true },
   backgroundImage: { type: String, required: true },
