@@ -13,16 +13,18 @@ export async function generateMetadata({
   const { id } = await searchParams;
   const level = await checkLevelExists(id);
   if (level) {
-    const { name, author, thumbnail } = level;
+    const { name, author, desc, thumbnail } = level;
     return {
       title: `${name} by ${author} - PachinGO!`,
       openGraph: {
         title: `${name} by ${author} - PachinGO!`,
+        description: desc,
         images: [`${process.env.NEXT_PUBLIC_R2_URL}/${thumbnail}`],
       },
       twitter: {
         card: "summary_large_image",
         title: `${name} by ${author} - PachinGO!`,
+        description: desc,
         images: [`${process.env.NEXT_PUBLIC_R2_URL}/${thumbnail}`],
       },
     };
@@ -45,8 +47,9 @@ async function checkLevelExists(id: string) {
     const data = await res.json();
     const name = data.level.name;
     const author = data.level.author;
+    const desc = data.level.description;
     const thumbnail = data.level.thumbnail;
-    return { name, author, thumbnail };
+    return { name, author, desc, thumbnail };
   }
 }
 
