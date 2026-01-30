@@ -41,7 +41,7 @@ const Footer = () => {
 
         <div className="flex justify-center row-span-1 gap-5">
           <Link
-            href="/About"
+            href="/about"
             className="font-semibold text-xs hover:text-(--foreground-alt) ease-linear duration-75"
           >
             About
