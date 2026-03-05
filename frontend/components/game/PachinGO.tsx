@@ -62,7 +62,7 @@ export default function PachinGO({ id }: { id: string }) {
         const value = localStorage.getItem("uploaded");
         if (value === "true") {
           localStorage.setItem("uploaded", "false");
-          router.push(`/level/${localStorage.getItem("levelID")}`);
+          router.push(`/level/?id=${localStorage.getItem("levelID")}`);
         }
       };
 
