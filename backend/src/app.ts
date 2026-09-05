@@ -57,6 +57,8 @@ app.use(
 
 app.use(express.json());
 
+app.get("/healthz", (_req, res) => res.sendStatus(204));
+
 app.all("/api/auth/*splat", toNodeHandler(auth));
 app.use("/api/v1/search", searchRoutes);
 app.use("/api/v1/user", userRoutes);
